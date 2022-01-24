@@ -1,6 +1,6 @@
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
 import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@spiritswap/sdk';
-import { Fetcher, Route, Token } from '@spookyswap/sdk';
+import { Fetcher, Route, Token } from '@spiritswap/sdk';
 import { Configuration } from './config';
 import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, TShareSwapperStat } from './types';
 import { BigNumber, Contract, ethers, EventFilter } from 'ethers';
@@ -104,7 +104,9 @@ export class MagikFinance {
       .sub(tombRewardPoolSupply2)
       .sub(tombRewardPoolSupplyOld);
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.MAGIK);
+    console.log("price in FTM tomb", priceInFTM);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
+    console.log("this is tomb price in oneFTM " ,priceOfOneFTM);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
 
     return {
@@ -186,6 +188,10 @@ export class MagikFinance {
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
+    console.log("hello night ", priceOfSharesInDollars);
+    console.log("testing price ftm ", priceInFTM);
+    console.log("price of 1FTM ", priceOfOneFTM);
+  
 
     return {
       tokenInFtm: priceInFTM,
@@ -493,8 +499,13 @@ export class MagikFinance {
 
     const wftm = new Token(chainId, WFTM[0], WFTM[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+    console.log("this is tokencontract address ", tokenContract.address);
+    console.log("this is wftm ", wftm);
+    console.log("this is for token ", token);
+
     try {
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
+      console.log("this is WFTM to token ", wftmToToken);
       const priceInBUSD = new Route([wftmToToken], token);
 
       return priceInBUSD.midPrice.toFixed(4);

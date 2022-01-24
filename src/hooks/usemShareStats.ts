@@ -18,6 +18,7 @@ const useShareStats = () => {
     }
     fetchSharePrice();
   }, [setStat, tombFinance, slowRefresh]);
+  console.log("hello world", stat);
 
   return stat;
 };
