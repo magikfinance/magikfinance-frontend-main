@@ -10,6 +10,7 @@ const useBondsPurchasable = () => {
 
   useEffect(() => {
     async function fetchBondsPurchasable() {
+      console.log("fetching bonds ", fetchBondsPurchasable);
         try {
             setBalance(await tombFinance.getBondsPurchasable());
         }

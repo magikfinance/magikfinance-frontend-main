@@ -3564,7 +3564,7 @@
       },
       {
         "inputs": [],
-        "name": "getBurnableTombLeft",
+        "name": "getBurnableMagikLeft",
         "outputs": [
           {
             "internalType": "uint256",

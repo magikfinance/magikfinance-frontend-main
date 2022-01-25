@@ -223,7 +223,7 @@ export class MagikFinance {
 
   async getBondsPurchasable(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
-    return Treasury.getBurnableTombLeft();
+    return Treasury.getBurnableMagikLeft();
   }
 
   /**
