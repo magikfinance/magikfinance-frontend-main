@@ -216,9 +216,9 @@ export class MagikFinance {
     };
   }
 
-  async getTombPriceInLastTWAP(): Promise<BigNumber> {
+  async getMagikPriceInLastTWAP(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
-    return Treasury.getTombUpdatedPrice();
+    return Treasury.getMagikUpdatedPrice();
   }
 
   async getBondsPurchasable(): Promise<BigNumber> {
@@ -374,7 +374,7 @@ export class MagikFinance {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const treasuryTombPrice = await Treasury.getTombPrice();
+    const treasuryTombPrice = await Treasury.getMagikPrice();
     return await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
   }
 
@@ -384,7 +384,7 @@ export class MagikFinance {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const priceForTomb = await Treasury.getTombPrice();
+    const priceForTomb = await Treasury.getMagikPrice();
     return await Treasury.redeemBonds(decimalToBalance(amount), priceForTomb);
   }
 
@@ -927,7 +927,7 @@ export class MagikFinance {
     const { TShareSwapper } = this.contracts;
     const tshareBalanceBN = await TShareSwapper.getTShareBalance();
     const tbondBalanceBN = await TShareSwapper.getTBondBalance(address);
-    // const tombPriceBN = await TShareSwapper.getTombPrice();
+    // const tombPriceBN = await TShareSwapper.getMagikPrice();
     // const tsharePriceBN = await TShareSwapper.getTSharePrice();
     const rateTSharePerTombBN = await TShareSwapper.getTShareAmountPerTomb();
     const tshareBalance = getDisplayBalance(tshareBalanceBN, 18, 5);

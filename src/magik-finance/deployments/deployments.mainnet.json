@@ -3525,7 +3525,7 @@
       },
       {
         "inputs": [],
-        "name": "getTombPrice",
+        "name": "getMagikPrice",
         "outputs": [
           {
             "internalType": "uint256",
@@ -3538,7 +3538,7 @@
       },
       {
         "inputs": [],
-        "name": "getTombUpdatedPrice",
+        "name": "getMagikUpdatedPrice",
         "outputs": [
           {
             "internalType": "uint256",
@@ -4446,7 +4446,7 @@
       },
       {
         "inputs": [],
-        "name": "getTombPrice",
+        "name": "getMagikPrice",
         "outputs": [
           {
             "internalType": "uint256",
@@ -10587,7 +10587,7 @@
       },
       {
         "inputs": [],
-        "name": "getTombPrice",
+        "name": "getMagikPrice",
         "outputs": [
           {
             "internalType": "uint256",

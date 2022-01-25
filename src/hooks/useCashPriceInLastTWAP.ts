@@ -8,7 +8,7 @@ const useCashPriceInLastTWAP = () => {
   const tombFinance = useMagikFinance();
 
   const fetchCashPrice = useCallback(async () => {
-    setPrice(await tombFinance.getTombPriceInLastTWAP());
+    setPrice(await tombFinance.getMagikPriceInLastTWAP());
   }, [tombFinance]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const useCashPriceInLastTWAP = () => {
     const refreshInterval = setInterval(fetchCashPrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setPrice, tombFinance, fetchCashPrice]);
-
+console.log("price ", price);
   return price;
 };
 
