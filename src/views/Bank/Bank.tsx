@@ -31,6 +31,7 @@ const Bank: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
   const classes = useStyles();
   const { bankId } = useParams();
+  console.log("bankID ", bankId);
   const bank = useBank(bankId);
 
   const { account } = useWallet();

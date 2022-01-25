@@ -104,9 +104,9 @@ export class MagikFinance {
       .sub(tombRewardPoolSupply2)
       .sub(tombRewardPoolSupplyOld);
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.MAGIK);
-    console.log("price in FTM tomb", priceInFTM);
+    // console.log("price in FTM tomb", priceInFTM);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
-    console.log("this is tomb price in oneFTM " ,priceOfOneFTM);
+    // console.log("this is tomb price in oneFTM " ,priceOfOneFTM);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
 
     return {
@@ -188,9 +188,9 @@ export class MagikFinance {
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
-    console.log("hello night ", priceOfSharesInDollars);
-    console.log("testing price ftm ", priceInFTM);
-    console.log("price of 1FTM ", priceOfOneFTM);
+    // console.log("hello night ", priceOfSharesInDollars);
+    // console.log("testing price ftm ", priceInFTM);
+    // console.log("price of 1FTM ", priceOfOneFTM);
   
 
     return {
@@ -232,26 +232,38 @@ export class MagikFinance {
    * @returns
    */
   async getPoolAPRs(bank: Bank): Promise<PoolStats> {
+    console.log("checking" );
     if (this.myAccount === undefined) return;
     const depositToken = bank.depositToken;
+    console.log("Bank.depositToken ", depositToken);
     const poolContract = this.contracts[bank.contract];
+    console.log("poolContract ", poolContract);
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
+    console.log("depositTokenPrice ", depositTokenPrice);
     const stakeInPool = await depositToken.balanceOf(bank.address);
+    console.log("stakeInPool ", stakeInPool);
     const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
+    console.log("TVL ", TVL);
     const stat = bank.earnTokenName === 'MAGIK' ? await this.getTombStat() : await this.getShareStat();
+    console.log("stat ", stat);
     const tokenPerSecond = await this.getTokenPerSecond(
       bank.earnTokenName,
       bank.contract,
       poolContract,
       bank.depositTokenName,
+      
     );
-
+    console.log("helloprint12323214512 ", );
     const tokenPerHour = tokenPerSecond.mul(60).mul(60);
+    console.log("tokenPerSecond ", tokenPerSecond);
+    
     const totalRewardPricePerYear =
       Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
     const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
     const totalStakingTokenInPool =
       Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
+      console.log("checking totalrewardpriceperday ", totalRewardPricePerDay);
+      console.log("checking totalStakingTokenInPool ", totalStakingTokenInPool);
     const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
     const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
     return {
@@ -274,7 +286,12 @@ export class MagikFinance {
     poolContract: Contract,
     depositTokenName: string,
   ) {
+    console.log("earntokenname ", earnTokenName);
+    console.log("contractName ", contractName);
+    console.log("poolContract ", poolContract);
+    console.log("depositTokenName ", depositTokenName);
     if (earnTokenName === 'MAGIK') {
+      console.log("contractname", contractName);
       if (!contractName.endsWith('TombRewardPool')) {
         const rewardPerSecond = await poolContract.tombPerSecond();
         if (depositTokenName === 'WFTM') {
@@ -296,12 +313,16 @@ export class MagikFinance {
       }
       return await poolContract.epochTombPerSecond(0);
     }
-    const rewardPerSecond = await poolContract.tSharePerSecond();
+    const rewardPerSecond = await poolContract.mSharePerSecond();
+    console.log("rewardPerSecond ", rewardPerSecond.mul(35500).div(59500));
     if (depositTokenName.startsWith('MAGIK')) {
+      console.log("rewardPerSecond ", rewardPerSecond);
       return rewardPerSecond.mul(35500).div(59500);
     } else {
+      console.log("rewardPerSecond ", rewardPerSecond);
       return rewardPerSecond.mul(24000).div(59500);
     }
+
   }
 
   /**
@@ -499,9 +520,9 @@ export class MagikFinance {
 
     const wftm = new Token(chainId, WFTM[0], WFTM[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
-    console.log("this is tokencontract address ", tokenContract.address);
-    console.log("this is wftm ", wftm);
-    console.log("this is for token ", token);
+    // console.log("this is tokencontract address ", tokenContract.address);
+    // console.log("this is wftm ", wftm);
+    // console.log("this is for token ", token);
 
     try {
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);

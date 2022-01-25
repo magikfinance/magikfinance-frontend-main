@@ -87,7 +87,7 @@ const ProvideLiquidity = () => {
       <Grid container justify="center">
         <Box style={{ width: '600px' }}>
           <Alert variant="filled" severity="warning" style={{ marginBottom: '10px' }}>
-            <b>This and <a href="https://spookyswap.finance/"  rel="noopener noreferrer" target="_blank">SpiritSwap</a> are the only ways to provide Liquidity on MAGIK-FTM pair without paying tax.</b>
+            <b>This and <a href="https://app.spiritswap.finance/#/"  rel="noopener noreferrer" target="_blank">SpiritSwap</a> are the only ways to provide Liquidity on MAGIK-FTM pair without paying tax.</b>
           </Alert>
           <Grid item xs={12} sm={12}>
             <Paper>

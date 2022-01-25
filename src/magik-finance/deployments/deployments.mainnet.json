@@ -7712,7 +7712,7 @@
       },
       {
         "inputs": [],
-        "name": "tSharePerSecond",
+        "name": "mSharePerSecond",
         "outputs": [
           {
             "internalType": "uint256",
@@ -8198,7 +8198,7 @@
       },
       {
         "inputs": [],
-        "name": "tSharePerSecond",
+        "name": "mSharePerSecond",
         "outputs": [
           {
             "internalType": "uint256",

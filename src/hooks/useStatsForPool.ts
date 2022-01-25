@@ -12,6 +12,7 @@ const useStatsForPool = (bank: Bank) => {
   const fetchAPRsForPool = useCallback(async () => {
     setPoolAPRs(await tombFinance.getPoolAPRs(bank));
   }, [tombFinance, bank]);
+  console.log("PoolAPRS ", poolAPRs);
 
   useEffect(() => {
     fetchAPRsForPool().catch((err) => console.error(`Failed to fetch MBOND price: ${err.stack}`));
