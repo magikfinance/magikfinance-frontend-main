@@ -149,7 +149,7 @@ const Home = () => {
               <p>An algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.</p>
               <p>
                 Stake your MAGIK-FTM LP in the Cemetery to earn MSHARE rewards.
-                Then stake your earned MSHARE in the Masonry to earn more MAGIK!
+                Then stake your earned MSHARE in the Dungeon to earn more MAGIK!
               </p>
             </Box>
           </Paper>
