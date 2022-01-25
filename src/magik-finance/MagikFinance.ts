@@ -384,8 +384,8 @@ export class MagikFinance {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const priceForTomb = await Treasury.getMagikPrice();
-    return await Treasury.redeemBonds(decimalToBalance(amount), priceForTomb);
+    const PriceForMagik = await Treasury.getMagikPrice();
+    return await Treasury.redeemBonds(decimalToBalance(amount), PriceForMagik);
   }
 
   async getTotalValueLocked(): Promise<Number> {
