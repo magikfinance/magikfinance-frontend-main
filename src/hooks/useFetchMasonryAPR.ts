@@ -4,6 +4,7 @@ import useRefresh from './useRefresh';
 
 const useFetchMasonryAPR = () => {
   const [apr, setApr] = useState<number>(0);
+  console.log("apr", apr);
   const tombFinance = useMagikFinance();
   const { slowRefresh } = useRefresh(); 
 

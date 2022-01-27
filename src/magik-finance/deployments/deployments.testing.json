@@ -3201,7 +3201,7 @@
       },
       {
         "inputs": [],
-        "name": "dungeon",
+        "name": "masonry",
         "outputs": [
           {
             "internalType": "address",
@@ -3638,7 +3638,7 @@
           },
           {
             "internalType": "address",
-            "name": "_dungeon",
+            "name": "_masonry",
             "type": "address"
           },
           {
@@ -3669,7 +3669,7 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_dungeon",
+            "name": "_masonry",
             "type": "address"
           }
         ],
@@ -3954,7 +3954,7 @@
             "type": "address"
           }
         ],
-        "name": "dungeonSetOperator",
+        "name": "masonrySetOperator",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -3972,7 +3972,7 @@
             "type": "uint256"
           }
         ],
-        "name": "dungeonSetLockUp",
+        "name": "masonrySetLockUp",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -3985,7 +3985,7 @@
             "type": "uint256"
           }
         ],
-        "name": "dungeonAllocateSeigniorage",
+        "name": "masonryAllocateSeigniorage",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -4008,14 +4008,14 @@
             "type": "address"
           }
         ],
-        "name": "dungeonGovernanceRecoverUnsupported",
+        "name": "masonryGovernanceRecoverUnsupported",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       }
     ]
   },
-  "Dungeon": {
+  "Masonry": {
     "address": "0xac55a55676657d793d965ffa1ccc550b95535634",
     "abi": [
       {
@@ -4153,7 +4153,7 @@
             "type": "uint256"
           }
         ],
-        "name": "dungeonHistory",
+        "name": "masonryHistory",
         "outputs": [
           {
             "internalType": "uint256",
