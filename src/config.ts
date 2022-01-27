@@ -22,7 +22,7 @@ const configurations: { [env: string]: Configuration } = {
     },
     baseLaunchDate: new Date('2021-06-02 13:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
-    masonryLaunchesAt: new Date('2020-12-11T00:00:00Z'),
+    dungeonLaunchesAt: new Date('2020-12-11T00:00:00Z'),
     refreshInterval: 10000,
   },
   production: {
@@ -43,7 +43,7 @@ const configurations: { [env: string]: Configuration } = {
     },
     baseLaunchDate: new Date('2021-06-02 13:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
-    masonryLaunchesAt: new Date('2020-12-11T00:00:00Z'),
+    dungeonLaunchesAt: new Date('2020-12-11T00:00:00Z'),
     refreshInterval: 10000,
   },
 };
@@ -63,22 +63,22 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   finished: will disable the pool on the UI if set to true
   sort: the order of the pool
   */
-  TombFtmLPTShareRewardPool: {
+  MagikFtmLPTShareRewardPool: {
     name: 'Earn MSHARE by MAGIK-FTM LP',
     poolId: 0,
     sectionInUI: 2,
-    contract: 'TombFtmLPTShareRewardPool',
+    contract: 'MagikFtmLPTShareRewardPool',
     depositTokenName: 'MAGIK-FTM-LP',
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 6,
     closedForStaking: false,
   },
-  TshareFtmLPTShareRewardPool: {
+  MshareFtmLPMShareRewardPool: {
     name: 'Earn MSHARE by MSHARE-FTM LP',
     poolId: 1,
     sectionInUI: 2,
-    contract: 'TshareFtmLPTShareRewardPool',
+    contract: 'MshareFtmLPMShareRewardPool',
     depositTokenName: 'MSHARE-FTM-LP',
     earnTokenName: 'MSHARE',
     finished: false,

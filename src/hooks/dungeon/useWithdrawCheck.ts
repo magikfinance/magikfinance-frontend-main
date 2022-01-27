@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useMagikFinance from './../useMagikFinance';
+import useMagikFinance from '../useMagikFinance';
 import useRefresh from '../useRefresh';
 
 const useWithdrawCheck = () => {

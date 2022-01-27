@@ -148,7 +148,7 @@ const Home = () => {
               <h2>Welcome to Magik Finance</h2>
               <p>An algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.</p>
               <p>
-                Stake your MAGIK-FTM LP in the Cemetery to earn MSHARE rewards.
+                Stake your MAGIK-FTM LP in the Cauldron to earn MSHARE rewards.
                 Then stake your earned MSHARE in the Dungeon to earn more MAGIK!
               </p>
             </Box>
@@ -182,10 +182,10 @@ const Home = () => {
           <Card style={{ height: '100%' }}>
             <CardContent align="center" style={{ marginTop: '2.5%' }}>
               {/* <h2 style={{ marginBottom: '20px' }}>Wallet Balance</h2> */}
-              <Button color="primary" href="/masonry" variant="contained" style={{ marginRight: '10px' }}>
+              <Button color="primary" href="/dungeon" variant="contained" style={{ marginRight: '10px' }}>
                 Stake Now
               </Button>
-              <Button href="/cemetery" variant="contained" style={{ marginRight: '10px' }}>
+              <Button href="/cauldron" variant="contained" style={{ marginRight: '10px' }}>
                 Farm Now
               </Button>
               <Button

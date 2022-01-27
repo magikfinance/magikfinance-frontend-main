@@ -1,6 +1,6 @@
 import React, { /*useCallback, useEffect, */useMemo, useState } from 'react';
 import Page from '../../components/Page';
-import PitImage from '../../assets/img/pit.png';
+import WildernessImage from '../../assets/img/wilderness.png';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
@@ -22,7 +22,7 @@ import TokenSymbol from '../../components/TokenSymbol';
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${PitImage}) no-repeat !important;
+    background: url(${WildernessImage}) no-repeat !important;
     background-size: cover !important;
   }
 `;

@@ -15,24 +15,24 @@ import Value from '../../../components/Value';
 import useApprove, { ApprovalState } from '../../../hooks/useApprove';
 import useModal from '../../../hooks/useModal';
 import useTokenBalance from '../../../hooks/useTokenBalance';
-import useWithdrawCheck from '../../../hooks/masonry/useWithdrawCheck';
+import useWithdrawCheck from '../../../hooks/dungeon/useWithdrawCheck';
 
 import { getDisplayBalance } from '../../../utils/formatBalance';
 
 import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
 import useMagikFinance from '../../../hooks/useMagikFinance';
-import ProgressCountdown from './../components/ProgressCountdown';
+import ProgressCountdown from './ProgressCountdown';
 import useStakedBalanceOnMasonry from '../../../hooks/useStakedBalanceOnMasonry';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
-import useUnstakeTimerMasonry from '../../../hooks/masonry/useUnstakeTimerMasonry';
+import useUnstakeTimerMasonry from '../../../hooks/dungeon/useUnstakeTimerMasonry';
 import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToMasonry from '../../../hooks/useStakeToMasonry';
 import useWithdrawFromMasonry from '../../../hooks/useWithdrawFromMasonry';
 
 const Stake: React.FC = () => {
   const tombFinance = useMagikFinance();
-  const [approveStatus, approve] = useApprove(tombFinance.MSHARE, tombFinance.contracts.Masonry.address);
+  const [approveStatus, approve] = useApprove(tombFinance.MSHARE, tombFinance.contracts.Dungeon.address);
 
   const tokenBalance = useTokenBalance(tombFinance.MSHARE);
   const stakedBalance = useStakedBalanceOnMasonry();

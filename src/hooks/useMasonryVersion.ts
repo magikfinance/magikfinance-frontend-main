@@ -3,7 +3,7 @@ import useMagikFinance from './useMagikFinance';
 import useStakedBalanceOnMasonry from './useStakedBalanceOnMasonry';
 
 const useMasonryVersion = () => {
-  const [masonryVersion, setMasonryVersion] = useState('latest');
+  const [dungeonVersion, setMasonryVersion] = useState('latest');
   const tombFinance = useMagikFinance();
   const stakedBalance = useStakedBalanceOnMasonry();
 
@@ -17,7 +17,7 @@ const useMasonryVersion = () => {
     }
   }, [tombFinance?.isUnlocked, stakedBalance]);
 
-  return masonryVersion;
+  return dungeonVersion;
 };
 
 export default useMasonryVersion;

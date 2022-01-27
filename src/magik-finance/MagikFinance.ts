@@ -25,7 +25,7 @@ export class MagikFinance {
   config: Configuration;
   contracts: { [name: string]: Contract };
   externalTokens: { [name: string]: ERC20 };
-  masonryVersionOfUser?: string;
+  dungeonVersionOfUser?: string;
 
   TOMBWFTM_LP: Contract;
   MAGIK: ERC20;
@@ -76,10 +76,10 @@ export class MagikFinance {
     this.TOMBWFTM_LP = this.TOMBWFTM_LP.connect(this.signer);
     console.log(`🔓 Wallet is unlocked. Welcome, ${account}!`);
     this.fetchMasonryVersionOfUser()
-      .then((version) => (this.masonryVersionOfUser = version))
+      .then((version) => (this.dungeonVersionOfUser = version))
       .catch((err) => {
-        console.error(`Failed to fetch masonry version: ${err.stack}`);
-        this.masonryVersionOfUser = 'latest';
+        console.error(`Failed to fetch dungeon version: ${err.stack}`);
+        this.dungeonVersionOfUser = 'latest';
       });
   }
 
@@ -179,12 +179,12 @@ export class MagikFinance {
    * CirculatingSupply (always equal to total supply for bonds)
    */
   async getShareStat(): Promise<TokenStat> {
-    const { TombFtmLPTShareRewardPool } = this.contracts;
+    const { MagikFtmLPTShareRewardPool } = this.contracts;
 
     const supply = await this.MSHARE.totalSupply();
 
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.MSHARE);
-    const tombRewardPoolSupply = await this.MSHARE.balanceOf(TombFtmLPTShareRewardPool.address);
+    const tombRewardPoolSupply = await this.MSHARE.balanceOf(MagikFtmLPTShareRewardPool.address);
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
@@ -401,10 +401,10 @@ export class MagikFinance {
     }
 
     const TSHAREPrice = (await this.getShareStat()).priceInDollars;
-    const masonrytShareBalanceOf = await this.MSHARE.balanceOf(this.currentMasonry().address);
-    const masonryTVL = Number(getDisplayBalance(masonrytShareBalanceOf, this.MSHARE.decimal)) * Number(TSHAREPrice);
+    const dungeontShareBalanceOf = await this.MSHARE.balanceOf(this.currentMasonry().address);
+    const dungeonTVL = Number(getDisplayBalance(dungeontShareBalanceOf, this.MSHARE.decimal)) * Number(TSHAREPrice);
 
-    return totalValue + masonryTVL;
+    return totalValue + dungeonTVL;
   }
 
   /**
@@ -502,14 +502,14 @@ export class MagikFinance {
   }
 
   currentMasonry(): Contract {
-    if (!this.masonryVersionOfUser) {
+    if (!this.dungeonVersionOfUser) {
       //throw new Error('you must unlock the wallet to continue.');
     }
-    return this.contracts.Masonry;
+    return this.contracts.Dungeon;
   }
 
   isOldMasonryMember(): boolean {
-    return this.masonryVersionOfUser !== 'latest';
+    return this.dungeonVersionOfUser !== 'latest';
   }
 
   async getTokenPriceFromPancakeswap(tokenContract: ERC20): Promise<string> {
@@ -582,9 +582,9 @@ export class MagikFinance {
   //===================================================================
 
   async getMasonryAPR() {
-    const Masonry = this.currentMasonry();
-    const latestSnapshotIndex = await Masonry.latestSnapshotIndex();
-    const lastHistory = await Masonry.masonryHistory(latestSnapshotIndex);
+    const Dungeon = this.currentMasonry();
+    const latestSnapshotIndex = await Dungeon.latestSnapshotIndex();
+    const lastHistory = await Dungeon.dungeonHistory(latestSnapshotIndex);
 
     const lastRewardsReceived = lastHistory[1];
 
@@ -594,28 +594,28 @@ export class MagikFinance {
 
     //Mgod formula
     const amountOfRewardsPerDay = epochRewardsPerShare * Number(TOMBPrice) * 4;
-    const masonrytShareBalanceOf = await this.MSHARE.balanceOf(Masonry.address);
-    const masonryTVL = Number(getDisplayBalance(masonrytShareBalanceOf, this.MSHARE.decimal)) * Number(TSHAREPrice);
-    const realAPR = ((amountOfRewardsPerDay * 100) / masonryTVL) * 365;
+    const dungeontShareBalanceOf = await this.MSHARE.balanceOf(Dungeon.address);
+    const dungeonTVL = Number(getDisplayBalance(dungeontShareBalanceOf, this.MSHARE.decimal)) * Number(TSHAREPrice);
+    const realAPR = ((amountOfRewardsPerDay * 100) / dungeonTVL) * 365;
     return realAPR;
   }
 
   /**
-   * Checks if the user is allowed to retrieve their reward from the Masonry
+   * Checks if the user is allowed to retrieve their reward from the Dungeon
    * @returns true if user can withdraw reward, false if they can't
    */
   async canUserClaimRewardFromMasonry(): Promise<boolean> {
-    const Masonry = this.currentMasonry();
-    return await Masonry.canClaimReward(this.myAccount);
+    const Dungeon = this.currentMasonry();
+    return await Dungeon.canClaimReward(this.myAccount);
   }
 
   /**
-   * Checks if the user is allowed to retrieve their reward from the Masonry
+   * Checks if the user is allowed to retrieve their reward from the Dungeon
    * @returns true if user can withdraw reward, false if they can't
    */
   async canUserUnstakeFromMasonry(): Promise<boolean> {
-    const Masonry = this.currentMasonry();
-    const canWithdraw = await Masonry.canWithdraw(this.myAccount);
+    const Dungeon = this.currentMasonry();
+    const canWithdraw = await Dungeon.canWithdraw(this.myAccount);
     const stakedAmount = await this.getStakedSharesOnMasonry();
     const notStaked = Number(getDisplayBalance(stakedAmount, this.MSHARE.decimal)) === 0;
     const result = notStaked ? true : canWithdraw;
@@ -623,56 +623,56 @@ export class MagikFinance {
   }
 
   async timeUntilClaimRewardFromMasonry(): Promise<BigNumber> {
-    // const Masonry = this.currentMasonry();
-    // const mason = await Masonry.masons(this.myAccount);
+    // const Dungeon = this.currentMasonry();
+    // const mason = await Dungeon.masons(this.myAccount);
     return BigNumber.from(0);
   }
 
   async getTotalStakedInMasonry(): Promise<BigNumber> {
-    const Masonry = this.currentMasonry();
-    return await Masonry.totalSupply();
+    const Dungeon = this.currentMasonry();
+    return await Dungeon.totalSupply();
   }
 
   async stakeShareToMasonry(amount: string): Promise<TransactionResponse> {
     if (this.isOldMasonryMember()) {
-      throw new Error("you're using old masonry. please withdraw and deposit the MSHARE again.");
+      throw new Error("you're using old dungeon. please withdraw and deposit the MSHARE again.");
     }
-    const Masonry = this.currentMasonry();
-    return await Masonry.stake(decimalToBalance(amount));
+    const Dungeon = this.currentMasonry();
+    return await Dungeon.stake(decimalToBalance(amount));
   }
 
   async getStakedSharesOnMasonry(): Promise<BigNumber> {
-    const Masonry = this.currentMasonry();
-    if (this.masonryVersionOfUser === 'v1') {
-      return await Masonry.getShareOf(this.myAccount);
+    const Dungeon = this.currentMasonry();
+    if (this.dungeonVersionOfUser === 'v1') {
+      return await Dungeon.getShareOf(this.myAccount);
     }
-    return await Masonry.balanceOf(this.myAccount);
+    return await Dungeon.balanceOf(this.myAccount);
   }
 
   async getEarningsOnMasonry(): Promise<BigNumber> {
-    const Masonry = this.currentMasonry();
-    if (this.masonryVersionOfUser === 'v1') {
-      return await Masonry.getCashEarningsOf(this.myAccount);
+    const Dungeon = this.currentMasonry();
+    if (this.dungeonVersionOfUser === 'v1') {
+      return await Dungeon.getCashEarningsOf(this.myAccount);
     }
-    return await Masonry.earned(this.myAccount);
+    return await Dungeon.earned(this.myAccount);
   }
 
   async withdrawShareFromMasonry(amount: string): Promise<TransactionResponse> {
-    const Masonry = this.currentMasonry();
-    return await Masonry.withdraw(decimalToBalance(amount));
+    const Dungeon = this.currentMasonry();
+    return await Dungeon.withdraw(decimalToBalance(amount));
   }
 
   async harvestCashFromMasonry(): Promise<TransactionResponse> {
-    const Masonry = this.currentMasonry();
-    if (this.masonryVersionOfUser === 'v1') {
-      return await Masonry.claimDividends();
+    const Dungeon = this.currentMasonry();
+    if (this.dungeonVersionOfUser === 'v1') {
+      return await Dungeon.claimDividends();
     }
-    return await Masonry.claimReward();
+    return await Dungeon.claimReward();
   }
 
   async exitFromMasonry(): Promise<TransactionResponse> {
-    const Masonry = this.currentMasonry();
-    return await Masonry.exit();
+    const Dungeon = this.currentMasonry();
+    return await Dungeon.exit();
   }
 
   async getTreasuryNextAllocationTime(): Promise<AllocationTime> {
@@ -686,18 +686,18 @@ export class MagikFinance {
   /**
    * This method calculates and returns in a from to to format
    * the period the user needs to wait before being allowed to claim
-   * their reward from the masonry
+   * their reward from the dungeon
    * @returns Promise<AllocationTime>
    */
   async getUserClaimRewardTime(): Promise<AllocationTime> {
-    const { Masonry, Treasury } = this.contracts;
-    const nextEpochTimestamp = await Masonry.nextEpochPoint(); //in unix timestamp
-    const currentEpoch = await Masonry.epoch();
-    const mason = await Masonry.masons(this.myAccount);
+    const { Dungeon, Treasury } = this.contracts;
+    const nextEpochTimestamp = await Dungeon.nextEpochPoint(); //in unix timestamp
+    const currentEpoch = await Dungeon.epoch();
+    const mason = await Dungeon.masons(this.myAccount);
     const startTimeEpoch = mason.epochTimerStart;
     const period = await Treasury.PERIOD();
     const periodInHours = period / 60 / 60; // 6 hours, period is displayed in seconds which is 21600
-    const rewardLockupEpochs = await Masonry.rewardLockupEpochs();
+    const rewardLockupEpochs = await Dungeon.rewardLockupEpochs();
     const targetEpochForClaimUnlock = Number(startTimeEpoch) + Number(rewardLockupEpochs);
 
     const fromDate = new Date(Date.now());
@@ -719,18 +719,18 @@ export class MagikFinance {
   /**
    * This method calculates and returns in a from to to format
    * the period the user needs to wait before being allowed to unstake
-   * from the masonry
+   * from the dungeon
    * @returns Promise<AllocationTime>
    */
   async getUserUnstakeTime(): Promise<AllocationTime> {
-    const { Masonry, Treasury } = this.contracts;
-    const nextEpochTimestamp = await Masonry.nextEpochPoint();
-    const currentEpoch = await Masonry.epoch();
-    const mason = await Masonry.masons(this.myAccount);
+    const { Dungeon, Treasury } = this.contracts;
+    const nextEpochTimestamp = await Dungeon.nextEpochPoint();
+    const currentEpoch = await Dungeon.epoch();
+    const mason = await Dungeon.masons(this.myAccount);
     const startTimeEpoch = mason.epochTimerStart;
     const period = await Treasury.PERIOD();
     const PeriodInHours = period / 60 / 60;
-    const withdrawLockupEpochs = await Masonry.withdrawLockupEpochs();
+    const withdrawLockupEpochs = await Dungeon.withdrawLockupEpochs();
     const fromDate = new Date(Date.now());
     const targetEpochForClaimUnlock = Number(startTimeEpoch) + Number(withdrawLockupEpochs);
     const stakedAmount = await this.getStakedSharesOnMasonry();
@@ -813,11 +813,11 @@ export class MagikFinance {
     const redeemBondsFilter = Treasury.filters.RedeemedBonds();
 
     let epochBlocksRanges: any[] = [];
-    let masonryFundEvents = await Treasury.queryFilter(treasuryMasonryFundedFilter);
+    let dungeonFundEvents = await Treasury.queryFilter(treasuryMasonryFundedFilter);
     var events: any[] = [];
-    masonryFundEvents.forEach(function callback(value, index) {
+    dungeonFundEvents.forEach(function callback(value, index) {
       events.push({ epoch: index + 1 });
-      events[index].masonryFund = getDisplayBalance(value.args[1]);
+      events[index].dungeonFund = getDisplayBalance(value.args[1]);
       if (index === 0) {
         epochBlocksRanges.push({
           index: index,

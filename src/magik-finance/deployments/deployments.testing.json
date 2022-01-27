@@ -3201,7 +3201,7 @@
       },
       {
         "inputs": [],
-        "name": "masonry",
+        "name": "dungeon",
         "outputs": [
           {
             "internalType": "address",
@@ -3638,7 +3638,7 @@
           },
           {
             "internalType": "address",
-            "name": "_masonry",
+            "name": "_dungeon",
             "type": "address"
           },
           {
@@ -3669,7 +3669,7 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_masonry",
+            "name": "_dungeon",
             "type": "address"
           }
         ],
@@ -3954,7 +3954,7 @@
             "type": "address"
           }
         ],
-        "name": "masonrySetOperator",
+        "name": "dungeonSetOperator",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -3972,7 +3972,7 @@
             "type": "uint256"
           }
         ],
-        "name": "masonrySetLockUp",
+        "name": "dungeonSetLockUp",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -3985,7 +3985,7 @@
             "type": "uint256"
           }
         ],
-        "name": "masonryAllocateSeigniorage",
+        "name": "dungeonAllocateSeigniorage",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -4008,14 +4008,14 @@
             "type": "address"
           }
         ],
-        "name": "masonryGovernanceRecoverUnsupported",
+        "name": "dungeonGovernanceRecoverUnsupported",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       }
     ]
   },
-  "Masonry": {
+  "Dungeon": {
     "address": "0xac55a55676657d793d965ffa1ccc550b95535634",
     "abi": [
       {
@@ -4153,7 +4153,7 @@
             "type": "uint256"
           }
         ],
-        "name": "masonryHistory",
+        "name": "dungeonHistory",
         "outputs": [
           {
             "internalType": "uint256",
@@ -7493,7 +7493,7 @@
       }
     ]
   },
-  "TombFtmLPTShareRewardPool": {
+  "MagikFtmLPTShareRewardPool": {
     "address": "0x38f006eb9c6778d02351fbd5966f829e7c4445d7",
     "abi": [
       {
@@ -7979,7 +7979,7 @@
       }
     ]
   },
-  "TshareFtmLPTShareRewardPool": {
+  "MshareFtmLPMShareRewardPool": {
     "address": "0x38f006eb9c6778d02351fbd5966f829e7c4445d7",
     "abi": [
       {

@@ -19,9 +19,9 @@ import Regulations from './views/Regulations/Regulations';
 import { RefreshContextProvider } from './contexts/RefreshContext';
 
 const Home = lazy(() => import('./views/Home'));
-const Cemetery = lazy(() => import('./views/Cemetery'));
-const Masonry = lazy(() => import('./views/Masonry'));
-const Pit = lazy(() => import('./views/Pit'));
+const Cauldron = lazy(() => import('./views/Cauldron'));
+const Dungeon = lazy(() => import('./views/Dungeon'));
+const Wilderness = lazy(() => import('./views/Wilderness'));
 const SBS = lazy(() => import('./views/Sbs'));
 const Liquidity = lazy(() => import('./views/Liquidity'));
 
@@ -49,14 +49,14 @@ const App: React.FC = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/cemetery">
-              <Cemetery />
+            <Route path="/cauldron">
+              <Cauldron />
             </Route>
-            <Route path="/masonry">
-              <Masonry />
+            <Route path="/dungeon">
+              <Dungeon />
             </Route>
-            <Route path="/pit">
-              <Pit />
+            <Route path="/wilderness">
+              <Wilderness />
             </Route>
             <Route path="/sbs">
               <SBS />

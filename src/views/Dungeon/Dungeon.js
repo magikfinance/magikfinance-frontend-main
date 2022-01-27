@@ -23,10 +23,10 @@ import useFetchMasonryAPR from '../../hooks/useFetchMasonryAPR';
 import useCashPriceInEstimatedTWAP from '../../hooks/useCashPriceInEstimatedTWAP';
 import useTreasuryAllocationTimes from '../../hooks/useTreasuryAllocationTimes';
 import useTotalStakedOnMasonry from '../../hooks/useTotalStakedOnMasonry';
-import useClaimRewardCheck from '../../hooks/masonry/useClaimRewardCheck';
-import useWithdrawCheck from '../../hooks/masonry/useWithdrawCheck';
+import useClaimRewardCheck from '../../hooks/dungeon/useClaimRewardCheck';
+import useWithdrawCheck from '../../hooks/dungeon/useWithdrawCheck';
 import ProgressCountdown from './components/ProgressCountdown';
-import MasonryImage from '../../assets/img/masonry.png';
+import MasonryImage from '../../assets/img/dungeon.png';
 import { createGlobalStyle } from 'styled-components';
 
 const BackgroundImage = createGlobalStyle`
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Masonry = () => {
+const Dungeon = () => {
   const classes = useStyles();
   const { account } = useWallet();
   const { onRedeem } = useRedeemOnMasonry();
@@ -53,7 +53,7 @@ const Masonry = () => {
   const currentEpoch = useCurrentEpoch();
   const cashStat = useCashPriceInEstimatedTWAP();
   const totalStaked = useTotalStakedOnMasonry();
-  const masonryAPR = useFetchMasonryAPR();
+  const dungeonAPR = useFetchMasonryAPR();
   const canClaimReward = useClaimRewardCheck();
   const canWithdraw = useWithdrawCheck();
   const scalingFactor = useMemo(() => (cashStat ? Number(cashStat.priceInDollars).toFixed(4) : null), [cashStat]);
@@ -99,7 +99,7 @@ const Masonry = () => {
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
                     <Typography>APR</Typography>
-                    <Typography>{masonryAPR.toFixed(2)}%</Typography>
+                    <Typography>{dungeonAPR.toFixed(2)}%</Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -214,4 +214,4 @@ const StyledCardWrapper = styled.div`
   }
 `;
 
-export default Masonry;
+export default Dungeon;

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import Page from '../../components/Page';
-import PitImage from '../../assets/img/pit.png';
+import WildernessImage from '../../assets/img/wilderness.png';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
@@ -21,12 +21,12 @@ import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../magik-finance/con
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${PitImage}) no-repeat !important;
+    background: url(${WildernessImage}) no-repeat !important;
     background-size: cover !important;
   }
 `;
 
-const Pit: React.FC = () => {
+const Wilderness: React.FC = () => {
   const { path } = useRouteMatch();
   const { account } = useWallet();
   const tombFinance = useMagikFinance();
@@ -149,4 +149,4 @@ const StyledStatsWrapper = styled.div`
   }
 `;
 
-export default Pit;
+export default Wilderness;

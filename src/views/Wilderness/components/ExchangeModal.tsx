@@ -33,6 +33,8 @@ const ExchangeModal: React.FC<ExchangeModalProps> = ({
 
   const handleSelectMax = useCallback(() => {
     setVal(fullBalance);
+    console.log("value ", val);
+    console.log("fullbalance ", fullBalance);
   }, [fullBalance, setVal]);
 
   return (
@@ -46,6 +48,8 @@ const ExchangeModal: React.FC<ExchangeModalProps> = ({
         symbol={tokenName}
       />
       <Label text={description} />
+      <Label text={val} />
+      <Label text={action} />
       <ModalActions>
         <Button text="Cancel" variant="secondary" onClick={onDismiss} />
         <Button text={action} onClick={() => onConfirm(val)} />

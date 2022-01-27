@@ -104,13 +104,13 @@ const Nav = () => {
               <Link color="textPrimary" to="/" className={classes.link}>
                 Home
               </Link>
-              <Link color="textPrimary" to="/cemetery" className={classes.link}>
+              <Link color="textPrimary" to="/cauldron" className={classes.link}>
                 Cauldron
               </Link>
-              <Link color="textPrimary" to="/masonry" className={classes.link}>
+              <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
-              <Link color="textPrimary" to="/pit" className={classes.link}>
+              <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
               <Link color="textPrimary" to="/sbs" className={classes.link}>
@@ -162,13 +162,13 @@ const Nav = () => {
               <Divider />
               <List>
                 <ListItemLink primary="Home" to="/" />
-                <ListItemLink primary="Cemetery" to="/cemetery" />
-                <ListItemLink primary="Masonry" to="/masonry" />
-                <ListItemLink primary="Pit" to="/pit" />
+                <ListItemLink primary="Cauldron" to="/cauldron" />
+                <ListItemLink primary="Dungeon" to="/dungeon" />
+                <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItemLink primary="SBS" to="/sbs" />
                 <ListItemLink primary="Liquidity" to="/liquidity" />
                 <ListItemLink primary="Regulations" to="/regulations" />
-                <ListItem button component="a" href="https://docs.magik.finance">
+                <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
                   <ListItemText>Docs</ListItemText>
                 </ListItem>
                 <ListItem style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
