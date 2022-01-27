@@ -64,6 +64,8 @@ const Home = () => {
 
   const buyTombAddress = 'https://swap.spiritswap.finance/#/swap/0x87a5c9b60a3aaf1064006fe64285018e50e0d020';
   const buyTShareAddress = 'https://swap.spiritswap.finance/#/swap/0xc8ca9026ad0882133ef126824f6852567c571a4e';
+  const MagikChart = 'https://dexscreener.com/fantom/0xdc71a6160322ad78dab0abb47c7a581cfe9709ee';
+  const MshareChart = 'https://dexscreener.com/fantom/0x392c85ceccf9855986b0044a365a5532aec6fa31';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -200,6 +202,12 @@ const Home = () => {
               </Button>
               <Button variant="contained" target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy MSHARE
+              </Button>
+              <Button variant="contained" href={MagikChart} style={{ marginRight: '10px' }}>
+                Magik Chart
+              </Button>
+              <Button variant="contained" href={MshareChart} style={{ marginRight: '10px' }}>
+                Mshare Chart
               </Button>
             </CardContent>
           </Card>
