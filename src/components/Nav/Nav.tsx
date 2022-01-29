@@ -175,7 +175,7 @@ const Nav = () => {
                 <ListItemLink primary="Liquidity" to="/liquidity" />
                 <ListItemLink primary="Regulations" to="/regulations" />
                 <ListItem button component="a" href="https://yieldwolf.finance/fantom/magikfinance">
-                  <ListItemText>YieldWolf Autocompounder</ListItemText>
+                  <ListItemText>Autocompounder</ListItemText>
                 </ListItem>
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
                   <ListItemText>Docs</ListItemText>
