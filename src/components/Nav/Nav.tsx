@@ -125,9 +125,6 @@ const Nav = () => {
               <Link color="textPrimary" to="/regulations" className={classes.link}>
                 Regulations
               </Link>
-              <Link color="textPrimary" to="/regulations" className={classes.link}>
-                Regulations
-              </Link>
               <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
                 Docs
               </a>
