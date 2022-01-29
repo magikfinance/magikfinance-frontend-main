@@ -120,7 +120,7 @@ const Nav = () => {
                 Liquidity
               </Link>
               <a href="https://yieldwolf.finance/fantom/magikfinance" className={classes.link}>
-                YieldWolf Autocompounder
+              Autocompounder
               </a>
               <Link color="textPrimary" to="/regulations" className={classes.link}>
                 Regulations
