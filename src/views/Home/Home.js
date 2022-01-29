@@ -148,10 +148,13 @@ const Home = () => {
           <Paper>
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
-              <p>An algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.</p>
+              <p>Magik is real. Algo coin pagged to FTM</p>
               <p>
                 Stake your MAGIK-FTM LP in the Cauldron to earn MSHARE rewards.
                 Then stake your earned MSHARE in the Dungeon to earn more MAGIK!
+
+                Renounced Ownerhip: Please visit <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
+
               </p>
             </Box>
           </Paper>
