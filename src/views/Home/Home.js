@@ -148,7 +148,7 @@ const Home = () => {
           <Paper>
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
-              <p>Magik is real. Algo coin pagged to FTM</p>
+              <p>Magik is real. Algo coin pegged to FTM.</p>
               <p>
                 Stake your MAGIK-FTM LP in the Cauldron to earn MSHARE rewards.
                 Then stake your earned MSHARE in the Dungeon to earn more MAGIK!
