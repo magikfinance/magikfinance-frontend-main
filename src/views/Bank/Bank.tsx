@@ -114,6 +114,10 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MSHARE-FTM pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0xC8Ca9026Ad0882133Ef126824F6852567c571A4E' ;
   }
+  if (bank.depositTokenName.includes('MAGIK-MSHARE')) {
+    pairName = 'MAGIK-MSHARE pair';
+    uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
+  }
   return (
     <Card>
       <CardContent>

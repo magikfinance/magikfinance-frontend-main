@@ -9,6 +9,7 @@ import tBondLogo from '../../assets/img/mBond.png';
 
 import tombFtmLpLogo from '../../assets/img/magik_ftm_lp.png';
 import tshareFtmLpLogo from '../../assets/img/mshare_ftm_lp.png';
+import magikmshareLogo from '../../assets/img/magikmshare.png';
 
 import wftmLogo from '../../assets/img/ftm_logo_blue.svg';
 import booLogo from '../../assets/img/spooky.png';
@@ -29,6 +30,7 @@ const logosBySymbol: { [title: string]: string } = {
   ZOO: zooLogo,
   'MAGIK-FTM-LP': tombFtmLpLogo,
   'MSHARE-FTM-LP': tshareFtmLpLogo,
+  'MAGIK-MSHARE-LP': magikmshareLogo,
 };
 
 type LogoProps = {

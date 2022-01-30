@@ -19,6 +19,7 @@ const configurations: { [env: string]: Configuration } = {
       'USDT-FTM-LP': ['0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c', 18],
       'MAGIK-FTM-LP': ['0xdc71a6160322ad78dab0abb47c7a581cfe9709ee', 18],
       'MSHARE-FTM-LP': ['0x392c85ceccf9855986b0044a365a5532aec6fa31', 18],
+      'MAGIK-MSHARE-LP': ['0x4d6b28441c8b293a603243431e6e31f3c2632ddd', 18],
     },
     baseLaunchDate: new Date('2021-06-02 13:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
@@ -40,6 +41,7 @@ const configurations: { [env: string]: Configuration } = {
       'USDT-FTM-LP': ['0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c', 18],
       'MAGIK-FTM-LP': ['0xdc71a6160322ad78dab0abb47c7a581cfe9709ee', 18],
       'MSHARE-FTM-LP': ['0x392c85ceccf9855986b0044a365a5532aec6fa31', 18],
+      'MAGIK-MSHARE-LP': ['0x4d6b28441c8b293a603243431e6e31f3c2632ddd', 18],
     },
     baseLaunchDate: new Date('2021-06-02 13:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
@@ -84,6 +86,17 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     finished: false,
     sort: 7,
     closedForStaking: false,
+  },
+  MagikMshareLPMShareRewardPool: {
+    name: 'Earn MSHARE by MAGIK-FTM LP',
+    poolId: 2,
+    sectionInUI: 2,
+    contract: 'MagikMshareLPMShareRewardPool',
+    depositTokenName: 'MAGIK-MSHARE-LP',
+    earnTokenName: 'MSHARE',
+    finished: false,
+    sort: 8,
+    closedForStaking: true,
   },
 };
 

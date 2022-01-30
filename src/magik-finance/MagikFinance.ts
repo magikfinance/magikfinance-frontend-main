@@ -343,6 +343,8 @@ export class MagikFinance {
         tokenPrice = await this.getLPTokenPrice(token, this.MAGIK, true);
       } else if (tokenName === 'MSHARE-FTM-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MAGIK-MSHARE-LP') {
+        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'SHIBA') {
         tokenPrice = await this.getTokenPriceFromSpiritswap(token);
       } else {
