@@ -96,7 +96,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 8,
-    closedForStaking: true,
+    closedForStaking: false,
   },
 };
 
