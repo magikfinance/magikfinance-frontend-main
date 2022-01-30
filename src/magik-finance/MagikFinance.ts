@@ -124,14 +124,15 @@ export class MagikFinance {
    */
   async getLPStat(name: string): Promise<LPStat> {
     const lpToken = this.externalTokens[name];
+    console.log("lptoken ", lpToken);
     const lpTokenSupplyBN = await lpToken.totalSupply();
     const lpTokenSupply = getDisplayBalance(lpTokenSupplyBN, 18);
     const token0 = name.startsWith('MAGIK') ? this.MAGIK : this.MSHARE;
     const isTomb = name.startsWith('MAGIK');
     const tokenAmountBN = await token0.balanceOf(lpToken.address);
     const tokenAmount = getDisplayBalance(tokenAmountBN, 18);
-
-    const ftmAmountBN = await this.FTM.balanceOf(lpToken.address);
+    
+    const ftmAmountBN = lpToken.symbol === "MAGIK-MSHARE-LP" ? await this.MSHARE.balanceOf(lpToken.address) : await this.FTM.balanceOf(lpToken.address);
     const ftmAmount = getDisplayBalance(ftmAmountBN, 18);
     const tokenAmountInOneLP = Number(tokenAmount) / Number(lpTokenSupply);
     const ftmAmountInOneLP = Number(ftmAmount) / Number(lpTokenSupply);
@@ -315,9 +316,9 @@ export class MagikFinance {
     }
     const rewardPerSecond = await poolContract.mSharePerSecond();
     console.log("rewardPerSecond ", rewardPerSecond.mul(35500).div(59500));
-    if (depositTokenName.startsWith('MAGIK')) {
+    if (depositTokenName.startsWith('MAGIK-MSHARE')) {
       console.log("rewardPerSecond ", rewardPerSecond);
-      return rewardPerSecond.mul(35500).div(59500);
+      return rewardPerSecond.mul(6999).div(59500);
     } else {
       console.log("rewardPerSecond ", rewardPerSecond);
       return rewardPerSecond.mul(24000).div(59500);
