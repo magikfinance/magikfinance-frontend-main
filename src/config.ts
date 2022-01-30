@@ -88,7 +88,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     closedForStaking: false,
   },
   MagikMshareLPMShareRewardPool: {
-    name: 'Earn MSHARE by MAGIK-FTM LP',
+    name: 'Earn MSHARE by MAGIK-MSHARE LP',
     poolId: 2,
     sectionInUI: 2,
     contract: 'MagikMshareLPMShareRewardPool',
