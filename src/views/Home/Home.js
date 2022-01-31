@@ -187,10 +187,10 @@ const Home = () => {
           <Card style={{ height: '100%' }}>
             <CardContent align="center" style={{ marginTop: '2.5%' }}>
               {/* <h2 style={{ marginBottom: '20px' }}>Wallet Balance</h2> */}
-              <Button color="primary" href="/dungeon" variant="contained" style={{ marginRight: '10px' }}>
+              <Button color="primary" href="/dungeon" variant="contained" style={{ marginRight: '5px' }}>
                 Stake Now
               </Button>
-              <Button href="/cauldron" variant="contained" style={{ marginRight: '10px' }}>
+              <Button color="primary" href="/cauldron" variant="contained" style={{ marginRight: '5px' }}>
                 Farm Now
               </Button>
               <Button
@@ -198,18 +198,18 @@ const Home = () => {
                 target="_blank"
                 href={buyTombAddress}
                 variant="contained"
-                style={{ marginRight: '10px' }}
+                style={{ marginRight: '5px' }}
                 className={classes.button}
               >
                 Buy MAGIK
               </Button>
-              <Button variant="contained" target="_blank" href={buyTShareAddress} className={classes.button}>
+              <Button  color="primary" variant="contained" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy MSHARE
               </Button>
-              <Button variant="contained" href={MagikChart} style={{ marginRight: '10px' }}>
+              <Button  color="primary" variant="contained" href={MagikChart} style={{ marginRight: '5px' }}>
                 Magik Chart
               </Button>
-              <Button variant="contained" href={MshareChart} style={{ marginRight: '10px' }}>
+              <Button  color="primary" variant="contained" href={MshareChart} style={{ marginRight: '5px' }}>
                 Mshare Chart
               </Button>
             </CardContent>
