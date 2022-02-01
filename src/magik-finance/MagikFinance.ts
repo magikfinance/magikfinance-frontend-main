@@ -256,7 +256,7 @@ export class MagikFinance {
     );
     console.log("helloprint12323214512 ", );
     const tokenPerHour = tokenPerSecond.mul(60).mul(60);
-    console.log("tokenPerSecond ", tokenPerSecond);
+    console.log("tokenPerHour ", tokenPerHour);
     
     const totalRewardPricePerYear =
       Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
@@ -307,7 +307,6 @@ export class MagikFinance {
         return rewardPerSecond.div(24);
       }
       const poolStartTime = await poolContract.poolStartTime();
-      const rewardtime = await poolContract.mSharePerSecond();
       const startDateTime = new Date(poolStartTime.toNumber() * 1000);
       const FOUR_DAYS = 4 * 24 * 60 * 60 * 1000;
       if (Date.now() - startDateTime.getTime() > FOUR_DAYS) {
@@ -317,12 +316,12 @@ export class MagikFinance {
     }
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
-    if (depositTokenName.startsWith('MAGIK-MSHARE')) {
-      return rewardPerSecond.mul(6999).div(59500);
+    if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
+      return rewardPerSecond.mul(24000).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(20000).div(59500);
+      return rewardPerSecond.mul(13000).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(32500).div(59500);
+      return rewardPerSecond.mul(22500).div(59500);
     }
     
     
