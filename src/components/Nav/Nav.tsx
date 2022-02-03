@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import AuditImage from '../../assets/img/Audit.png';
 import {
   AppBar,
   Box,
@@ -101,6 +102,11 @@ const Nav = () => {
               </Link>
             </Typography>
             <Box mr={5}>
+            <Link color="textPrimary" to="/dungeon" className={classes.link}>
+              <a href="https://0xguard.com" rel="noopener noreferrer" target="_blank" className={classes.link}>
+              <img alt="discord" src={AuditImage} className={classes.link} />
+              </a>
+              </Link>
               <Link color="textPrimary" to="/" className={classes.link}>
                 Home
               </Link>

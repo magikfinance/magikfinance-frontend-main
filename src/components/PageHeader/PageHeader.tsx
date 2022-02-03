@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AuditImage from '../../assets/img/Audit.png';
 
 interface PageHeaderProps {
   icon: React.ReactNode;
