@@ -148,7 +148,7 @@ const Home = () => {
           <Paper>
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
-              <p>Magik is real. One of the safest and best Algo coins pegged to Fantom $FTM.</p>
+              <p>Magik is real. Tomb Fork with steady growth pegged to FTM bought back from the dead by the community</p>
               <p> Renounced Ownerhip: Please visit <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
               <p> </p>Renouncing ownership means we cannot mint any new coins, making our protocol practically rug proof. We are here to stay!
               </p>
