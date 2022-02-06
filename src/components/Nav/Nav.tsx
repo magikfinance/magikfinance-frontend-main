@@ -100,11 +100,6 @@ const Nav = () => {
               <Link to="/" color="inherit" className={classes.brandLink}>
                 Magik Finance
               </Link>
-              <Link color="textPrimary" to="/dungeon" className={classes.link}>
-              <a href="https://0xguard.com" rel="noopener noreferrer" target="_blank" className={classes.link}>
-              <img alt="0xGuard" src={AuditImage} className={classes.link} />
-              </a>
-              </Link>
             </Typography>
             <Box mr={5}>
               <Link color="textPrimary" to="/" className={classes.link}>
