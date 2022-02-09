@@ -111,7 +111,7 @@ const Nav = () => {
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
-              <Link to="/xMagik" className={'/stake ' + classes.link}>
+              <Link to="/stake" className={'/stake ' + classes.link}>
                 xMagik
               </Link>
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
@@ -170,7 +170,7 @@ const Nav = () => {
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItemLink primary="SBS" to="/sbs" />
-                <ListItemLink primary="Liquidity" to="/liquidity" />
+                <ListItemLink primary="xMagik" to="/stake" />
                 <ListItemLink primary="Regulations" to="/regulations" />
                 <ListItem button component="a" href="https://yieldwolf.finance/fantom/magikfinance">
                   <ListItemText>Autocompounder</ListItemText>

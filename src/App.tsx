@@ -24,7 +24,7 @@ const Dungeon = lazy(() => import('./views/Dungeon'));
 const Wilderness = lazy(() => import('./views/Wilderness'));
 const SBS = lazy(() => import('./views/Sbs'));
 const Liquidity = lazy(() => import('./views/Liquidity'));
-const Xmagik = lazy(() => import('./views/Stake'));
+const Stake = lazy(() => import('./views/Stake'));
 
 const NoMatch = () => (
   <h3 style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -56,8 +56,8 @@ const App: React.FC = () => {
             <Route path="/dungeon">
               <Dungeon />
             </Route>
-            <Route path="/xmagik">
-              <Xmagik />
+            <Route path="/stake">
+              <Stake />
             </Route>
             <Route path="/wilderness">
               <Wilderness />
