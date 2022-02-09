@@ -11,7 +11,7 @@ const useMagikStats = () => {
   useEffect(() => {
     async function fetchTombPrice(){
       try {
-        setStat(await tombFinance.getTombStat());
+        setStat(await tombFinance.getMagikStat());
       }
       catch(err){
         console.error(err)

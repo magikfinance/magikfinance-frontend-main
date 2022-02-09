@@ -163,7 +163,7 @@ const Home = () => {
     <Grid item  xs={12} sm={12} justify="center"  style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="warning">
               <b>
-      Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/">documentation</StyledLink> before purchasing MAGIK or MSHARE!</b>
+      Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/">documentation</StyledLink> before purchasing/staking MAGIK or MSHARE!</b>
             </Alert>
         </Grid>
         </Grid>
@@ -221,7 +221,7 @@ const Home = () => {
                 onClick={() => {
                   tombFinance.watchAssetInMetamask('MAGIK');
                 }}
-                color="primary"
+                color="grey"
                 variant="outlined"
                 style={{ position: 'absolute', top: '10px', right: '10px' }}
               >

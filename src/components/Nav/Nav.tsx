@@ -111,14 +111,14 @@ const Nav = () => {
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
+              <Link to="/xMagik" className={'/stake ' + classes.link}>
+                xMagik
+              </Link>
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
               <Link color="textPrimary" to="/sbs" className={classes.link}>
                 SBS
-              </Link>
-              <Link color="textPrimary" to="/liquidity" className={classes.link}>
-                Liquidity
               </Link>
               <a href="https://yieldwolf.finance/fantom/magikfinance" className={classes.link}>
               Autocompounder
