@@ -202,10 +202,10 @@ const Home = () => {
               <Button color="primary" variant="contained" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy MSHARE
               </Button>
-              <Button color="primary" variant="contained" href={MagikChart} style={{ marginRight: '5px' }}>
+              <Button color="primary" variant="contained" href={MagikChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
                 Magik Chart
               </Button>
-              <Button color="primary" variant="contained" href={MshareChart} style={{ marginRight: '5px' }}>
+              <Button color="primary" variant="contained" href={MshareChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
                 Mshare Chart
               </Button>
             </CardContent>
