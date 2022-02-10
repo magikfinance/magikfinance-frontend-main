@@ -62,8 +62,8 @@ const Home = () => {
     mShare = mShareProd;
   }
 
-  const buyTombAddress = 'https://swap.spiritswap.finance/#/swap/0x87a5c9b60a3aaf1064006fe64285018e50e0d020';
-  const buyTShareAddress = 'https://swap.spiritswap.finance/#/swap/0xc8ca9026ad0882133ef126824f6852567c571a4e';
+  const buyTombAddress = 'https://swap.spiritswap.finance/#/exchange/swap/FTM/0x87a5c9b60a3aaf1064006fe64285018e50e0d020'
+  const buyTShareAddress = 'https://swap.spiritswap.finance/#/exchange/swap/FTM/0xc8ca9026ad0882133ef126824f6852567c571a4e';
   const MagikChart = 'https://dexscreener.com/fantom/0xdc71a6160322ad78dab0abb47c7a581cfe9709ee';
   const MshareChart = 'https://dexscreener.com/fantom/0x392c85ceccf9855986b0044a365a5532aec6fa31';
 
@@ -150,7 +150,7 @@ const Home = () => {
               <h2>Welcome to Magik Finance</h2>
               <p>Magik is real. Tomb Fork with steady growth pegged to FTM brought back from the dead by the community</p>
               <p> Renounced Ownerhip: Please visit <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
-              <p> </p>Renouncing ownership means we cannot mint any new coins, making our protocol practically rug proof. We are here to stay!
+                <p> </p>Renouncing ownership means we cannot mint any new coins, making our protocol practically rug proof. We are here to stay!
               </p>
             </Box>
           </Paper>
@@ -160,12 +160,12 @@ const Home = () => {
         </Grid>
 
         <Grid container spacing={3}>
-    <Grid item  xs={12} sm={12} justify="center"  style={{ margin: '12px', display: 'flex' }}>
+          <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="warning">
               <b>
-      Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/">documentation</StyledLink> before purchasing/staking MAGIK or MSHARE!</b>
+                Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/">documentation</StyledLink> before purchasing/staking MAGIK or MSHARE!</b>
             </Alert>
-        </Grid>
+          </Grid>
         </Grid>
 
         {/* TVL */}
@@ -199,13 +199,13 @@ const Home = () => {
               >
                 Buy MAGIK
               </Button>
-              <Button  color="primary" variant="contained" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
+              <Button color="primary" variant="contained" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy MSHARE
               </Button>
-              <Button  color="primary" variant="contained" href={MagikChart} style={{ marginRight: '5px' }}>
+              <Button color="primary" variant="contained" href={MagikChart} style={{ marginRight: '5px' }}>
                 Magik Chart
               </Button>
-              <Button  color="primary" variant="contained" href={MshareChart} style={{ marginRight: '5px' }}>
+              <Button color="primary" variant="contained" href={MshareChart} style={{ marginRight: '5px' }}>
                 Mshare Chart
               </Button>
             </CardContent>
