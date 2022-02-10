@@ -108,10 +108,11 @@ const Stake: React.FC = () => {
             <StyledCardActions>
               {approveStatus !== ApprovalState.APPROVED ? (
                 <Button
-                  disabled={approveStatus !== ApprovalState.NOT_APPROVED}
-                  className={approveStatus !== ApprovalState.NOT_APPROVED ? 'shinyButton' : 'shinyButtonDisabled'}
-                  style={{marginTop: '20px'}}
-                  onClick={approve}
+                disabled={approveStatus !== ApprovalState.NOT_APPROVED}
+                variant="contained"
+                color="primary"
+                style={{ marginTop: '20px' }}
+                onClick={approve}
                 >
                   Approve MAGIK
                 </Button>
