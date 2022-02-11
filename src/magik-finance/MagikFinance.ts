@@ -828,6 +828,9 @@ export class MagikFinance {
       } else if (assetName === 'MBOND') {
         asset = this.MBOND;
         assetUrl = 'https://magik.finance/presskit/tbond_icon_noBG.png';
+      } else if (assetName === 'XMAGIK') {
+        asset = this.XMAGIK;
+        assetUrl = 'https://magik.finance/presskit/tbond_icon_noBG.png';
       }
       await ethereum.request({
         method: 'wallet_watchAsset',
