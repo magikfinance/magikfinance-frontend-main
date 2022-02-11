@@ -82,24 +82,15 @@ const Stake: React.FC = () => {
               <CardIcon>
                 <TokenSymbol symbol="XMAGIK" />
               </CardIcon>
-
               <Button
-                className={'shinyButton'}
                 onClick={() => {
                   magikFinance.watchAssetInMetamask('XMAGIK');
                 }}
-                style={{
-                  position: 'static',
-                  top: '10px',
-                  right: '10px',
-                  border: '1px grey solid',
-                  paddingBottom: '5px',
-                  marginBottom: '20px',
-                }}
+                color="primary"
+                variant="outlined"
               >
-                {' '}
-                <b>+</b>&nbsp;&nbsp;
-                <img alt="metamask fox" style={{width: '20px', filter: 'grayscale(100%)'}} src={MetamaskFox} />
+                +&nbsp;
+                <img alt="metamask fox" style={{ width: '20px' }} src={MetamaskFox} />
               </Button>
               <Value value={getDisplayBalance(stakedBalance)} />
               <Label text={`≈ $${tokenPriceInDollars}`} color="primary" />
