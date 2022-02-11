@@ -36,6 +36,11 @@ const BackgroundImage = createGlobalStyle`
   }
 `;
 
+const StyledLink = styled.a`
+font-weight: 700;
+text-decoration: none;
+`;
+
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     height: '100%',
@@ -116,7 +121,8 @@ const Dungeon = () => {
             <Grid container justify="center">
               <Box mt={3} style={{ width: '600px' }}>
                 <Alert variant="filled" severity="warning">
-                  Staked MSHAREs can only be withdrawn after 6 epochs since deposit.
+                  Staked MSHAREs can only be withdrawn after 6 epochs (36 hours) since deposit. Any time tokens are harvested, deposited, or withdrawn, the lockup timer gets reset.<br />
+                  <b>Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/platform/magik-platforms#dungeon-boardroom">documentation</StyledLink> before staking!</b>
                 </Alert>
               </Box>
             </Grid>
