@@ -115,9 +115,7 @@ const Dungeon = () => {
                       enterTouchDelay={0}
                       title={
                         <React.Fragment>
-                          {/* <Typography> */}
                           When TWAP is above 1.01 rewards will be sent out to stakers by the end of the current epoch. Otherwise, no rewards are distributed
-                          {/* </Typography> */}
                         </React.Fragment>
                       }>
                       <InfoIcon
