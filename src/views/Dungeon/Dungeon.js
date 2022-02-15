@@ -116,7 +116,7 @@ const Dungeon = () => {
                       title={
                         <React.Fragment>
                           {/* <Typography> */}
-                          When TWAP is above 1.01 rewards will be sent out stakers by the end of the current epoch. Otherwise, no rewards are distributed
+                          When TWAP is above 1.01 rewards will be sent out to stakers by the end of the current epoch. Otherwise, no rewards are distributed
                           {/* </Typography> */}
                         </React.Fragment>
                       }>
