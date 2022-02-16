@@ -279,7 +279,7 @@ export class MagikFinance {
 
     const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, magikToken.decimal));
 
-    const startDate = new Date('February 09, 2022');
+    const startDate = new Date('February 07, 2022');
 
     const nowDate = new Date(Date.now());
 
