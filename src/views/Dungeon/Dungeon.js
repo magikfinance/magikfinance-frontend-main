@@ -5,9 +5,10 @@ import styled from 'styled-components';
 import Spacer from '../../components/Spacer';
 import Harvest from './components/Harvest';
 import Stake from './components/Stake';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-import { Box, Card, CardContent, Button, Typography, Grid } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
+import { Box, Card, CardContent, Button, Typography, Tooltip, Grid } from '@material-ui/core';
 
 import { Alert } from '@material-ui/lab';
 
@@ -36,6 +37,11 @@ const BackgroundImage = createGlobalStyle`
   }
 `;
 
+const StyledLink = styled.a`
+font-weight: 700;
+text-decoration: none;
+`;
+
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     height: '100%',
@@ -44,6 +50,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const TWAPTooltip = withStyles((theme) => ({
+  arrow: {
+    color: '#2c2560',
+  },
+  tooltip: {
+    backgroundColor: '#2c2560',
+    color: 'white',
+    maxWidth: 250,
+    padding: '12px',
+    fontSize: theme.typography.pxToRem(14),
+  },
+}))(Tooltip);
 
 const Dungeon = () => {
   const classes = useStyles();
@@ -87,11 +106,28 @@ const Dungeon = () => {
               </Grid>
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
-                  <CardContent align="center">
+                  <CardContent align="center" style={{ position: 'relative' }}>
                     <Typography>
                       <small>(TWAP)</small>
                     </Typography>
-                    <Typography>{scalingFactor}</Typography>
+                    <TWAPTooltip
+                      arrow={true}
+                      enterTouchDelay={0}
+                      title={
+                        <React.Fragment>
+                          When TWAP is above 1.01 rewards will be sent out to stakers by the end of the current epoch. Otherwise, no rewards are distributed
+                        </React.Fragment>
+                      }>
+                      <InfoIcon
+                        fontSize='inherit'
+                        style={{ position: 'absolute', top: '10px', right: '10px' }}
+                      />
+                    </TWAPTooltip>
+                    <Typography
+                      className={scalingFactor > 1.01 ? 'twap-above' : 'twap-below'}
+                    >
+                      {scalingFactor}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -116,7 +152,8 @@ const Dungeon = () => {
             <Grid container justify="center">
               <Box mt={3} style={{ width: '600px' }}>
                 <Alert variant="filled" severity="warning">
-                  Staked MSHAREs can only be withdrawn after 6 epochs since deposit.
+                  Staked MSHAREs can only be withdrawn after 6 epochs (36 hours) since deposit. Any time tokens are harvested, deposited, or withdrawn, the lockup timer gets reset.<br />
+                  <b>Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/platform/magik-platforms#dungeon-boardroom">documentation</StyledLink> before staking!</b>
                 </Alert>
               </Box>
             </Grid>

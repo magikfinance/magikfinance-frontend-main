@@ -19,7 +19,7 @@ import useStakedTotalMagikBalance from '../../hooks/useTotalStakedMagikBalance';
 import { createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet'
 
-import HomeImage from '../../assets/img/home.png';
+import HomeImage from '../../assets/img/xMagikbg.png';
 const BackgroundImage = createGlobalStyle`
   body {
     background: url(${HomeImage}) repeat !important;

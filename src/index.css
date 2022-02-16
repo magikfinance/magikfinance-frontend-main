@@ -56,6 +56,14 @@ footer .a:hover {
   color: #e0e3bd;
 }
 
+.twap-above {
+  color: green !important;
+}
+
+.twap-below {
+  color: red !important;
+}
+
 .MuiButton-containedPrimary,
 .MuiButton-containedPrimary:hover,
 .MuiListItem-button:hover,
