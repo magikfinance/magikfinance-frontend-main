@@ -1,3 +1,14 @@
+* {
+  box-shadow: none !important;
+}
+
+:root {
+--black: #16191e;
+--white: #ffffffc5;
+--accent: #a126a1;
+--accent-light: #3a0909;
+}
+
 body,
 html,
 h1,
@@ -5,10 +16,10 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: 'Metamorphous', cursive !important;
+  font-family: 'Metamorphous', sans-serif !important;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,7 +35,35 @@ body {
 .MuiTypography-body1,
 .MuiPaper-root,
 .MuiPaper-root h2 {
-  color: #2c2560 !important;
+  color: var(--white) !important;
+}
+
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+  background-color: #ffffff22 !important;
+  backdrop-filter: blur(5px);
+  border-radius: 10px !important;
+  border: 1px solid var(--white);
+}
+
+.MuiCard-root {
+  background-color: #ffffff22 !important;
+  backdrop-filter: blur(15px);
+  border-radius: 10px !important;
+}
+
+.MuiButton-contained {
+  border-radius: 4px !important;
+}
+
+.MuiAlert-message{
+  color:black;
+}
+.MuiAlert-icon{
+  color:black;
+}
+.MuiTypography-body1{
+  font-size: 1.1rem;
 }
 
 body {
@@ -45,7 +84,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Metamorphous', cursive !important;
+  font-family: 'Metamorphous' !important;
 }
 
 footer .a:hover {
@@ -53,37 +92,58 @@ footer .a:hover {
 }
 
 .MuiToolbar-regular {
-  color: #e0e3bd;
+  color: var(--white);
 }
 
-.twap-above {
-  color: green !important;
+.MuiButton-contained {
+color: var(--black) !important;
+background-color: var(--white) !important;
 }
 
-.twap-below {
-  color: red !important;
-}
-
-.MuiButton-containedPrimary,
-.MuiButton-containedPrimary:hover,
-.MuiListItem-button:hover,
-.MuiButtonBase-root:hover {
-  color: #fff !important;
+.MuiButton-containedPrimary {
+color: var(--white) !important;
+background-color: var(--accent) !important;
 }
 
 code {
-  font-family:'Metamorphous', cursive;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .wallet-button {
   color: #2c2560 !important;
-  font-family: 'Metamorphous', cursive !important;
+  font-family: 'Metamorphous', sans-serif !important;
   font-size: 1.1rem !important;
   text-align: left !important;
   justify-content: flex-start !important;
   text-transform: none !important;
+  padding: 15px 8px !important;
 }
+
 .wallet-button:hover {
   background-color: black !important;
   color: #757ce8 !important;
+}
+
+.account {
+display: flex;
+align-items: center;
+}
+
+.account > img,
+.account > div {
+margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .devilLogo {
+      position: relative !important;
+      width: 80% !important;
+      height: auto !important;
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+  .ombImg-home {
+      height: 200px !important;
+      position: relative !important;
+  }
 }

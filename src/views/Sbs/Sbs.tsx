@@ -201,6 +201,7 @@ const StyledBoardroom = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  background: transparent;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -211,6 +212,7 @@ const StyledCardsWrapper = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
+    background: transparent;
     align-items: center;
   }
 `;
@@ -219,6 +221,7 @@ const StyledCardWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  background: transparent;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -233,6 +236,7 @@ const StyledCardTitle = styled.div`
   display: flex;
   font-size: 20px;
   font-weight: 700;
+  background: transparent;
   height: 64px;
   justify-content: center;
   margin-top: ${(props) => -props.theme.spacing[3]}px;
@@ -243,6 +247,7 @@ const StyledCardIcon = styled.div`
   width: 72px;
   height: 72px;
   border-radius: 36px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,12 +257,14 @@ const StyledCardIcon = styled.div`
 const StyledExchanger = styled.div`
   align-items: center;
   display: flex;
+  background: transparent;
   margin-bottom: ${(props) => props.theme.spacing[5]}px;
 `;
 
 const StyledToken = styled.div`
   align-items: center;
   display: flex;
+  background: transparent;
   flex-direction: column;
   font-weight: 600;
 `;
@@ -266,6 +273,7 @@ const StyledCardContentInner = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
+  background: transparent;
   flex-direction: column;
   justify-content: space-between;
 `;

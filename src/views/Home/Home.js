@@ -108,6 +108,7 @@ const Home = () => {
   const StyledLink = styled.a`
     font-weight: 700;
     text-decoration: none;
+    color:red
   `;
 
   const [onPresentTombZap, onDissmissTombZap] = useModal(
@@ -149,7 +150,7 @@ const Home = () => {
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
               <p>Magik is real. Tomb Fork with steady growth pegged to FTM brought back from the dead by the community</p>
-              <p> Renounced Ownerhip: Please visit <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
+              <p> Renounced Ownerhip: Please visit <StyledLink  target="_blank"  href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
                 <p> </p>Renouncing ownership means we cannot mint any new coins, making our protocol practically rug proof. We are here to stay!
               </p>
             </Box>

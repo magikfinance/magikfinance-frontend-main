@@ -124,6 +124,7 @@ const StyledBond = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
+    background: transparent;
     align-items: center;
   }
 `;
@@ -132,6 +133,7 @@ const StyledCardWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  background: transparent;
   @media (max-width: 768px) {
     width: 80%;
   }
@@ -141,6 +143,7 @@ const StyledStatsWrapper = styled.div`
   display: flex;
   flex: 0.8;
   margin: 0 20px;
+  background: transparent;
   flex-direction: column;
 
   @media (max-width: 768px) {

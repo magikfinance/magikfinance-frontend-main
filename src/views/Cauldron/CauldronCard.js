@@ -6,8 +6,8 @@ import TokenSymbol from '../../components/TokenSymbol';
 
 const CauldronCard = ({ bank }) => {
   return (
-    <Grid item xs={12} md={4} lg={4}>
-      <Card variant="outlined">
+    <Grid item xs={12} md={6} lg={6}>
+      <Card variant="outlined" style={{ border: '1px solid var(--white)' }}>
         <CardContent>
           <Box style={{ position: 'relative' }}>
             <Box
@@ -17,8 +17,9 @@ const CauldronCard = ({ bank }) => {
                 top: '-5px',
                 height: '48px',
                 width: '48px',
+                boarder: '1px #ffffff',
                 borderRadius: '40px',
-                backgroundColor: 'white',
+                backgroundColor: 'primary',
                 alignItems: 'center',
                 display: 'flex',
                 justifyContent: 'center',
@@ -26,10 +27,10 @@ const CauldronCard = ({ bank }) => {
             >
               <TokenSymbol size={32} symbol={bank.depositTokenName} />
             </Box>
-            <Typography variant="h5" component="h2">
+            <Typography variant="h4" component="h1">
               {bank.depositTokenName}
             </Typography>
-            <Typography color="textSecondary">
+            <Typography variant="h5" component="h5" color="textSecondary">
               {/* {bank.name} */}
               Deposit {bank.depositTokenName.toUpperCase()} Earn {` ${bank.earnTokenName}`}
             </Typography>

@@ -9,7 +9,7 @@ const newTheme = createMuiTheme({
     },
     background: {
       default: '#121212',
-      paper: 'rgba(255, 255, 255, 0.9)',
+      paper: 'transparent',
     },
     primary: {
       light: '#757ce8',
@@ -30,7 +30,7 @@ const newTheme = createMuiTheme({
     },
   },
   typography: {
-    color: '#2c2560',
+    color: '#FFF',
     fontFamily: ['"Poppins"', 'sans-serif'].join(','),
   },
 });
