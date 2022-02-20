@@ -6,7 +6,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
 import UnlockWallet from '../../components/UnlockWallet';
 import PageHeader from '../../components/PageHeader';
-import { Box,/* Paper, Typography,*/ Button, Grid } from '@material-ui/core';
+import { Box,/* Paper, Typography,*/ Button, Grid, Card } from '@material-ui/core';
 import styled from 'styled-components';
 import Spacer from '../../components/Spacer';
 import useMagikFinance from '../../hooks/useMagikFinance';
@@ -16,7 +16,6 @@ import useSwapMBondToMShare from '../../hooks/TShareSwapper/useSwapMBondToMShare
 import useApprove, { ApprovalState } from '../../hooks/useApprove';
 import useMShareSwapperStats from '../../hooks/TShareSwapper/useMShareSwapperStats';
 import TokenInput from '../../components/TokenInput';
-import Card from '../../components/Card';
 import CardContent from '../../components/CardContent';
 import TokenSymbol from '../../components/TokenSymbol';
 
@@ -93,12 +92,13 @@ const Sbs: React.FC = () => {
             <Route exact path={path}>
               <PageHeader icon={'🏦'} title="MBond -> MShare Swap" subtitle="Swap MBond to MShare" />
             </Route>
-            <Box mt={5}>
+
+            <Box mt={6}>
               <Grid container justify="center" spacing={6}>
                 <StyledBoardroom>
                   <StyledCardsWrapper>
                     <StyledCardWrapper>
-                      <Card>
+                      <Card variant="outlined" style={{ border: '1px solid var(--white)' }}>
                         <CardContent>
                           <StyledCardContentInner>
                             <StyledCardTitle>MBonds</StyledCardTitle>
@@ -118,6 +118,7 @@ const Sbs: React.FC = () => {
                                 symbol="MBond"
                               ></TokenInput>
                             </Grid>
+                            <Spacer />
                             <StyledDesc>{`${bondBalance} MBOND Available in Wallet`}</StyledDesc>
                           </StyledCardContentInner>
                         </CardContent>
@@ -136,7 +137,6 @@ const Sbs: React.FC = () => {
                                 </StyledCardIcon>
                               </StyledToken>
                             </StyledExchanger>
-                            <Grid item xs={12}>
                               <TokenInput
                                 onSelectMax={handleTShareSelectMax}
                                 onChange={handleTShareChange}
@@ -144,7 +144,7 @@ const Sbs: React.FC = () => {
                                 max={tshareBalance}
                                 symbol="MShare"
                               ></TokenInput>
-                            </Grid>
+                            <Spacer />
                             <StyledDesc>{`${tshareBalance} MSHARE Available in Swapper`}</StyledDesc>
                           </StyledCardContentInner>
                         </CardContent>
@@ -156,7 +156,7 @@ const Sbs: React.FC = () => {
               </Grid>
             </Box>
 
-            <Box mt={5}>
+            <Box mt={6}>
               <Grid container justify="center">
                 <Grid item xs={8}>
                   <Card>
@@ -212,8 +212,8 @@ const StyledCardsWrapper = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
-    background: transparent;
     align-items: center;
+    background: transparent;
   }
 `;
 
@@ -223,7 +223,7 @@ const StyledCardWrapper = styled.div`
   flex-direction: column;
   background: transparent;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 80%;
   }
 `;
 
@@ -258,7 +258,6 @@ const StyledExchanger = styled.div`
   align-items: center;
   display: flex;
   background: transparent;
-  margin-bottom: ${(props) => props.theme.spacing[5]}px;
 `;
 
 const StyledToken = styled.div`
@@ -278,6 +277,8 @@ const StyledCardContentInner = styled.div`
   justify-content: space-between;
 `;
 
-const StyledDesc = styled.span``;
+const StyledDesc = styled.span`
+  font-size: 0.8em;
+`;
 
 export default Sbs;

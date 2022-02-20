@@ -65,9 +65,6 @@ const App: React.FC = () => {
             <Route path="/sbs">
               <SBS />
             </Route>
-            <Route path="/regulations">
-              <Regulations />
-            </Route>
             <Route path="/liquidity">
               <Liquidity />
             </Route>
