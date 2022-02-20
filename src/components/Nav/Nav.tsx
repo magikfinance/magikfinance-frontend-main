@@ -123,9 +123,6 @@ const Nav = () => {
               <a href="https://yieldwolf.finance/fantom/magikfinance" className={classes.link}>
               Autocompounder
               </a>
-              <Link color="textPrimary" to="/regulations" className={classes.link}>
-                Regulations
-              </Link>
               <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
                 Docs
               </a>
@@ -148,15 +145,16 @@ const Nav = () => {
             </Typography>
 
             <Drawer
-              className={classes.drawer}
-              onEscapeKeyDown={handleDrawerClose}
-              onBackdropClick={handleDrawerClose}
-              variant="temporary"
-              anchor="left"
-              open={open}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
+                className={classes.drawer}
+                onEscapeKeyDown={handleDrawerClose}
+                onBackdropClick={handleDrawerClose}
+                variant="temporary"
+                anchor="left"
+                open={open}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                style={{ background: '#121212' }}
             >
               <div>
                 <IconButton onClick={handleDrawerClose}>
@@ -171,7 +169,6 @@ const Nav = () => {
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItemLink primary="SBS" to="/sbs" />
                 <ListItemLink primary="xMagik" to="/stake" />
-                <ListItemLink primary="Regulations" to="/regulations" />
                 <ListItem button component="a" href="https://yieldwolf.finance/fantom/magikfinance">
                   <ListItemText>Autocompounder</ListItemText>
                 </ListItem>
