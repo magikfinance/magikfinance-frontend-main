@@ -120,8 +120,8 @@ const Nav = () => {
               <Link color="textPrimary" to="/sbs" className={classes.link}>
                 SBS
               </Link>
-              <a href="https://yieldwolf.finance/fantom/magikfinance" className={classes.link}>
-              Autocompounder
+              <a href="https://magik.farm" className={classes.link}>
+              Magik Autocompounder
               </a>
               <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
                 Docs
@@ -169,8 +169,8 @@ const Nav = () => {
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItemLink primary="SBS" to="/sbs" />
                 <ListItemLink primary="xMagik" to="/stake" />
-                <ListItem button component="a" href="https://yieldwolf.finance/fantom/magikfinance">
-                  <ListItemText>Autocompounder</ListItemText>
+                <ListItem button component="a" href="https://magik.farm">
+                  <ListItemText>Magik Autocompounder</ListItemText>
                 </ListItem>
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
                   <ListItemText>Docs</ListItemText>
