@@ -555,6 +555,10 @@ export class MagikFinance {
     return this.contracts.Masonry;
   }
 
+  currentMintContract(): Contract {
+    return this.contracts.NFTContract;
+  }
+
   isOldMasonryMember(): boolean {
     return this.masonryVersionOfUser !== 'latest';
   }
@@ -688,6 +692,11 @@ export class MagikFinance {
     }
     const Masonry = this.currentMasonry();
     return await Masonry.stake(decimalToBalance(amount));
+  }
+
+  async mintNFT(): Promise<TransactionResponse> {
+    const nftcontract = this.currentMintContract();
+    return await nftcontract.mint(1);
   }
 
   async getStakedSharesOnMasonry(): Promise<BigNumber> {
