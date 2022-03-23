@@ -17,6 +17,7 @@ import Loader from './components/Loader';
 import Popups from './components/Popups';
 import Regulations from './views/Regulations/Regulations';
 import { RefreshContextProvider } from './contexts/RefreshContext';
+import NFTMint from './views/NFT/NFT';
 
 const Home = lazy(() => import('./views/Home'));
 const Cauldron = lazy(() => import('./views/Cauldron'));
@@ -52,6 +53,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/cauldron">
               <Cauldron />
+            </Route>
+            <Route path="/nftmint">
+              <NFTMint />
             </Route>
             <Route path="/dungeon">
               <Dungeon />
