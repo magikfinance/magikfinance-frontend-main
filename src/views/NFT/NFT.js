@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from '../../components/Page';
-import NFTImage from '../../assets/img/Samurai.JPG';
+import NFTImage from '../../assets/img/Samurai.png';
 import { useWallet } from 'use-wallet';
 import { Box, Card, CardContent, Button, Typography, Tooltip, Grid } from '@material-ui/core';
 import UnlockWallet from '../../components/UnlockWallet';
