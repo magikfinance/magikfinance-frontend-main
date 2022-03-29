@@ -8,7 +8,7 @@ const useMinting = () => {
 
   const handleMint = useCallback(
     () => {
-      handleTransactionReceipt(tombFinance.mintNFT(), `Mint yfdsafdsaour NFT`);
+      handleTransactionReceipt(tombFinance.mintNFT(), `Mint Your MAGIK NFT, Please Check Your MSHARE Balance`);
     },
     [tombFinance, handleTransactionReceipt],
   );
