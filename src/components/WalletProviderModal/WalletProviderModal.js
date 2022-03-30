@@ -37,7 +37,7 @@ const WalletProviderModal = ({ open, handleClose }) => {
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClose={handleClose}
     >
-      <div className={classes.paper}>
+      <div className={classes.paper} style={{ backdropFilter: 'blur(60px)', backgroundColor: 'rgba(255,255,255, 0.4)', borderRadius: '8px' }}>
         <h2>Connect Wallet</h2>
         <List component="nav" aria-label="main mailbox folders">
           <WalletCard
