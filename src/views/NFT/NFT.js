@@ -50,7 +50,7 @@ const NFTMint = () => {
             }}
           >
             Total MNFT available 350
-            Minted: 85%
+            Minted: 90%
           </TextTitle>
           <TextDescription
             style={{
