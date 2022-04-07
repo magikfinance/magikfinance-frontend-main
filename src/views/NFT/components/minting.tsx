@@ -43,6 +43,7 @@ const Minting: React.FC = () => {
                   <Button
                   variant="contained"
                   color="primary"
+                  disabled={true}
                   style={{ marginTop: '20px' }}
                   onClick={onMint}
                 >
