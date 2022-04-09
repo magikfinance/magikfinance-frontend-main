@@ -200,6 +200,11 @@ export class MagikFinance {
       circulatingSupply: getDisplayBalance(tShareCirculatingSupply, this.MSHARE.decimal, 0),
     };
   }
+  async sendMagik(amount: string | number, recepient: string): Promise<TransactionResponse> {
+    const {Magik} = this.contracts;
+    
+    return await Magik.transfer(recepient, decimalToBalance(amount));
+  }
 
   async getMagikStatInEstimatedTWAP(): Promise<TokenStat> {
     const { SeigniorageOracle, TombFtmRewardPool } = this.contracts;
@@ -261,6 +266,48 @@ export class MagikFinance {
       TVL: TVL.toFixed(2).toString(),
     };
   }
+
+  async getRaffleStat(account: string, raffleAddress: string): Promise<TokenStat> {
+    let total = 0;
+    const {Magik} = this.contracts;
+    
+    const priceInDollars = await this.getTokenPriceFromSpiritswap(this.MAGIK);
+    
+    const balOfRaffle = await Magik.balanceOf(raffleAddress);
+    
+    const currentBlockNumber = await this.provider.getBlockNumber();
+    
+    const filterTo = Magik.filters.Transfer(account, raffleAddress);
+   
+    const startBlock = currentBlockNumber-100000;
+
+    let allEvents : any = [];
+    
+    for(let i = startBlock; i < currentBlockNumber; i += 2000) {
+      const _startBlock = i;
+      const _endBlock = Math.min(currentBlockNumber, i + 1999);
+      const events = await Magik.queryFilter(filterTo, _startBlock, _endBlock);
+      allEvents = [...allEvents, ...events]
+    }
+
+
+    if (allEvents.length !== 0 && account !== null) {
+      for (let i = 0; i < allEvents.length; i++) {
+        total = total + Number(allEvents[i].args.value);
+      }
+      total = total / 1e18;
+    } else {
+      total = 0;
+    }
+    
+    return {
+      tokenInFtm: priceInDollars.toString(),
+      priceInDollars: total.toString(),
+      totalSupply: getDisplayBalance(balOfRaffle, 18, 0),
+      circulatingSupply: raffleAddress.toString(),
+    };
+  }
+
   async getXmagikAPR(): Promise<PoolStats> {
     if (this.myAccount === undefined) return;
     const magikToken = this.MAGIK;

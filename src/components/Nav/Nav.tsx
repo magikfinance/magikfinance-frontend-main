@@ -111,6 +111,9 @@ const Nav = () => {
               <Link color="textPrimary" to="/nftmint" className={classes.link}>
                 NFT
               </Link>
+              <Link color="textPrimary" to="/nftmint" className={classes.link}>
+                Raffle
+              </Link>
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
