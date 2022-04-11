@@ -28,17 +28,10 @@ const LaunchCountdown: React.FC<LaunchCountdownProps> = ({ deadline, description
   };
   return (
     <StyledCard>
-      <Dial value={percentage}>
         <StyledCountdownWrapper>
           <StyledCountdownTitle>Starting In...</StyledCountdownTitle>
           <Countdown date={deadline} renderer={countdownRenderer} />
         </StyledCountdownWrapper>
-      </Dial>
-      <StyledDescriptionButton>
-        <StyledExternalLink href={descriptionLink} target="_blank">
-          {description}
-        </StyledExternalLink>
-      </StyledDescriptionButton>
     </StyledCard>
   );
 };

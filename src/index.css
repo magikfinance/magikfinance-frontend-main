@@ -41,14 +41,14 @@ body {
 .MuiPaper-elevation1 {
   box-shadow: none !important;
   background-color: #ffffff22 !important;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(20px);
   border-radius: 10px !important;
   border: 1px solid var(--white);
 }
 
 .MuiCard-root {
   background-color: #ffffff22 !important;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   border-radius: 10px !important;
 }
 

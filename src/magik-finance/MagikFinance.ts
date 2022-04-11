@@ -201,9 +201,9 @@ export class MagikFinance {
     };
   }
   async sendMagik(amount: string | number, recepient: string): Promise<TransactionResponse> {
-    const {Magik} = this.contracts;
+    const {magik} = this.contracts;
     
-    return await Magik.transfer(recepient, decimalToBalance(amount));
+    return await magik.transfer(recepient, decimalToBalance(amount));
   }
 
   async getMagikStatInEstimatedTWAP(): Promise<TokenStat> {
@@ -269,15 +269,15 @@ export class MagikFinance {
 
   async getRaffleStat(account: string, raffleAddress: string): Promise<TokenStat> {
     let total = 0;
-    const {Magik} = this.contracts;
+    const {magik} = this.contracts;
     
     const priceInDollars = await this.getTokenPriceFromSpiritswap(this.MAGIK);
     
-    const balOfRaffle = await Magik.balanceOf(raffleAddress);
+    const balOfRaffle = await magik.balanceOf(raffleAddress);
     
     const currentBlockNumber = await this.provider.getBlockNumber();
     
-    const filterTo = Magik.filters.Transfer(account, raffleAddress);
+    const filterTo = magik.filters.Transfer(account, raffleAddress);
    
     const startBlock = currentBlockNumber-100000;
 
@@ -286,7 +286,7 @@ export class MagikFinance {
     for(let i = startBlock; i < currentBlockNumber; i += 2000) {
       const _startBlock = i;
       const _endBlock = Math.min(currentBlockNumber, i + 1999);
-      const events = await Magik.queryFilter(filterTo, _startBlock, _endBlock);
+      const events = await magik.queryFilter(filterTo, _startBlock, _endBlock);
       allEvents = [...allEvents, ...events]
     }
 

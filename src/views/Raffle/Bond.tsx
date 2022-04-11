@@ -21,7 +21,7 @@ import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN, DECIMALS_18 } from '../../magi
 import { Alert } from '@material-ui/lab';
 import {ReactComponent as IconTelegram} from '../../assets/img/telegram.svg';
 import {ReactComponent as IconDiscord} from '../../assets/img/discord.svg';
-import HomeImage from '../../assets/img/home.png';
+import HomeImage from '../../assets/img/wilderness.png';
 import { Box, Container, Card, CardContent, Typography, Grid } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import { Stats } from 'fs';
@@ -70,10 +70,10 @@ const useStyles = makeStyles((theme) => ({
     }},
 }));
 
-const Bond: React.FC = () => {
+const Raffle: React.FC = () => {
 
-  const startDate = new Date('2022-4-08 09:00:00Z');
-  const endDate = new Date('2022-4-17 09:00:00Z');
+  const startDate = new Date('2022-4-11 19:10:00Z');
+  const endDate = new Date('2022-4-13 19:10:00Z');
   const raffleAddress = '0xF3C5c8Aa299A70596303897017062A1a37ecC545';
 
 
@@ -124,7 +124,7 @@ const Bond: React.FC = () => {
     <>
     
      <Grid item xs={12} md={12} lg={12} >     
-        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}>Weekly NFT Raffle</h2>   
+        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> NFT Raffle</h2>   
         <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Every week we'll run a raffle for our community where you have the chance to win NFT's just by sending in your freely earned Magik rewards.<br></br> <br></br> 1 Magik =  1 entry and there are unlimited entries per address, the more Magik you send the more chance you have to win. The winner will be chosen at random.</p>                
         <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>Raffle address: {raffleAddress}</p>
       </Grid>
@@ -135,7 +135,7 @@ const Bond: React.FC = () => {
         <Grid item xs={12} sm={12} lg={6}>  
             <Card>
               <h2 style={{textAlign:'center', marginTop: '10px' }}>Raffle Stats</h2>
-              <p style={{textAlign:'center'}}>Win 5 NFT this raffle</p>           
+              <p style={{textAlign:'center'}}>Win 5 Magik NFT's this raffle</p>           
               <p style={{textAlign:'center'}}>Magik Price: ${magikPrice}</p>
               <p style={{textAlign:'center'}}>Total Magik Entered: {raffleBals}</p>         
               <p style={{textAlign:'center'}}>Your entries: {userBals}</p>
@@ -203,4 +203,4 @@ const StyledStatsWrapper = styled.div`
   }
 `;
 
-export default Bond;
+export default Raffle;

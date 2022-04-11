@@ -111,7 +111,7 @@ const Nav = () => {
               <Link color="textPrimary" to="/nftmint" className={classes.link}>
                 NFT
               </Link>
-              <Link color="textPrimary" to="/nftmint" className={classes.link}>
+              <Link color="textPrimary" to="/raffle" className={classes.link}>
                 Raffle
               </Link>
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
@@ -172,6 +172,7 @@ const Nav = () => {
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Cauldron" to="/cauldron" />
                 <ListItemLink primary="NFT" to="/nftmint" />
+                <ListItemLink primary="Raffle" to="/raffle" />
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItemLink primary="SBS" to="/sbs" />
