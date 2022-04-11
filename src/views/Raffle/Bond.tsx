@@ -135,7 +135,7 @@ const Raffle: React.FC = () => {
         <Grid item xs={12} sm={12} lg={6}>  
             <Card>
               <h2 style={{textAlign:'center', marginTop: '10px' }}>Raffle Stats</h2>
-              <p style={{textAlign:'center'}}>Win 1 Magik NFT & 1 Fantomised Patronus this raffle</p>           
+              <p style={{textAlign:'center'}}>Win 1 Magik NFT and 1 Fantomised Patronus this raffle</p>           
               <p style={{textAlign:'center'}}>Magik Price: ${magikPrice}</p>
               <p style={{textAlign:'center'}}>Total Magik Entered: {raffleBals}</p>         
               <p style={{textAlign:'center'}}>Your entries: {userBals}</p>
