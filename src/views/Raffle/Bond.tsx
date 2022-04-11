@@ -124,8 +124,8 @@ const Raffle: React.FC = () => {
     <>
     
      <Grid item xs={12} md={12} lg={12} >     
-        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> NFT Raffle</h2>   
-        <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Every week we'll run a raffle for our community where you have the chance to win NFT's just by sending in your freely earned Magik rewards.<br></br> <br></br> 1 Magik =  1 entry and there are unlimited entries per address, the more Magik you send the more chance you have to win. The winner will be chosen at random.</p>                
+        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> MAGIK FINANCE ROLLING RAFFLE</h2>   
+        <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Enter with Magik tokens. Win the NFT jackpot. Deflate the supply.</p>                
         <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>Raffle address: {raffleAddress}</p>
       </Grid>
       {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Closed</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Closed</h2>}
@@ -135,7 +135,7 @@ const Raffle: React.FC = () => {
         <Grid item xs={12} sm={12} lg={6}>  
             <Card>
               <h2 style={{textAlign:'center', marginTop: '10px' }}>Raffle Stats</h2>
-              <p style={{textAlign:'center'}}>Win 2 Magik NFT's this raffle</p>           
+              <p style={{textAlign:'center'}}>Win 1 Magik NFT & 1 Fantomised Patronus this raffle</p>           
               <p style={{textAlign:'center'}}>Magik Price: ${magikPrice}</p>
               <p style={{textAlign:'center'}}>Total Magik Entered: {raffleBals}</p>         
               <p style={{textAlign:'center'}}>Your entries: {userBals}</p>
