@@ -110,7 +110,8 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   if (bank.depositTokenName.includes('MAGIK')) {
     pairName = 'MAGIK-FTM pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
-  } else {
+  }
+   else {
     pairName = 'MSHARE-FTM pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0xC8Ca9026Ad0882133Ef126824F6852567c571A4E' ;
   }
@@ -118,11 +119,19 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MAGIK-MSHARE pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
   }
+  if (bank.depositTokenName.includes('MAGIK-FTM-LP RED')) {
+    pairName = 'MAGIK-FTM-RED pair';
+    uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
+  }
+  if (bank.depositTokenName.includes('MSHARE-FTM-LP RED')) {
+    pairName = 'MSHARE-FTM-RED pair';
+    uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
+  }
   return (
     <Card>
       <CardContent>
         <StyledLink href={uniswapUrl} target="_blank">
-          {` Provide liquidity for ${pairName} now on SpiritSwap `}
+          {` Provide liquidity for ${pairName} now `}
         </StyledLink>
       </CardContent>
     </Card>
