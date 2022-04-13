@@ -28,6 +28,7 @@ export class MagikFinance {
   masonryVersionOfUser?: string;
 
   TOMBWFTM_LP: Contract;
+  MAGIKREDLP: Contract;
   MAGIK: ERC20;
   MSHARE: ERC20;
   MBOND: ERC20;
@@ -55,6 +56,7 @@ export class MagikFinance {
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['MAGIK-FTM-LP'][0], IUniswapV2PairABI, provider);
+    this.MAGIKREDLP = new Contract(externalTokens['MAGIK-FTM-LP RED'][0], IUniswapV2PairABI, provider);
 
     this.config = cfg;
     this.provider = provider;
@@ -407,8 +409,10 @@ export class MagikFinance {
       return rewardPerSecond.mul(3000).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
       return rewardPerSecond.mul(10000).div(59500);
+    } if (depositTokenName.startsWith('MAGIK-FTM-LP RED')) {
+      return rewardPerSecond.mul(1).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(46000).div(59500);
+      return rewardPerSecond.mul(40000).div(59500);
     }
     
     
@@ -435,6 +439,10 @@ export class MagikFinance {
       } else if (tokenName === 'MSHARE-FTM-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
+        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MAGIK-FTM-LP RED') {
+        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MSHARE-FTM-LP RED') {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'SHIBA') {
         tokenPrice = await this.getTokenPriceFromSpiritswap(token);
