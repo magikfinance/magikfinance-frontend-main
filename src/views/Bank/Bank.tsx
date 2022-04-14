@@ -119,11 +119,11 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MAGIK-MSHARE pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
   }
-  if (bank.depositTokenName.includes('MAGIK-FTM-LP RED')) {
+  if (bank.depositTokenName.includes('REDMAGIK-FTM')) {
     pairName = 'MAGIK-FTM-RED pair';
     uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
   }
-  if (bank.depositTokenName.includes('MSHARE-FTM-LP RED')) {
+  if (bank.depositTokenName.includes('REDMSHARE-FTM')) {
     pairName = 'MSHARE-FTM-RED pair';
     uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
   }
