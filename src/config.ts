@@ -124,10 +124,10 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 10,
-    closedForStaking: true,
+    closedForStaking: false,
   },
   MshareRedLPReward: {
-    name: 'Earn MSHARE by MAGIK-FTM-LP RED',
+    name: 'Earn MSHARE by MSHARE-FTM-LP RED',
     poolId: 5,
     sectionInUI: 2,
     contract: 'MshareRedLPReward',
@@ -135,7 +135,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 10,
-    closedForStaking: true,
+    closedForStaking: false,
   },
 };
 

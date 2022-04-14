@@ -56,7 +56,6 @@ export class MagikFinance {
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['MAGIK-FTM-LP'][0], IUniswapV2PairABI, provider);
-    this.MAGIKREDLP = new Contract(externalTokens['MAGIK-FTM-LP RED'][0], IUniswapV2PairABI, provider);
 
     this.config = cfg;
     this.provider = provider;
@@ -404,22 +403,38 @@ export class MagikFinance {
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
-      return rewardPerSecond.mul(500).div(59500);
+      return rewardPerSecond.mul(1000).div(59500); // pid2
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(3000).div(59500);
+      return rewardPerSecond.mul(4500).div(59500); // pid: 1 
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(10000).div(59500);
-    } if (depositTokenName.startsWith('MAGIK-FTM-LP RED')) {
-      return rewardPerSecond.mul(1).div(59500);
+      return rewardPerSecond.mul(17000).div(59500); //pid : 0
+    } if (depositTokenName ===('MAGIK-FTM-LP RED')) {
+      return rewardPerSecond.mul(7000).div(59500); // pid: 4
+    } if (depositTokenName ===('MSHARE-FTM-LP RED')) {
+      return rewardPerSecond.mul(2000).div(59500); // pid: 5
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(40000).div(59500);
+      return rewardPerSecond.mul(28000).div(59500); // pid: 3 
     }
     
     
     
 
   }
-
+  async getLPV2TokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
+    const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
+    //Get amount of tokenA
+    const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
+    const stat = isTomb === true
+      ? await this.getMagikStat()
+      : await this.getShareStat();
+    const priceOfToken = stat.priceInDollars;
+    console.log(priceOfToken)
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply);
+    const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
+      .toString();
+    console.log(tokenPrice)
+    return tokenPrice;
+  }
   /**
    * Method to calculate the tokenPrice of the deposited asset in a pool/bank
    * If the deposited token is an LP it will find the price of its pieces
@@ -431,6 +446,7 @@ export class MagikFinance {
   async getDepositTokenPriceInDollars(tokenName: string, token: ERC20) {
     let tokenPrice;
     const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
+
     if (tokenName === 'WFTM') {
       tokenPrice = priceOfOneFtmInDollars;
     } else {
@@ -441,9 +457,17 @@ export class MagikFinance {
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-FTM-LP RED') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MAGIK, false);
+        tokenPrice = await this.getLPV2TokenPrice(
+          token,
+          this.MAGIK,
+          true
+        );
       } else if (tokenName === 'MSHARE-FTM-LP RED') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+        tokenPrice = await this.getLPV2TokenPrice(
+          token,
+          this.MSHARE,
+          false
+        );
       } else if (tokenName === 'SHIBA') {
         tokenPrice = await this.getTokenPriceFromSpiritswap(token);
       } else {
