@@ -72,8 +72,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Raffle: React.FC = () => {
 
-  const startDate = new Date('2022-4-11 19:10:00Z');
-  const endDate = new Date('2022-4-13 19:10:00Z');
+  const startDate = new Date('2022-4-15 19:00:00Z');
+  const endDate = new Date('2022-4-17 19:00:00Z');
   const raffleAddress = '0xF3C5c8Aa299A70596303897017062A1a37ecC545';
 
 
@@ -128,14 +128,14 @@ const Raffle: React.FC = () => {
         <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Enter with Magik tokens. Win the NFT jackpot. Deflate the supply.</p>                
         <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>Raffle address: {raffleAddress}</p>
       </Grid>
-      {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Closed</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Closed</h2>}
+      {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Open</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Open</h2>}
       {Date.now() < startTime ? <LaunchCountdown deadline={startDate} description={''} descriptionLink={''}></LaunchCountdown> : <LaunchCountdown deadline={endDate} description={'Raffle Closes In'} descriptionLink={''}></LaunchCountdown>}
        
     <Grid container justify="center" spacing={4} style={{marginTop: '10px'}}>
         <Grid item xs={12} sm={12} lg={6}>  
             <Card>
               <h2 style={{textAlign:'center', marginTop: '10px' }}>Raffle Stats</h2>
-              <p style={{textAlign:'center'}}>Win 1 Magik NFT and 1 Fantomised Patronus this raffle</p>           
+              <p style={{textAlign:'center'}}>Win 1 Fantomised Patronus this raffle</p>           
               <p style={{textAlign:'center'}}>Magik Price: ${magikPrice}</p>
               <p style={{textAlign:'center'}}>Total Magik Entered: {raffleBals}</p>         
               <p style={{textAlign:'center'}}>Your entries: {userBals}</p>
