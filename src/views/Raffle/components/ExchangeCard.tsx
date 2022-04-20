@@ -73,6 +73,8 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           <StyledDesc>{priceDesc}</StyledDesc>
           <StyledCardActions>
               <Button
+                color="primary"
+                variant="contained"
                 className={disabled ? 'shinyButtonDisabled' : 'shinyButton'}
                 onClick={onPresent}
                 disabled={disabled}
