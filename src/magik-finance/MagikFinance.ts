@@ -413,7 +413,7 @@ export class MagikFinance {
     } if (depositTokenName ===('REDMSHARE-FTM')) {
       return rewardPerSecond.mul(0).div(59500); // pid: 5
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(27800).div(59500); // pid: 3 
+      return rewardPerSecond.mul(27400).div(59500); // pid: 3 
     }
     
     
