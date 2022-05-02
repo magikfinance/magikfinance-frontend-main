@@ -405,15 +405,15 @@ export class MagikFinance {
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
       return rewardPerSecond.mul(10000).div(59500); // pid2
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(6500).div(59500); // pid: 1 
+      return rewardPerSecond.mul(10000).div(59500); // pid: 1 
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(17000).div(59500); //pid : 0
+      return rewardPerSecond.mul(17500).div(59500); //pid : 0
     } if (depositTokenName ===('REDMAGIK-FTM')) {
       return rewardPerSecond.mul(0).div(59500); // pid: 4
     } if (depositTokenName ===('REDMSHARE-FTM')) {
       return rewardPerSecond.mul(0).div(59500); // pid: 5
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(18000).div(59500); // pid: 3 
+      return rewardPerSecond.mul(14000).div(59500); // pid: 3 
     }
     
     
