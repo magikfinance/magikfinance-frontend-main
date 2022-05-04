@@ -403,17 +403,16 @@ export class MagikFinance {
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
-      return rewardPerSecond.mul(10000).div(59500); // pid2
+      return rewardPerSecond.mul(10000).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(10000).div(59500); // pid: 1 
+      return rewardPerSecond.mul(11000).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(17500).div(59500); //pid : 0
-    } if (depositTokenName ===('REDMAGIK-FTM')) {
-      return rewardPerSecond.mul(0).div(59500); // pid: 4
-    } if (depositTokenName ===('REDMSHARE-FTM')) {
-      return rewardPerSecond.mul(0).div(59500); // pid: 5
+      return rewardPerSecond.mul(18000).div(59500);
+      console.log()
+    } if (depositTokenName ===('MAGIK-FTM-LP RED')) {
+      return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(14000).div(59500); // pid: 3 
+      return rewardPerSecond.mul(11500).div(59500);
     }
     
     
@@ -456,18 +455,14 @@ export class MagikFinance {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'REDMAGIK-FTM') {
+      } else if (tokenName === 'MAGIK-FTM-LP RED') {
         tokenPrice = await this.getLPV2TokenPrice(
           token,
           this.MAGIK,
           true
         );
-      } else if (tokenName === 'REDMSHARE-FTM') {
-        tokenPrice = await this.getLPV2TokenPrice(
-          token,
-          this.MSHARE,
-          false
-        );
+      } else if (tokenName === 'MSHARE-FTM-LP RED') {
+        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'SHIBA') {
         tokenPrice = await this.getTokenPriceFromSpiritswap(token);
       } else {
