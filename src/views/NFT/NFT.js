@@ -45,12 +45,13 @@ const NFTMint = () => {
           <TextTitle
             style={{
               textAlign: "center",
-              fontSize: 50,
+              fontSize: 30,
               fontWeight: "bold",
             }}
           >
             Total MNFT available 350
             Sold Out!
+            Purchase at Nftkey.app and stake at DarkMatterDefi.com for 1000% + APR
           </TextTitle>
           <TextDescription
             style={{
