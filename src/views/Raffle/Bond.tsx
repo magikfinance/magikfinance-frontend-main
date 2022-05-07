@@ -128,7 +128,7 @@ const Raffle: React.FC = () => {
         <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Enter with Magik tokens. Win the NFT jackpot. Deflate the supply.</p>                
         <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>Raffle address: {raffleAddress}</p>
       </Grid>
-      {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Open</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Open</h2>}
+      {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Closed</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Closed</h2>}
       {Date.now() < startTime ? <LaunchCountdown deadline={startDate} description={''} descriptionLink={''}></LaunchCountdown> : <LaunchCountdown deadline={endDate} description={'Raffle Closes In'} descriptionLink={''}></LaunchCountdown>}
        
     <Grid container justify="center" spacing={4} style={{marginTop: '10px'}}>
