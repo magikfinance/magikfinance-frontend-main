@@ -403,16 +403,16 @@ export class MagikFinance {
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
-      return rewardPerSecond.mul(10000).div(59500);
+      return rewardPerSecond.mul(8000).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(11000).div(59500);
+      return rewardPerSecond.mul(13000).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(20000).div(59500);
+      return rewardPerSecond.mul(22000).div(59500);
       console.log()
     } if (depositTokenName ===('MAGIK-FTM-LP RED')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
-      return rewardPerSecond.mul(8000).div(59500);
+      return rewardPerSecond.mul(4000).div(59500);
     }
     
     
