@@ -126,7 +126,7 @@ const Raffle: React.FC = () => {
      <Grid item xs={12} md={12} lg={12} >     
         <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> MAGIK FINANCE BIG RAFFLE</h2>   
         <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Enter with Magik tokens. Win the NFT jackpot. Deflate the supply.</p>                
-        <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>For every 150 MAGUK entered in total, the prize pot will increase by 1! </p>
+        <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>For every 150 $MAGIK entered in total, the prize pot will increase by 1! </p>
       </Grid>
       {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Open</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Open</h2>}
       {Date.now() < startTime ? <LaunchCountdown deadline={startDate} description={''} descriptionLink={''}></LaunchCountdown> : <LaunchCountdown deadline={endDate} description={'Raffle Closes In'} descriptionLink={''}></LaunchCountdown>}
