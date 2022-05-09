@@ -1022,6 +1022,126 @@ export class MagikFinance {
     return events;
   }
 
+      /**
+   * Get NFTs in a wallet
+   * @param address account address
+   * @returns
+   */
+       async getNFTsInWallet(address: string, nftContract: string): Promise<any[]> {
+        const tokenIds:number[] = await this.contracts[nftContract].walletOfOwner(address);
+    
+        return await Promise.all(tokenIds.map(async tokenId => {
+            return {
+              tokenId,
+              metaDataJson: await this.contracts[nftContract].tokenURI(tokenId),
+            };
+          })
+        );
+      }
+    
+      /**
+       * Get NFTs which are staked
+       * @param address account address
+       * @returns
+       */
+       async getNFTsStaked(address: string, nftContract: string, stakingContract: string): Promise<any[]> {
+        const tokenIds: number[] = await this.contracts[stakingContract].depositsOf(address);
+        console.log(tokenIds);
+        return await Promise.all(tokenIds.map(async tokenId => {
+            return {
+              tokenId,
+              metaDataJson: await this.contracts[nftContract].tokenURI(tokenId),
+            };
+          })
+        );
+      }
+    
+      /**
+       * Get NFTs which are land staked
+       * @param address account address
+       * @returns
+       */
+       async getNFTsLandStaked(address: string): Promise<any[]> {
+        const tokenIds: number[] = await this.contracts['LandStakingv1'].depositsOf(address);
+    
+        return await Promise.all(tokenIds.map(async tokenId => {
+            return {
+              tokenId,
+              metaDataJson: await this.contracts['LandWalletNFT'].tokenURI(tokenId),
+            };
+          })
+        );
+      }
+    
+      /**
+       * Get total amount of NFTs in a wallet
+       * @returns
+       */
+       async nftTotalSupply(contract: string = 'WalletNFT'): Promise<number> {
+        const totalSupply:BigNumber = await this.contracts[contract].totalSupply();
+        return totalSupply.toNumber();
+      }
+    
+      /**
+       * Get total amount of NFTs which are staked
+       * @returns
+       */
+       async nftStakedTotalSupply(walletContract: string = 'WalletNFT', stakingContract: string = 'StakingNFT'): Promise<number> {
+        const totalSupply:BigNumber = await this.contracts[walletContract].balanceOf(this.config.deployments[stakingContract].address);
+        return totalSupply.toNumber();
+      }
+    
+      /**
+       * Calculate reward for a token and an address
+       * @param address account address
+       * @param tokenId Id of token selected
+       * @returns
+       */
+       async calculateRewards(address: string, tokenIds: BigNumber, contract: string = 'StakingNFT'): Promise<string> {
+        const reward:BigNumber[] = await this.contracts[contract].calculateRewards(address, tokenIds);
+        return reward[0].toString();
+      }
+    
+      /**
+       * Unstake nft item
+       * @param address account address
+       * @param tokenId Id of token selected
+       * @returns
+       */
+      async unStake(tokenId: BigNumber, contract: string = 'StakingNFT'): Promise<void> {
+        await this.contracts[contract].withdraw([tokenId]);
+      }
+    
+      /**
+       * Cliam rewards for nft items
+       * @param address account address
+       * @param tokenId Id of token selected
+       * @returns
+       */
+      async claim(tokenId: BigNumber, contract: string = 'StakingNFT'): Promise<void> {
+        await this.contracts[contract].claimRewards([BigNumber.from(tokenId)]);
+      }
+    
+      /**
+       * Unstake nft item
+       * @param address account address
+       * @param tokenIds Ids of token selected
+       */
+       async stakeNfts(tokenIds: BigNumber[], contract: string = 'StakingNFT'): Promise<void> {
+        await this.contracts[contract].deposit(tokenIds);
+      }
+    
+      /**
+       * Approve account for ERC20 and ERC721
+       * @param address account address
+       */
+       async approve(nftContract: string, stakingContract: string): Promise<void> {
+        const stakingAddress: string = this.config.deployments[stakingContract].address;
+    
+        await this.contracts['ERC20'].approve(stakingAddress, BigNumber.from('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'));
+        await this.contracts[nftContract].setApprovalForAll(stakingAddress, true);
+      }
+
   /**
    * Helper method
    * @param filter applied on the query to the treasury events

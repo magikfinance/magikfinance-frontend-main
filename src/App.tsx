@@ -27,6 +27,7 @@ const SBS = lazy(() => import('./views/Sbs'));
 const Liquidity = lazy(() => import('./views/Liquidity'));
 const Stake = lazy(() => import('./views/Stake'));
 const Raffle = lazy(() => import('./views/Raffle'));
+const Minichilla = lazy(() => import('./views/Minichilla'));
 
 const NoMatch = () => (
   <h3 style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -57,6 +58,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/nftmint">
               <NFTMint />
+            </Route>
+            <Route path="/nftstaking">
+              <Minichilla />
             </Route>
             <Route path="/dungeon">
               <Dungeon />
