@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 const Raffle: React.FC = () => {
 
   const startDate = new Date('2022-05-16 19:00:00Z');
-  const endDate = new Date('2022-05-16 19:00:00Z');
+  const endDate = new Date('2022-05-18 19:00:00Z');
   const raffleAddress = '0xF3C5c8Aa299A70596303897017062A1a37ecC545';
 
 
