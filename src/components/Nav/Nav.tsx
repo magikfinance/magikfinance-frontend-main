@@ -123,9 +123,9 @@ const Nav = () => {
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
-              <Link color="textPrimary" to="/sbs" className={classes.link}>
+              {/* <Link color="textPrimary" to="/sbs" className={classes.link}>
                 SBS
-              </Link>
+              </Link> */}
               <a href="https://magik.farm" className={classes.link}>
               Magik Autocompounder
               </a>
@@ -175,7 +175,7 @@ const Nav = () => {
                 <ListItemLink primary="Raffle" to="/raffle" />
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
-                <ListItemLink primary="SBS" to="/sbs" />
+                {/* <ListItemLink primary="SBS" to="/sbs" /> */}
                 <ListItemLink primary="xMagik" to="/stake" />
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Magik Autocompounder</ListItemText>
