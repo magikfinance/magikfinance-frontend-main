@@ -407,7 +407,7 @@ export class MagikFinance {
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
       return rewardPerSecond.mul(20000).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(26000).div(59500);
+      return rewardPerSecond.mul(28000).div(59500);
     } if (depositTokenName ===('MAGIK-FTM-LP RED')) {
       return rewardPerSecond.mul(0).div(59500); //increase to 2.5% 
     } if (depositTokenName.startsWith('MAGIK')) {
