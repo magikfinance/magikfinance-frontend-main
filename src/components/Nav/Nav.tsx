@@ -109,14 +109,14 @@ const Nav = () => {
                 Cauldron
               </Link>
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
-                nftstaking
+                NFT Staking
               </Link>
               <Link color="textPrimary" to="/nftmint" className={classes.link}>
                 NFT
               </Link>
-              <Link color="textPrimary" to="/raffle" className={classes.link}>
+              {/* <Link color="textPrimary" to="/raffle" className={classes.link}>
                 Raffle
-              </Link>
+              </Link> */}
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
@@ -126,9 +126,9 @@ const Nav = () => {
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
-              <Link color="textPrimary" to="/sbs" className={classes.link}>
+              {/* <Link color="textPrimary" to="/sbs" className={classes.link}>
                 SBS
-              </Link>
+              </Link> */}
               <a href="https://magik.farm" className={classes.link}>
               Magik Autocompounder
               </a>
@@ -175,10 +175,11 @@ const Nav = () => {
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Cauldron" to="/cauldron" />
                 <ListItemLink primary="NFT" to="/nftmint" />
-                <ListItemLink primary="Raffle" to="/raffle" />
+                <ListItemLink primary="NFT Staking" to="/nftstaking" />
+                {/* <ListItemLink primary="Raffle" to="/raffle" /> */}
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
-                <ListItemLink primary="SBS" to="/sbs" />
+                {/* <ListItemLink primary="SBS" to="/sbs" /> */}
                 <ListItemLink primary="xMagik" to="/stake" />
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Magik Autocompounder</ListItemText>

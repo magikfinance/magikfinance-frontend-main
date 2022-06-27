@@ -79,12 +79,7 @@ const Staking = () => {
             <Box mt={3} style={{ width: '600px' }}>
               <Alert variant="filled" severity="warning">
               <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/xmagik-staking"> <b> PLEASE READ OUR DOCUMENTATION BEFORE STAKING (CLICK ME) </b> </StyledLink><br />
-                <b> Most rewards are generated from Dungeon printing! Rewards come from:</b><br />
-                 MAGIK minted - from protocol allocation, does not impact MSHARE dungeon printing.<br />
-                 MAGIK Buybacks - whilst underpeg, we will perform Buybacks<br />
-                 We are developing an autocompounder for our LP Pools which will be used to generate fees to eventually sustain xMagik<br />
-                If TWAP of MAGIK peg is not over 1.01, yield will be reduced.<br />
-                APR is based on performance since launch on February 9th, 2022.
+                XMAGIK Rewards have now ended. Please withdraw your MAGIK tokens.<br />
               </Alert>
 
             </Box>

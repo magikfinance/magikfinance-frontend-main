@@ -51,7 +51,6 @@ const NFTMint = () => {
           >
             Total MNFT available 350
             Sold Out!
-            Purchase at Nftkey.app and stake at DarkMatterDefi.com for 1000% + APR
           </TextTitle>
           <TextDescription
             style={{

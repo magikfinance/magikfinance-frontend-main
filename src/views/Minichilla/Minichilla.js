@@ -58,7 +58,7 @@ const Cemetery = () => {
   
   const reloadNfts = async () => {
     if (account) {
-      let nftsInWalletWithJSON = await tombFinance.getNFTsInWallet(account, 'MiniChillasWalletNFT');
+      let nftsInWalletWithJSON = await tombFinance.getNFTsInWallet(account, 'MagikWalletNFT');
       setNftsInWallet(await Promise.all(
         nftsInWalletWithJSON.map(async nft => {
           return {
@@ -68,7 +68,7 @@ const Cemetery = () => {
         })
       ));
 
-      let nftsStakedWithJSON = await tombFinance.getNFTsStaked(account, 'MiniChillasWalletNFT', 'MiniChillasStakingNFT');
+      let nftsStakedWithJSON = await tombFinance.getNFTsStaked(account, 'MagikWalletNFT', 'MagikStakingNFT');
       setNftsStaked(await Promise.all(
         nftsStakedWithJSON.map(async nft => {
           return {
@@ -78,8 +78,8 @@ const Cemetery = () => {
         })
       ));
 
-      setNftTotalSupply(await tombFinance.nftTotalSupply('MiniChillasWalletNFT'));
-      setNftStakedTotalSupply(await tombFinance.nftStakedTotalSupply('MiniChillasWalletNFT', 'MiniChillasStakingNFT'));
+      setNftTotalSupply(await tombFinance.nftTotalSupply('MagikWalletNFT'));
+      setNftStakedTotalSupply(await tombFinance.nftStakedTotalSupply('MagikWalletNFT', 'MagikStakingNFT'));
     }
   }
 
@@ -102,7 +102,7 @@ const Cemetery = () => {
   const selectNftStaked = async (index) => {
     setIndexOfselectedNft(index);
     setIndexOfselectedNftInWallet(-1);
-    setReward(await tombFinance.calculateRewards(account, [nftsStaked[index].tokenId], 'MiniChillasStakingNFT'));
+    setReward(await tombFinance.calculateRewards(account, [nftsStaked[index].tokenId], 'MagikStakingNFT'));
   }
 
   const selectNftInWallet = async (index) => {
@@ -111,22 +111,22 @@ const Cemetery = () => {
   }
 
   const stake = async () => {
-    await tombFinance.stakeNfts([nftsInWallet[indexOfSelectedNftInWallet].tokenId], 'MiniChillasStakingNFT');
+    await tombFinance.stakeNfts([nftsInWallet[indexOfSelectedNftInWallet].tokenId], 'MagikStakingNFT');
     reloadNfts();
   }
 
   const unStake = async () => {
-    await tombFinance.unStake(nftsStaked[indexOfSelectedNft].tokenId, 'MiniChillasStakingNFT');
+    await tombFinance.unStake(nftsStaked[indexOfSelectedNft].tokenId, 'MagikStakingNFT');
     reloadNfts();
   }
 
   const claim = async () => {
-    await tombFinance.claim(nftsStaked[indexOfSelectedNft].tokenId, 'MiniChillasStakingNFT');
-    setReward(await tombFinance.calculateRewards(account, [nftsStaked[indexOfSelectedNft].tokenId], 'MiniChillasStakingNFT'));
+    await tombFinance.claim(nftsStaked[indexOfSelectedNft].tokenId, 'MagikStakingNFT');
+    setReward(await tombFinance.calculateRewards(account, [nftsStaked[indexOfSelectedNft].tokenId], 'MagikStakingNFT'));
   }
 
   const approve = async () => {
-    await tombFinance.approve('MiniChillasWalletNFT', 'MiniChillasStakingNFT');
+    await tombFinance.approve('MagikWalletNFT', 'MagikStakingNFT');
   }
 
   return (
@@ -137,10 +137,10 @@ const Cemetery = () => {
           <div style={{ textAlign: 'center', color: 'white' }}>
           <h2 style={{ fontSize: '80px', textAlign:'center', marginBottom: '50px'  }}>Magik NFT Staking</h2>
           <Grid container justify="center" spacing={0} style={{marginTop: '40px', marginBottom: '40px'}}>
-              <Button color="primary" target="_blank" href="https://nftkey.app/collections/minichillas/" variant="contained" className={'shinyButton ' + classes.button} style={{ marginRight: '10px' }}>
+              <Button color="primary" target="_blank" href="https://nftkey.app/collections/magiknft/" variant="contained" className={'shinyButton ' + classes.button} style={{ marginRight: '10px' }}>
                 Buy on NFTKey
               </Button>
-              <Button color="primary" target="_blank" href="https://paintswap.finance/marketplace/collections/0xc2750650cae36385e791bb0f32e9ce568a0c66bd" variant="contained" className={'shinyButton ' + classes.button} style={{ marginRight: '10px' }}>
+              <Button color="primary" target="_blank" href="https://paintswap.finance/marketplace/collections/0xe2b8a9f4d1417acd4a696fa9580a393ef703a619" variant="contained" className={'shinyButton ' + classes.button} style={{ marginRight: '10px' }}>
                 Buy on Paintswap
               </Button>
           </Grid>
@@ -150,12 +150,12 @@ const Cemetery = () => {
             <BorderLinearProgress variant="determinate" value={nftStakedTotalSupply * 100 / nftTotalSupply} />
             <br/>
             <Grid container spacing={2}>
-              <Grid xs={6} item>
+              <Grid xs={12} item>
                 <Box style={{
             backgroundColor: "rgba(255, 255, 255, 0.2)",
             backdropFilter: "blur(30px)",
-            padding: 24,
-            borderRadius: 24,
+            padding: 48,
+            borderRadius: 48,
             border: "4px dashed var(--secondary)",
             boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
                 }}>
@@ -189,12 +189,12 @@ const Cemetery = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid xs={6} item>
+              <Grid xs={12} item>
                 <Box style={{
             backgroundColor: "rgba(255, 255, 255, 0.2)",
             backdropFilter: "blur(30px)",
-            padding: 24,
-            borderRadius: 24,
+            padding: 100,
+            borderRadius: 200,
             border: "4px dashed var(--secondary)",
             boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
                   visibility: indexOfSelectedNft === -1 && indexOfSelectedNftInWallet === -1 ? 'hidden' : 'visible',
@@ -208,8 +208,8 @@ const Cemetery = () => {
                       <Box style={{
             backgroundColor: "rgba(255, 255, 255, 0.2)",
             backdropFilter: "blur(30px)",
-            padding: 24,
-            borderRadius: 24,
+            padding: 2,
+            borderRadius: 2,
             border: "4px dashed var(--secondary)",
             boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
                       }}>
@@ -232,7 +232,7 @@ const Cemetery = () => {
                             Claim
                           </Button>
                         </div>
-                        <p style={{maxWidth: '50%'}}>Claimable: { reward / 1e18 } MvDOLLAR</p>
+                        <p style={{maxWidth: '50%'}}>Claimable: { reward / 1e18 } MSHARE</p>
                       </Box>
                     </>
                   }

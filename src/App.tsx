@@ -23,10 +23,10 @@ const Home = lazy(() => import('./views/Home'));
 const Cauldron = lazy(() => import('./views/Cauldron'));
 const Dungeon = lazy(() => import('./views/Dungeon'));
 const Wilderness = lazy(() => import('./views/Wilderness'));
-const SBS = lazy(() => import('./views/Sbs'));
+// const SBS = lazy(() => import('./views/Sbs'));
 const Liquidity = lazy(() => import('./views/Liquidity'));
 const Stake = lazy(() => import('./views/Stake'));
-const Raffle = lazy(() => import('./views/Raffle'));
+// const Raffle = lazy(() => import('./views/Raffle'));
 const Minichilla = lazy(() => import('./views/Minichilla'));
 
 const NoMatch = () => (
@@ -68,15 +68,15 @@ const App: React.FC = () => {
             <Route path="/stake">
               <Stake />
             </Route>
-            <Route path="/raffle">
+            {/* <Route path="/raffle">
               <Raffle />
-            </Route>
+            </Route> */}
             <Route path="/wilderness">
               <Wilderness />
             </Route>
-            <Route path="/sbs">
+            {/* <Route path="/sbs">
               <SBS />
-            </Route>
+            </Route> */}
             <Route path="/liquidity">
               <Liquidity />
             </Route>
