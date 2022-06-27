@@ -72,8 +72,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Raffle: React.FC = () => {
 
-  const startDate = new Date('2022-04-05 22:00:00Z');
-  const endDate = new Date('2022-05-06 22:00:00Z');
+  const startDate = new Date('2022-05-16 19:00:00Z');
+  const endDate = new Date('2022-05-18 19:00:00Z');
   const raffleAddress = '0xF3C5c8Aa299A70596303897017062A1a37ecC545';
 
 
@@ -124,9 +124,9 @@ const Raffle: React.FC = () => {
     <>
     
      <Grid item xs={12} md={12} lg={12} >     
-        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> MAGIK FINANCE ROLLING RAFFLE</h2>   
+        <h2 style={{ fontSize: '40px', textAlign:'center', color: '#fff' }}> MAGIK FINANCE BIG RAFFLE</h2>   
         <p style={{ fontSize: '20px', textAlign:'center', color: '#fff' }}>Enter with Magik tokens. Win the NFT jackpot. Deflate the supply.</p>                
-        <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>Raffle address: {raffleAddress}</p>
+        <p style={{fontSize: '20px', textAlign:'center', color: '#fff' }}>For every 150 $MAGIK entered in total, the prize pot will increase by 1! </p>
       </Grid>
       {Date.now() > endTime ? <h2 style={{ fontSize: '60px', textAlign:'center' }}>Raffle Open</h2> : <h2 style={{ fontSize: '60px', textAlign:'center', color: '#fff'}}>Raffle Open</h2>}
       {Date.now() < startTime ? <LaunchCountdown deadline={startDate} description={''} descriptionLink={''}></LaunchCountdown> : <LaunchCountdown deadline={endDate} description={'Raffle Closes In'} descriptionLink={''}></LaunchCountdown>}
