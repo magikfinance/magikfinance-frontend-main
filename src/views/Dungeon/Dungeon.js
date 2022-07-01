@@ -96,11 +96,11 @@ const Dungeon = () => {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+              <Grid item xs={12} md={2} lg={3} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
-                    <Typography>Current Epoch</Typography>
-                    <Typography>{Number(currentEpoch)}</Typography>
+                    <Typography>APR | Daily | Epoch</Typography>
+                    <Typography>{dungeonAPR.toFixed(2)}% | {(dungeonAPR / 365).toFixed(2)}% | {(dungeonAPR / 365 / 4).toFixed(2)}%</Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -128,14 +128,6 @@ const Dungeon = () => {
                     >
                       {scalingFactor}
                     </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography>APR</Typography>
-                    <Typography>{dungeonAPR.toFixed(2)}%</Typography>
                   </CardContent>
                 </Card>
               </Grid>
