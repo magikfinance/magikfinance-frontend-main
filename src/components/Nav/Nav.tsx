@@ -132,6 +132,9 @@ const Nav = () => {
               <a href="https://magik.farm" className={classes.link}>
               Magik Autocompounder
               </a>
+              <a href="https://magikworld.net" className={classes.link}>
+              Magik World (BETA)
+              </a>
               <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
                 Docs
               </a>
@@ -183,6 +186,9 @@ const Nav = () => {
                 <ListItemLink primary="xMagik" to="/stake" />
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Magik Autocompounder</ListItemText>
+                </ListItem>
+                <ListItem button component="a" href="https://magikworld.net">
+                  <ListItemText>Magik World (BETA) </ListItemText>
                 </ListItem>
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
                   <ListItemText>Docs</ListItemText>
