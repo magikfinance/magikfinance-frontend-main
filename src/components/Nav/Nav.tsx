@@ -101,7 +101,7 @@ const Nav = () => {
                 Magik Finance
               </Link>
               <text color="textPrimary" to="/" className={classes.link}>
-                Total Magik Burned: 250K
+                Total Magik Burned: 251K
               </text>
             </Typography>
             <Box mr={5}>
