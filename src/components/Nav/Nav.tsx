@@ -100,6 +100,9 @@ const Nav = () => {
               <Link to="/" color="inherit" className={classes.brandLink}>
                 Magik Finance
               </Link>
+              <text color="textPrimary" to="/" className={classes.link}>
+                Total Magik Burned: 250K
+              </text>
             </Typography>
             <Box mr={5}>
               <Link color="textPrimary" to="/" className={classes.link}>
