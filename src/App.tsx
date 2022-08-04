@@ -20,7 +20,7 @@ import { RefreshContextProvider } from './contexts/RefreshContext';
 import NFTMint from './views/NFT/NFT';
 
 const Home = lazy(() => import('./views/Home'));
-const Cauldron = lazy(() => import('./views/Cauldron'));
+const Farms = lazy(() => import('./views/Cauldron'));
 const Dungeon = lazy(() => import('./views/Dungeon'));
 const Wilderness = lazy(() => import('./views/Wilderness'));
 // const SBS = lazy(() => import('./views/Sbs'));
@@ -53,8 +53,8 @@ const App: React.FC = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/cauldron">
-              <Cauldron />
+            <Route path="/farms">
+              <Farms />
             </Route>
             <Route path="/nftmint">
               <NFTMint />

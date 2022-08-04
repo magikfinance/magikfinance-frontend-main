@@ -108,8 +108,8 @@ const Nav = () => {
               <Link color="textPrimary" to="/" className={classes.link}>
                 Home
               </Link>
-              <Link color="textPrimary" to="/cauldron" className={classes.link}>
-                Cauldron
+              <Link color="textPrimary" to="/farms" className={classes.link}>
+                Farms
               </Link>
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
@@ -179,7 +179,7 @@ const Nav = () => {
               <Divider />
               <List>
                 <ListItemLink primary="Home" to="/" />
-                <ListItemLink primary="Cauldron" to="/cauldron" />
+                <ListItemLink primary="Farms" to="/farms" />
                 <ListItemLink primary="NFT" to="/nftmint" />
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 {/* <ListItemLink primary="Raffle" to="/raffle" /> */}

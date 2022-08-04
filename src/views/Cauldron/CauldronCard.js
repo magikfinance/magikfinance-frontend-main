@@ -37,7 +37,7 @@ const CauldronCard = ({ bank }) => {
           </Box>
         </CardContent>
         <CardActions style={{ justifyContent: 'flex-end' }}>
-          <Button color="primary" size="small" variant="contained" component={Link} to={`/cauldron/${bank.contract}`}>
+          <Button color="primary" size="small" variant="contained" component={Link} to={`/farms/${bank.contract}`}>
             View
           </Button>
         </CardActions>

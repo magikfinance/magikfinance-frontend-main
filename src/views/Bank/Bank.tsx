@@ -130,7 +130,7 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   return (
     <Card>
       <CardContent>
-        <StyledLink href={uniswapUrl} target="_blank">
+        <StyledLink href={uniswapUrl} color="primary"target="_blank">
           {` Provide liquidity for ${pairName} now `}
         </StyledLink>
       </CardContent>
@@ -158,7 +158,7 @@ const StyledBank = styled.div`
 const StyledLink = styled.a`
   font-weight: 700;
   text-decoration: none;
-  color: ${(props) => props.theme.color.primary.main};
+  color: ${(props) => props.theme.color.primary.contrastText};
 `;
 
 const StyledCardsWrapper = styled.div`

@@ -22,7 +22,7 @@ const BackgroundImage = createGlobalStyle`
   }
 `;
 
-const Cauldron = () => {
+const Farms = () => {
   const [banks] = useBanks();
   const { path } = useRouteMatch();
   const { account } = useWallet();
@@ -35,7 +35,7 @@ const Cauldron = () => {
           {!!account ? (
             <Container maxWidth="lg">
               <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-                Cauldron
+                Farms
               </Typography>
 
               <Box mt={5}>
@@ -101,4 +101,4 @@ const Cauldron = () => {
   );
 };
 
-export default Cauldron;
+export default Farms;
