@@ -119,13 +119,21 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MAGIK-MSHARE pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
   }
-  if (bank.depositTokenName.includes('REDMAGIK-FTM')) {
-    pairName = 'MAGIK-FTM-RED pair';
-    uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
+  if (bank.depositTokenName.includes('MAGIK-FTM-MS')) {
+    pairName = 'MAGIK-FTM-MS pair';
+    uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
-  if (bank.depositTokenName.includes('REDMSHARE-FTM')) {
-    pairName = 'MSHARE-FTM-RED pair';
-    uniswapUrl = 'https://app.redemption.fi/liquidity/forge' ;
+  if (bank.depositTokenName.includes('MSHARE-FTM-MS')) {
+    pairName = 'MSHARE-FTM-MS pair';
+    uniswapUrl = 'https://magikswap.dog/liquidity/' ;
+  }
+  if (bank.depositTokenName.includes('MAGIK-MSHARE-LP-MS')) {
+    pairName = 'MAGIK-MSHARE-LP-MS pair';
+    uniswapUrl = 'https://magikswap.dog/liquidity/' ;
+  }
+  if (bank.depositTokenName.includes('MAGIK-MSHARE-LP-MS')) {
+    pairName = 'MAGIK-MSHARE-LP-MS pair';
+    uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
   return (
     <Card>
