@@ -1,5 +1,4 @@
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
-import axios from 'axios';
 import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@spiritswap/sdk';
 import { Fetcher, Route, Token } from '@spiritswap/sdk';
 import { Configuration } from './config';
@@ -906,25 +905,6 @@ export class MagikFinance {
   }
 
   
-  async getMimStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=mim');
-    return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
-      totalSupply: '0',
-      circulatingSupply: '0',
-    };
-  }
-
-   async getUsdcStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin-avalanche-bridged-usdc-e');
-    return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
-      totalSupply: '0',
-      circulatingSupply: '0',
-    };
-  }
 
   async getUserClaimRewardTime(): Promise<AllocationTime> {
     const { Masonry, Treasury } = this.contracts;
