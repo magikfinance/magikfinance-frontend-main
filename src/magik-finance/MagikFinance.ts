@@ -877,22 +877,7 @@ export class MagikFinance {
    * their reward from the masonry
    * @returns Promise<AllocationTime>
    */
-   async getTokenStat(tokenName: string): Promise<TokenStat> {
-    switch(tokenName) {
-      case 'USDC':
-        return this.getUsdcStat();
-      case 'MAGIK':
-        return this.getMagikStat();
-      case 'MSHARE':
-        return this.getShareStat();
-      case 'MIM':
-          return this.getMimStat();
-      case 'WFTM':
-          return this.getWftmStat();
-      default:
-        throw new Error(`Unknown token name: ${tokenName}`);
-    }
-  }
+
 
   async getWftmStat(): Promise<TokenStat> {
     const priceInDollars = await this.getWFTMPriceFromPancakeswap();
