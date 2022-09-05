@@ -1,4 +1,5 @@
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
+import axios from 'axios';
 import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@spiritswap/sdk';
 import { Fetcher, Route, Token } from '@spiritswap/sdk';
 import { Configuration } from './config';
@@ -31,6 +32,9 @@ export class MagikFinance {
   MAGIKREDLP: Contract;
   MAGIK: ERC20;
   MSHARE: ERC20;
+  WFTM: ERC20;
+  MIM: ERC20;
+  USDC: ERC20;
   MBOND: ERC20;
   XMAGIK: ERC20;
   FTM: ERC20;
@@ -51,11 +55,15 @@ export class MagikFinance {
     this.MAGIK = new ERC20(deployments.magik.address, provider, 'MAGIK');
     this.MSHARE = new ERC20(deployments.mShare.address, provider, 'MSHARE');
     this.MBOND = new ERC20(deployments.mBond.address, provider, 'MBOND');
-    this.FTM = this.externalTokens['WFTM'];
+    this.MIM = this.externalTokens['MIM'];
+    this.USDC = this.externalTokens['USDC'];
+    this.WFTM = this.externalTokens['WFTM'];
     this.XMAGIK = new ERC20(deployments.xMAGIK.address, provider, 'XMAGIK');
+    
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['MAGIK-FTM-LP'][0], IUniswapV2PairABI, provider);
+
 
     this.config = cfg;
     this.provider = provider;
@@ -151,6 +159,29 @@ export class MagikFinance {
     };
   }
 
+  async getLPStat2(name: string): Promise<LPStat> {
+    let lpToken = this.externalTokens[name];
+    let lpTokenSupplyBN = await lpToken.totalSupply();
+    let lpTokenSupply = getDisplayBalance(lpTokenSupplyBN, lpToken.decimal, lpToken.decimal / 2);
+    let token0 =  name.startsWith('MAGIK') ? this.MAGIK : this.MSHARE; // name === 'WLRS-USDC-LP' ? this.TOMB : this.TSHARE;
+    let isTomb = name.startsWith('MAGIK'); // name === 'WLRS-USDC-LP';
+    let tokenAmountBN = await token0.balanceOf(lpToken.address);
+    let tokenAmount = getDisplayBalance(tokenAmountBN, token0.decimal);
+    let ftmAmountBN = await this.FTM.balanceOf(lpToken.address);
+    let ftmAmount = getDisplayBalance(ftmAmountBN, this.FTM.decimal);
+    let tokenAmountInOneLP = Number(tokenAmount) / Number(lpTokenSupply) / 10**6;
+    let ftmAmountInOneLP = Number(ftmAmount) / Number(lpTokenSupply) / 10**6;
+    let lpTokenPrice = await this.getLPTokenPrice(lpToken, token0, isTomb);
+    let lpTokenPriceFixed = Number(lpTokenPrice).toFixed(2).toString();
+    let liquidity = (Number(lpTokenSupply) * Number(lpTokenPrice) * 10**6).toFixed(2).toString();
+    return {
+      tokenAmount: tokenAmountInOneLP.toFixed(2).toString(),
+      ftmAmount: ftmAmountInOneLP.toFixed(2).toString(),
+      priceOfOne: lpTokenPriceFixed,
+      totalLiquidity: liquidity,
+      totalSupply: Number(lpTokenSupply).toFixed(9).toString(),
+    };
+  }
   /**
    * Use this method to get price for Magik
    * @returns TokenStat for MBOND
@@ -403,16 +434,23 @@ export class MagikFinance {
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
-      return rewardPerSecond.mul(1000).div(59500);
+      return rewardPerSecond.mul(595).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(16000).div(59500);
+      return rewardPerSecond.mul(14875).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(22000).div(59500);
-      console.log()
-    } if (depositTokenName ===('MAGIK-FTM-LP RED')) {
-      return rewardPerSecond.mul(0).div(59500);
+      return rewardPerSecond.mul(10710).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
       return rewardPerSecond.mul(100).div(59500);
+    } if (depositTokenName ===('MAGIK-FTM-MS')) {
+      return rewardPerSecond.mul(5950).div(59500);
+    } if (depositTokenName.startsWith('MAGIK-MSHARE-LP-MS')) {
+      return rewardPerSecond.mul(2380).div(59500);
+    } if (depositTokenName.startsWith('MSHARE-FTM-MS')) {
+      return rewardPerSecond.mul(9520).div(59500);
+    } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
+      return rewardPerSecond.mul(5950).div(59500);
+    } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
+      return rewardPerSecond.mul(9520).div(59500);
     }
     
     
@@ -428,7 +466,8 @@ export class MagikFinance {
       : await this.getShareStat();
     const priceOfToken = stat.priceInDollars;
     console.log(priceOfToken)
-    const tokenInLP = Number(tokenSupply) / Number(totalSupply);
+    console.log(lpToken.address)
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply)// NOTE: hot fix
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     console.log(tokenPrice)
@@ -450,19 +489,36 @@ export class MagikFinance {
       tokenPrice = priceOfOneFtmInDollars;
     } else {
       if (tokenName === 'MAGIK-FTM-LP') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MAGIK, true);
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
       } else if (tokenName === 'MSHARE-FTM-LP') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MAGIK-FTM-LP RED') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MAGIK-FTM-MS') {
         tokenPrice = await this.getLPV2TokenPrice(
           token,
           this.MAGIK,
           true
         );
-      } else if (tokenName === 'MSHARE-FTM-LP RED') {
-        tokenPrice = await this.getLPTokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MAGIK-MIM-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
+      } else if (tokenName === 'MAGIK-USDC-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
+      } else if (tokenName === 'MSHARE-MIM-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MSHARE-FTM-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MAGIK-MSHARE-LP-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
+      } else if (tokenName === 'MSHARE-USDC-LP-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.USDC, false);
+      } else if (tokenName === 'MIM-USDC-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MIM, false);
+      } else if (tokenName === 'MIM-FTM-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.MIM, false);
+      } else if (tokenName === 'USDC-FTM-MS') {
+        tokenPrice = await this.getLPV2TokenPrice(token, this.FTM, false);
+        
       } else if (tokenName === 'SHIBA') {
         tokenPrice = await this.getTokenPriceFromSpiritswap(token);
       } else {
@@ -536,13 +592,14 @@ export class MagikFinance {
    * @param isTomb sanity check for usage of magik token or mShare
    * @returns price of the LP token
    */
-  async getLPTokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
+   async getLPTokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
     //Get amount of tokenA
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    const stat = isTomb === true ? await this.getMagikStat() : await this.getShareStat();
+    // const stat = isTomb === true ? await this.getTombStat() : await this.getShareStat();
+    const stat = await this.getTokenStat(token.symbol);
     const priceOfToken = stat.priceInDollars;
-    const tokenInLP = Number(tokenSupply) / Number(totalSupply);
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply)  // NOTE: hot fix
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     return tokenPrice;
@@ -821,6 +878,54 @@ export class MagikFinance {
    * their reward from the masonry
    * @returns Promise<AllocationTime>
    */
+   async getTokenStat(tokenName: string): Promise<TokenStat> {
+    switch(tokenName) {
+      case 'USDC':
+        return this.getUsdcStat();
+      case 'MAGIK':
+        return this.getMagikStat();
+      case 'MSHARE':
+        return this.getShareStat();
+      case 'MIM':
+          return this.getMimStat();
+      case 'WFTM':
+          return this.getWftmStat();
+      default:
+        throw new Error(`Unknown token name: ${tokenName}`);
+    }
+  }
+
+  async getWftmStat(): Promise<TokenStat> {
+    const priceInDollars = await this.getWFTMPriceFromPancakeswap();
+    return {
+      tokenInFtm: priceInDollars,
+      priceInDollars,
+      totalSupply: '0',
+      circulatingSupply: '0',
+    };
+  }
+
+  
+  async getMimStat(): Promise<TokenStat> {
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=mim');
+    return {
+      tokenInFtm: data[0].current_price,
+      priceInDollars: data[0].current_price,
+      totalSupply: '0',
+      circulatingSupply: '0',
+    };
+  }
+
+   async getUsdcStat(): Promise<TokenStat> {
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin-avalanche-bridged-usdc-e');
+    return {
+      tokenInFtm: data[0].current_price,
+      priceInDollars: data[0].current_price,
+      totalSupply: '0',
+      circulatingSupply: '0',
+    };
+  }
+
   async getUserClaimRewardTime(): Promise<AllocationTime> {
     const { Masonry, Treasury } = this.contracts;
     const nextEpochTimestamp = await Masonry.nextEpochPoint(); //in unix timestamp
@@ -845,6 +950,22 @@ export class MagikFinance {
         .add(delta * periodInHours, 'hours')
         .toDate();
       return { from: fromDate, to: endDate };
+    }
+  }
+  async getMimPriceFromPancakeswap(): Promise<string> {
+    const ready = await this.provider.ready;
+    if (!ready) return;
+    const avaxPrice = await this.getWFTMPriceFromPancakeswap();
+    const {MIM, WFTM} = this.externalTokens;
+    try {
+      const busd_eth_lp_pair = this.externalTokens['MIM-FTM-MS'];
+      let eth_amount_BN = await WFTM.balanceOf(busd_eth_lp_pair.address);
+      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WFTM.decimal));
+      let busd_amount_BN = await MIM.balanceOf(busd_eth_lp_pair.address);
+      let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, MIM.decimal));
+      return (busd_amount / eth_amount / Number(avaxPrice)).toString();
+    } catch (err) {
+      console.error(`Failed to fetch token price of ETH: ${err}`);
     }
   }
 
