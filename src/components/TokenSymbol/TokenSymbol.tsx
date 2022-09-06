@@ -42,7 +42,7 @@ const logosBySymbol: { [title: string]: string } = {
   'MSHARE-FTM-MS': tshareFtmLpLogo,
   'MSHARE-FTM-LP': tshareFtmLpLogo,
   'MAGIK-MSHARE-LP': magikmshareLogo,
-  'MAGIK-MSHARE-LP-MS': magikmshareLogo,
+  'MS-MAGIK-MSHARE': magikmshareLogo,
   'MSHARE-USDC-LP-MS': mshareusdclogo,
   'MAGIK-MIM-MS': magikmimlogo,
   'MSHARE-MIM-MS': msharemimlogo,

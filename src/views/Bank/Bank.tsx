@@ -127,8 +127,8 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MSHARE-FTM-LP-MS pair';
     uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
-  if (bank.depositTokenName.includes('MAGIK-MSHARE-LP-MS')) {
-    pairName = 'MAGIK-MSHARE-LP-MS pair';
+  if (bank.depositTokenName.includes('MS-MAGIK-MSHARE')) {
+    pairName = 'MS-MAGIK-MSHARE pair';
     uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
   if (bank.depositTokenName.includes('MAGIK-MIM-MS')) {
