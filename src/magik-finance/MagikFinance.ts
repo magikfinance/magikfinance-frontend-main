@@ -440,7 +440,7 @@ export class MagikFinance {
       return rewardPerSecond.mul(10710).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
       return rewardPerSecond.mul(100).div(59500);
-    } if (depositTokenName ===('MAGIK-FTM-MS')) {
+    } if (depositTokenName ===('MSMAGIK-FTM-MS')) {
       return rewardPerSecond.mul(5950).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MSHARE-LP-MS')) {
       return rewardPerSecond.mul(2380).div(59500);
@@ -493,8 +493,8 @@ export class MagikFinance {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MAGIK-FTM-MS') {
-        tokenPrice = await this.getLPV2TokenPrice(
+      } else if (tokenName === 'MSMAGIK-FTM-MS') {
+        tokenPrice = await this.getLPTokenPrice(
           token,
           this.MAGIK,
           true
@@ -591,14 +591,13 @@ export class MagikFinance {
    * @param isTomb sanity check for usage of magik token or mShare
    * @returns price of the LP token
    */
-   async getLPTokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
+  async getLPTokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
     //Get amount of tokenA
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    // const stat = isTomb === true ? await this.getTombStat() : await this.getShareStat();
-    const stat = await this.getTokenStat(token.symbol);
+    const stat = isTomb === true ? await this.getMagikStat() : await this.getShareStat();
     const priceOfToken = stat.priceInDollars;
-    const tokenInLP = Number(tokenSupply) / Number(totalSupply)  // NOTE: hot fix
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply);
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     return tokenPrice;
