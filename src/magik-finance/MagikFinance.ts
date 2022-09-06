@@ -446,7 +446,7 @@ export class MagikFinance {
       return rewardPerSecond.mul(1190).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-MS')) {
       return rewardPerSecond.mul(14775).div(59500);
-    } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
+    } if (depositTokenName.startsWith('MS-MAGIK-MIM')) {
       return rewardPerSecond.mul(7140).div(59500);
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
       return rewardPerSecond.mul(11900).div(59500);
@@ -499,7 +499,7 @@ export class MagikFinance {
           this.MAGIK,
           true
         );
-      } else if (tokenName === 'MAGIK-MIM-MS') {
+      } else if (tokenName === 'MS-MAGIK-MIM') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
       } else if (tokenName === 'MAGIK-USDC-MS') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
