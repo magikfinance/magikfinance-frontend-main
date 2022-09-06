@@ -433,23 +433,23 @@ export class MagikFinance {
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
     if (depositTokenName.startsWith('MAGIK-MSHARE-LP')) {
-      return rewardPerSecond.mul(595).div(59500);
+      return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-LP')) {
-      return rewardPerSecond.mul(14875).div(59500);
+      return rewardPerSecond.mul(8925).div(59500);
     } if (depositTokenName.startsWith('MAGIK-FTM-LP')) {
-      return rewardPerSecond.mul(10710).div(59500);
+      return rewardPerSecond.mul(5950).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
       return rewardPerSecond.mul(100).div(59500);
     } if (depositTokenName ===('MSMAGIK-FTM-MS')) {
-      return rewardPerSecond.mul(5950).div(59500);
+      return rewardPerSecond.mul(9520).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MSHARE-LP-MS')) {
-      return rewardPerSecond.mul(2380).div(59500);
+      return rewardPerSecond.mul(1190).div(59500);
     } if (depositTokenName.startsWith('MSHARE-FTM-MS')) {
-      return rewardPerSecond.mul(9520).div(59500);
+      return rewardPerSecond.mul(14775).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
-      return rewardPerSecond.mul(5950).div(59500);
+      return rewardPerSecond.mul(7140).div(59500);
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
-      return rewardPerSecond.mul(9520).div(59500);
+      return rewardPerSecond.mul(11900).div(59500);
     }
     
     
