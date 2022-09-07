@@ -38,7 +38,7 @@ const logosBySymbol: { [title: string]: string } = {
   SHIBA: shibaLogo,
   ZOO: zooLogo,
   'MAGIK-FTM-LP': tombFtmLpLogo,
-  'MSMAGIK-FTM-MS': tombFtmLpLogo,
+  'MS-MAGIK-FTM': tombFtmLpLogo,
   'MSHARE-FTM-MS': tshareFtmLpLogo,
   'MSHARE-FTM-LP': tshareFtmLpLogo,
   'MAGIK-MSHARE-LP': magikmshareLogo,
