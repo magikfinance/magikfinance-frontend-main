@@ -41,6 +41,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
   const tokenBalance = useTokenBalance(bank.depositToken);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
+  console.log(stakedTokenPriceInDollars)
 
   const tokenPriceInDollars = useMemo(
     () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
@@ -48,9 +49,12 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
 
   );
   console.log(tokenPriceInDollars)
-  const earnedInDollars = (
-    Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
-  ).toFixed(2);
+  const multiplier = (bank.depositTokenName.includes('MSHARE-USDC-LP-MS') || 
+    bank.depositTokenName.includes('MIM-USDC-MS')) 
+    ? 10**6 : 1;
+
+  const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
+
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
   const { onWithdraw } = useWithdraw(bank);
@@ -92,6 +96,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
       tokenName={bank.depositTokenName}
     />,
   );
+  const stakedBalanceNumber = Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9));
 
   return (
     <Card>
@@ -101,7 +106,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
             <CardIcon>
               <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
             </CardIcon>
-            <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
+            <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} /> 
             <Label text={`≈ $${earnedInDollars}`} color="primary"/>
             <Label text={`${bank.depositTokenName} Staked`} color="primary" />
           </StyledCardHeader>
