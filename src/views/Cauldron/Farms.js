@@ -2,11 +2,10 @@ import React from 'react';
 import { useWallet } from 'use-wallet';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Bank from '../Bank';
-
 import { Box, Container, Typography, Grid } from '@material-ui/core';
 
 import { Alert } from '@material-ui/lab';
-
+import styled from 'styled-components';
 import UnlockWallet from '../../components/UnlockWallet';
 import Page from '../../components/Page';
 import CauldronCard from './CauldronCard';
@@ -15,6 +14,11 @@ import { createGlobalStyle } from 'styled-components';
 
 import useBanks from '../../hooks/useBanks';
 
+const StyledLink = styled.a`
+    font-weight: 700;
+    text-decoration: none;
+    color:purple
+  `;
 const BackgroundImage = createGlobalStyle`
   body {
     background: url(${CauldronImage}) no-repeat !important;
@@ -39,10 +43,30 @@ const Farms = () => {
               </Typography>
 
               <Box mt={5}>
+              <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 3).length === 0} mt={2} mb={4}>
+                  <Typography color="textPrimary" variant="h4" gutterBottom>
+                    Earn MShare by staking LPs!
+                    
+                  </Typography> 
+                  <Typography color="textPrimary" variant="h6" gutterBottom>
+                    Add liquidity on MagikSwap <StyledLink target="_blank" href="https://magikswap.dog/add">here</StyledLink>!
+                  </Typography>
+                  <Grid container spacing={3} style={{marginBottom:'2%'}}>
+                    {activeBanks
+                      .filter((bank) => bank.sectionInUI === 3)
+                      .map((bank) => (
+                        <React.Fragment key={bank.name}>
+                          <CauldronCard bank={bank} />
+                        </React.Fragment>
+                      ))}
+                  </Grid>
+                </div>
+
                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 2).length === 0}>
                   <Typography color="textPrimary" variant="h4" gutterBottom>
-                    Earn MSHARE by staking LP
+                    Deprecated LP Pools - please withdraw!  
                   </Typography>
+                 
                   <Grid container spacing={3}>
                     {activeBanks
                       .filter((bank) => bank.sectionInUI === 2)
@@ -53,6 +77,8 @@ const Farms = () => {
                       ))}
                   </Grid>
                 </div>
+
+                
 
                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 1).length === 0}>
                   <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '20px' }}>
