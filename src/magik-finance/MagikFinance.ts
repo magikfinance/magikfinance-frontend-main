@@ -459,20 +459,17 @@ export class MagikFinance {
   }
   async getLPV2TokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
-    console.log(totalSupply) // .0002 - correct 
-    //Get amount of tokenA
+    console.log(totalSupply)     //Get amount of tokenA
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    console.log(tokenSupply) // total supply of first token in the contract  110/3971 - mshare - correct
+    console.log(tokenSupply) 
     const stat = isTomb === true
       ? await this.getMagikStat()
       : await this.getShareStat();
     const priceOfToken = stat.priceInDollars;
-    console.log(priceOfToken) // 6.78 - correct
-    console.log(lpToken.address) // 0xb1 - correct 
-    const divider = ['MSHARE-USDC'].includes(token.symbol) 
-     ? 10 ** 6 : 1;
-    const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider;
-    console.log(tokenInLP) // 551985.5 
+    console.log(priceOfToken)
+    console.log(lpToken.address) 
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply);
+    console.log(tokenInLP) 
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     console.log(tokenPrice)
@@ -480,8 +477,8 @@ export class MagikFinance {
   }
   async getUSDCTokenPriceLP(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
-    console.log(totalSupply) // .0002 - correct 
-    //Get amount of tokenA
+    console.log(totalSupply) 
+    
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
     console.log(tokenSupply) // total supply of first token in the contract  110/3971 - mshare - correct
     const stat = isTomb === true
@@ -502,7 +499,7 @@ export class MagikFinance {
   // this fix will work for the pairs including magik and mshare. 
   //for pools not including either, an adjustment needs to be made above 
   //i.e. await this.getMimStat or whatever 
-  
+
   /**
    * Method to calculate the tokenPrice of the deposited asset in a pool/bank
    * If the deposited token is an LP it will find the price of its pieces
