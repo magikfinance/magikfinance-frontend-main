@@ -85,6 +85,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
         - 0 = Single asset stake pools
         - 1 = LP asset staking rewarding MAGIK
         - 2 = LP asset staking rewarding MSHARE
+        - 3 = LP asset staking rewarding MSHARE, on MagikSwap 
   contract: the contract name which will be loaded from the deployment.environmnet.json
   depositTokenName : the name of the token to be deposited
   earnTokenName: the rewarded token
@@ -138,7 +139,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   MSMagikFtmLPReward: {
     name: 'Earn MSHARE by MSMAGIK-FTM-MS',
     poolId: 6,
-    sectionInUI: 2,
+    sectionInUI: 3,
     contract: 'MSMagikFtmLPReward',
     depositTokenName: 'MSMAGIK-FTM-MS',
     earnTokenName: 'MSHARE',
@@ -149,7 +150,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   MshareFtmMSLP: {
     name: 'Earn MSHARE by MSHARE-FTM-MS',
     poolId: 7,
-    sectionInUI: 2,
+    sectionInUI: 3,
     contract: 'MshareFtmMSLP',
     depositTokenName: 'MSHARE-FTM-MS',
     earnTokenName: 'MSHARE',
@@ -160,7 +161,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     MagikMshareMSLP: {
     name: 'Earn MSHARE by MS-MAGIK-MSHARE',
     poolId: 8,
-    sectionInUI: 2,
+    sectionInUI: 3,
     contract: 'MagikMshareMSLP',
     depositTokenName: 'MS-MAGIK-MSHARE',
     earnTokenName: 'MSHARE',
@@ -182,7 +183,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   MagikMIMLPMS: {
     name: 'Earn MSHARE by MS-MAGIK-MIM',
     poolId: 9,
-    sectionInUI: 2,
+    sectionInUI: 3,
     contract: 'MagikMIMLPMS',
     depositTokenName: 'MS-MAGIK-MIM',
     earnTokenName: 'MSHARE',
@@ -193,7 +194,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   MshareMIMLPMS: {
     name: 'Earn MSHARE by MSHARE-MIM-MS',
     poolId: 10,
-    sectionInUI: 2,
+    sectionInUI: 3,
     contract: 'MshareMIMLPMS',
     depositTokenName: 'MSHARE-MIM-MS',
     earnTokenName: 'MSHARE',
