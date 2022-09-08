@@ -39,7 +39,9 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
 
   const { color: themeColor } = useContext(ThemeContext);
   const tokenBalance = useTokenBalance(bank.depositToken);
+  console.log(tokenBalance)
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
+  console.log(stakedBalance)
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
   console.log(stakedTokenPriceInDollars)
 
@@ -50,10 +52,15 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
   );
   console.log(tokenPriceInDollars)
   const multiplier = (bank.depositTokenName.includes('MSHARE-USDC-LP-MS') || 
-    bank.depositTokenName.includes('MIM-USDC-MS')) 
+    bank.depositTokenName.includes('MIM-USDC-MS')) || 
+    bank.depositTokenName.includes('MAGIK-USDC-MS') ||
+    bank.depositTokenName.includes('MIM-USDC-MS') || 
+    bank.depositTokenName.includes('USDC-FTM-MS') 
+
     ? 10**6 : 1;
 
-  const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
+  const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, 
+    bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
 
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
