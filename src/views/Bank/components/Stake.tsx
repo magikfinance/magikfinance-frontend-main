@@ -2,16 +2,15 @@ import React, { useMemo, useContext } from 'react';
 import styled from 'styled-components';
 
 // import Button from '../../../components/Button';
-import { Button, Card, CardContent } from '@material-ui/core';
-// import Card from '../../../components/Card';
+import { Button, CardContent /*, Grid */ } from '@material-ui/core';
+import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
-import CardIcon from '../../../components/CardIcon';
+// import CardIcon from '../../../components/CardIcon';
 import { AddIcon, RemoveIcon } from '../../../components/icons';
-import FlashOnIcon from '@material-ui/icons/FlashOn';
 import IconButton from '../../../components/IconButton';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
-import { ThemeContext } from 'styled-components';
+import FlashOnIcon from '@material-ui/icons/FlashOn';
 
 import useApprove, { ApprovalState } from '../../../hooks/useApprove';
 import useModal from '../../../hooks/useModal';
@@ -33,24 +32,30 @@ import { Bank } from '../../../magik-finance';
 interface StakeProps {
   bank: Bank;
 }
+const HomeCardBlue = styled.div`
+background: linear-gradient(0deg, rgba(217,237,254,1) 0%, rgba(214,211,242,1) 66%, rgba(186,185,212,1) 100%);
+border-radius: 50px;  
+  box-shadow: 6px 6px 12px black; 
+  padding: 20px; 
+  color: #4b4453;
+`;
+
 
 const Stake: React.FC<StakeProps> = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
-  const { color: themeColor } = useContext(ThemeContext);
+  // const { color: themeColor } = useContext(ThemeContext);
   const tokenBalance = useTokenBalance(bank.depositToken);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
-
+  console.log(stakedTokenPriceInDollars)
   const tokenPriceInDollars = useMemo(
     () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
     [stakedTokenPriceInDollars],
-
   );
-  console.log(tokenPriceInDollars)
-  const earnedInDollars = (
-    Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
-  ).toFixed(2);
+
+  const multiplier = (bank.depositTokenName.includes('MAGIK') || bank.depositTokenName.includes('MSHARE-USDC'))  && !bank.depositTokenName.includes('WLRS-USDIBS-LP') && !bank.depositTokenName.includes('XWLRS') ? 10**6 : 1;
+  const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
   const { onWithdraw } = useWithdraw(bank);
@@ -80,6 +85,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     />,
   );
 
+
   const [onPresentWithdraw, onDismissWithdraw] = useModal(
     <WithdrawModal
       max={stakedBalance}
@@ -93,17 +99,17 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     />,
   );
 
+  const stakedBalanceNumber = Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9));
   return (
-    <Card>
+    <HomeCardBlue>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>
-              <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
-            </CardIcon>
-            <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
-            <Label text={`≈ $${earnedInDollars}`} color="primary"/>
-            <Label text={`${bank.depositTokenName} Staked`} color="primary" />
+            <TokenSymbol symbol={bank.depositToken.symbol} size={100} />
+            <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} /> 
+            <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
+            <Label color="rgba(74, 68, 82)" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? 
+            bank.depositTokenName + '.e' : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -116,35 +122,53 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                 onClick={approve}
                 color="primary"
                 variant="contained"
-                style={{ marginTop: '20px' }}
+                style={{ marginTop: '65px', borderRadius: '15px', width: '250px' }}
               >
-                {`Approve ${bank.depositTokenName}`}
+                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC.e')}`}
               </Button>
             ) : (
               <>
-                <IconButton onClick={onPresentWithdraw}>
-                  <RemoveIcon />
-                </IconButton>
-                <StyledActionSpacer />
-                <IconButton
-                  disabled={true}
-                  onClick={() => (bank.closedForStaking ? null : onPresentZap())}
-                >
-                  <FlashOnIcon style={{ color: themeColor.grey[400] }} />
-                </IconButton>
-                <StyledActionSpacer />
-                <IconButton
-                  disabled={bank.closedForStaking}
-                  onClick={() => (bank.closedForStaking ? null : onPresentDeposit())}
-                >
-                  <AddIcon />
-                </IconButton>
+                <StyledCardActions2>
+                  <IconButton onClick={onPresentWithdraw}>
+                    <RemoveIcon />
+                  </IconButton>
+                  <StyledActionSpacer />
+                  {
+                    // bank.depositTokenName !== 'WLRS-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP' && bank.depositTokenName !== 'WLRS-USDIBS-LP'
+                    bank.depositTokenName !== 'MS-MAGIK-USDC' && bank.depositTokenName !== 'WSHARE-USDC-LP'
+                      ? null
+                      : <IconButton
+                          disabled={bank.closedForStaking}
+                          onClick={() => (bank.closedForStaking ? null : onPresentZap())}
+                        >
+                          <FlashOnIcon style={{color: '#ccc'}} />
+                        </IconButton>
+                  }
+                  {
+                    bank.depositTokenName === 'NRWL-YUSD-LP'
+                      ? <IconButton
+                          
+                          disabled={bank.closedForStaking}
+                          onClick={() => (bank.closedForStaking ? null : onPresentZap())}
+                        >
+                          <FlashOnIcon style={{color: '#ccc'}} />
+                        </IconButton>
+                      : null
+                  }
+                  <StyledActionSpacer />
+                  <IconButton
+                    disabled={bank.closedForStaking}
+                    onClick={() => (bank.closedForStaking ? null : onPresentDeposit())}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </StyledCardActions2>
               </>
             )}
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCardBlue>
   );
 };
 
@@ -159,10 +183,16 @@ const StyledCardActions = styled.div`
   margin-top: 28px;
   width: 100%;
 `;
+const StyledCardActions2 = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  width: 100%;
+`;
 
 const StyledActionSpacer = styled.div`
   height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
+  width: ${(props) => props.theme.spacing[5]}px;
 `;
 
 const StyledCardContentInner = styled.div`
