@@ -18,7 +18,7 @@ export const getDisplayBalance = (
 };
 
 export const getFullDisplayBalance = (balance: BigNumber, decimals = 18, isTruncated = false) => {
-  return getDisplayBalance(balance, decimals, 4, isTruncated);
+  return getDisplayBalance(balance, decimals, decimals === 18 ? 9 : 4, isTruncated);
 };
 
 export function getBalance(balance: BigNumber, decimals = 18): number {

@@ -273,8 +273,8 @@ export class MagikFinance {
     const depositToken = bank.depositToken;
     const poolContract = this.contracts[bank.contract];
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
-    const stakeInPool = await depositToken.balanceOf(bank.address);
-    const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
+    const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC') ? 10**6 : 1);
+    const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
     const stat = bank.earnTokenName === 'MAGIK' ? await this.getMagikStat() : await this.getShareStat();
     const tokenPerSecond = await this.getTokenPerSecond(
       bank.earnTokenName,
@@ -441,16 +441,20 @@ export class MagikFinance {
       return rewardPerSecond.mul(10710).div(59500);
     } if (depositTokenName.startsWith('MAGIK')) {
       return rewardPerSecond.mul(100).div(59500);
-    } if (depositTokenName ===('MAGIK-FTM-MS')) {
-      return rewardPerSecond.mul(5950).div(59500);
-    } if (depositTokenName.startsWith('MAGIK-MSHARE-LP-MS')) {
-      return rewardPerSecond.mul(2380).div(59500);
-    } if (depositTokenName.startsWith('MSHARE-FTM-MS')) {
-      return rewardPerSecond.mul(9520).div(59500);
+    } if (depositTokenName ===('MS-MAGIK-FTM')) {
+      return rewardPerSecond.mul(3570).div(59500);
+    } if (depositTokenName.startsWith('MS-MAGIK-MSHARE-LP')) {
+      return rewardPerSecond.mul(0).div(59500);
+    } if (depositTokenName.startsWith('MS-MSHARE-FTM')) {
+      return rewardPerSecond.mul(4760).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
-      return rewardPerSecond.mul(5950).div(59500);
+      return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
-      return rewardPerSecond.mul(9520).div(59500);
+      return rewardPerSecond.mul(0).div(59500);
+    } if (depositTokenName.startsWith('MS-MAGIK-USDC')) {
+      return rewardPerSecond.mul(23800).div(59500);
+    } if (depositTokenName.startsWith('MS-MSHARE-USDC')) {
+      return rewardPerSecond.mul(27370).div(59500);
     }
     
     
@@ -521,7 +525,7 @@ export class MagikFinance {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
       } else if (tokenName === 'MAGIK-MSHARE-LP') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MAGIK-FTM-MS') {
+      } else if (tokenName === 'MS-MAGIK-FTM') {
         tokenPrice = await this.getLPV2TokenPrice(
           token,
           this.MAGIK,
@@ -529,15 +533,15 @@ export class MagikFinance {
         );
       } else if (tokenName === 'MAGIK-MIM-MS') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MAGIK, true);
-      } else if (tokenName === 'MAGIK-USDC-MS') {
+      } else if (tokenName === 'MS-MAGIK-USDC') {
         tokenPrice = await this.getUSDCTokenPriceLP(token, this.MAGIK, true);
       } else if (tokenName === 'MSHARE-MIM-MS') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MSHARE-FTM-MS') {
+      } else if (tokenName === 'MS-MSHARE-FTM') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MAGIK-MSHARE-LP-MS') {
+      } else if (tokenName === 'MS-MAGIK-MSHARE-LP') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MSHARE, false);
-      } else if (tokenName === 'MSHARE-USDC-LP-MS') {
+      } else if (tokenName === 'MS-MSHARE-USDC') {
         tokenPrice = await this.getUSDCTokenPriceLP(token, this.MSHARE, false);
       } else if (tokenName === 'MIM-USDC-MS') {
         tokenPrice = await this.getLPV2TokenPrice(token, this.MIM, false);

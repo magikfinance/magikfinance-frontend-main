@@ -119,16 +119,16 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
     pairName = 'MAGIK-MSHARE pair';
     uniswapUrl = 'https://swap.spiritswap.finance/#/add/FTM/0x87a5C9B60A3aaf1064006FE64285018e50e0d020' ;
   }
-  if (bank.depositTokenName.includes('MAGIK-FTM-MS')) {
-    pairName = 'MAGIK-FTM-MS pair';
+  if (bank.depositTokenName.includes('MS-MAGIK-FTM')) {
+    pairName = 'MS-MAGIK-FTM pair';
     uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
-  if (bank.depositTokenName.includes('MSHARE-FTM-MS')) {
+  if (bank.depositTokenName.includes('MS-MSHARE-FTM')) {
     pairName = 'MSHARE-FTM-LP-MS pair';
     uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
-  if (bank.depositTokenName.includes('MAGIK-MSHARE-LP-MS')) {
-    pairName = 'MAGIK-MSHARE-LP-MS pair';
+  if (bank.depositTokenName.includes('MS-MAGIK-MSHARE-LP')) {
+    pairName = 'MS-MAGIK-MSHARE-LP pair';
     uniswapUrl = 'https://magikswap.dog/liquidity/' ;
   }
   if (bank.depositTokenName.includes('MAGIK-MIM-MS')) {
