@@ -62,8 +62,8 @@ const Home = () => {
     mShare = mShareProd;
   }
 
-  const buyTombAddress = 'https://swap.spiritswap.finance/#/exchange/swap/FTM/0x87a5c9b60a3aaf1064006fe64285018e50e0d020'
-  const buyTShareAddress = 'https://swap.spiritswap.finance/#/exchange/swap/FTM/0xc8ca9026ad0882133ef126824f6852567c571a4e';
+  const buyTombAddress = 'https://magikswap.dog/swap'
+  const buyTShareAddress = 'https://magikswap.dog/swap';
   const MagikChart = 'https://dexscreener.com/fantom/0xdc71a6160322ad78dab0abb47c7a581cfe9709ee';
   const MshareChart = 'https://dexscreener.com/fantom/0x392c85ceccf9855986b0044a365a5532aec6fa31';
 
