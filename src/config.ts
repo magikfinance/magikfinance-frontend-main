@@ -187,7 +187,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'MshareUSDCLPMS',
     depositTokenName: 'MS-MSHARE-USDC',
     earnTokenName: 'MSHARE',
-    finished: true,
+    finished: false,
     sort: 5,
     closedForStaking: false,
   },
