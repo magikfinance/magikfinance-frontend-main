@@ -54,7 +54,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     [stakedTokenPriceInDollars],
   );
 
-  const multiplier = (bank.depositTokenName.includes('MAGIK') || bank.depositTokenName.includes('MSHARE-USDC'))  && !bank.depositTokenName.includes('WLRS-USDIBS-LP') && !bank.depositTokenName.includes('XWLRS') ? 10**6 : 1;
+  const multiplier = (bank.depositTokenName.includes('MS-MAGIK-USDC') || bank.depositTokenName.includes('MSHARE-USDC'))  && !bank.depositTokenName.includes('WLRS-USDIBS-LP') && !bank.depositTokenName.includes('XWLRS') ? 10**6 : 1;
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
