@@ -292,6 +292,7 @@ export class MagikFinance {
       Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
     const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
     const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
+    console.log(yearlyAPR, "yearlyapr")
     return {
       dailyAPR: dailyAPR.toFixed(2).toString(),
       yearlyAPR: yearlyAPR.toFixed(2).toString(),
@@ -446,15 +447,15 @@ export class MagikFinance {
     } if (depositTokenName.startsWith('MS-MAGIK-MSHARE-LP')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MS-MSHARE-FTM')) {
-      return rewardPerSecond.mul(1785).div(59500);
+      return rewardPerSecond.mul(1190).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MS-MAGIK-USDC')) {
-      return rewardPerSecond.mul(32725).div(59500);
+      return rewardPerSecond.mul(35700).div(59500);
     } if (depositTokenName.startsWith('MS-MSHARE-USDC')) {
-      return rewardPerSecond.mul(23800).div(59500);
+      return rewardPerSecond.mul(21420).div(59500);
     }
     
     
