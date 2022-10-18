@@ -16,7 +16,7 @@ import PitImage from '../../assets/img/dungeon.png';;
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${PitImage}) no-repeat !important;
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
   }
 `;

@@ -14,7 +14,7 @@ import useHarvestFromMasonry from '../../../hooks/useHarvestFromMasonry';
 import useEarningsOnMasonry from '../../../hooks/useEarningsOnMasonry';
 import useMagikStats from '../../../hooks/useMagikStats';
 import { getDisplayBalance } from '../../../utils/formatBalance';
-
+import '../../Home/home.css'
 const Harvest: React.FC = () => {
   const tombStats = useMagikStats();
   const { onReward } = useHarvestFromMasonry();
@@ -46,8 +46,7 @@ const Harvest: React.FC = () => {
             <StyledCardActions>
               <Button
                 onClick={onReward}
-                color="primary"
-                variant="contained"
+                id="Button"
                 disabled={earnings.eq(0) || !canClaimReward}
               >
                 Claim Reward

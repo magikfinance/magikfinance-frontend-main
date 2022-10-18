@@ -21,7 +21,7 @@ const StyledLink = styled.a`
   `;
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${CauldronImage}) no-repeat !important;
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
   }
 `;
@@ -38,18 +38,17 @@ const Farms = () => {
           <BackgroundImage />
           {!!account ? (
             <Container maxWidth="lg">
-              <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-                Farms
+              <Typography align="center" gutterBottom>
+                <h1 style={{color:"rgb(255,232,132)"}}>Farms</h1>
               </Typography>
 
               <Box mt={5}>
               <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 3).length === 0} mt={2} mb={4}>
                   <Typography color="textPrimary" variant="h4" gutterBottom>
                     Earn MShare by staking LPs!
-                    
                   </Typography> 
                   <Typography color="textPrimary" variant="h6" gutterBottom>
-                    Add liquidity on MagikSwap <StyledLink target="_blank" href="https://magikswap.dog/add">here</StyledLink>!
+                    Add liquidity on MagikSwap <a style={{color:"rgb(255,232,132)",textDecoration:"none"}} href="https://magikswap.dog/add">here</a>!
                   </Typography>
                   <Grid container spacing={3} style={{marginBottom:'2%'}}>
                     {activeBanks

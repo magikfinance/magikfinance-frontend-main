@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import Page from '../../components/Page';
-import HomeImage from '../../assets/img/home.png';
 import CashImage from '../../assets/img/crypto_tomb_cash.png';
 import Image from 'material-ui-image';
 import styled from 'styled-components';
@@ -18,9 +17,8 @@ import usemShareStats from '../../hooks/usemShareStats';
 import useTotalValueLocked from '../../hooks/useTotalValueLocked';
 import { magik as magikTesting, mShare as mShareTesting } from '../../magik-finance/deployments/deployments.testing.json';
 import { magik as magikProd, mShare as mShareProd } from '../../magik-finance/deployments/deployments.mainnet.json';
-
 import MetamaskFox from '../../assets/img/metamask-fox.svg';
-
+import './home.css';
 import { Box, Button, Card, CardContent, Grid, Paper } from '@material-ui/core';
 import ZapModal from '../Bank/components/ZapModal';
 
@@ -29,7 +27,7 @@ import useMagikFinance from '../../hooks/useMagikFinance';
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${HomeImage}) no-repeat !important;
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
   }
 `;
@@ -138,37 +136,23 @@ const Home = () => {
   return (
     <Page>
       <BackgroundImage />
-      <Grid container spacing={3}>
+      <Grid container alignItems="center" spacing={3}>
         {/* Logo */}
         <Grid container item xs={12} sm={4} justify="center">
           {/* <Paper>xs=6 sm=3</Paper> */}
-          <Image color="none" style={{ width: '300px', paddingTop: '0px' }} src={CashImage} />
+          <Image color="none" style={{ width: '300px', height:'400px', paddingTop: '0px' }} src={CashImage} />
         </Grid>
-        {/* Explanation text */}
-        <Grid item xs={12} sm={8}>
+        {/*hero Card*/}
+        <Grid id="Grid" item xs={12} sm={8}>
           <Paper>
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
-              <p>Magik is real. Tomb Fork with steady growth pegged to FTM brought back from the dead by the community</p>
-              <p> Renounced Ownerhip: Please visit <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here to view our renounced ownership transactions.</StyledLink>
-                <p> </p>Renouncing ownership means we cannot mint any new coins, making our protocol practically rug proof. We are here to stay!
-              </p>
+              <p>MAGIK is real. A token with steady growth pegged to FTM brought back from the dead by the community!</p>
+              <p>MAGIK is Community Based: Please visit <a style={{color:"rgb(255,232,132)",textDecoration:"none"}} href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here</a> to view our Renounced Ownership transactions.</p>
+              <p>Renouncing ownership means we cannot mint any new tokens, making our protocol practically Rug-proof! We are here to stay fellow wizards!</p>
             </Box>
           </Paper>
-
-
-
         </Grid>
-
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
-            <Alert variant="filled" severity="warning">
-              <b>
-                Please visit our <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/">documentation</StyledLink> before purchasing/staking MAGIK or MSHARE!</b>
-            </Alert>
-          </Grid>
-        </Grid>
-
         {/* TVL */}
         <Grid item xs={12} sm={4}>
           <Card>
@@ -178,41 +162,38 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-
         {/* Wallet */}
         <Grid item xs={12} sm={8}>
           <Card style={{ height: '100%' }}>
-            <CardContent align="center" style={{ marginTop: '2.5%' }}>
+            <CardContent align="center" style={{ marginTop: '2.5%', display:"grid", gridTemplateColumns:"1fr 1fr", gap:"10px" }}>
               {/* <h2 style={{ marginBottom: '20px' }}>Wallet Balance</h2> */}
-              <Button color="primary" href="/dungeon" variant="contained" style={{ marginRight: '5px' }}>
+              <Button id="Button" href="/dungeon" style={{ marginRight: '5px' }}>
                 Stake Now
               </Button>
-              <Button color="primary" href="/farms" variant="contained" style={{ marginRight: '5px' }}>
+              <Button id="Button" href="/farms" style={{ marginRight: '5px' }}>
                 Farm Now
               </Button>
               <Button
-                color="primary"
+                id="Button"
                 target="_blank"
                 href={buyTombAddress}
-                variant="contained"
                 style={{ marginRight: '5px' }}
                 className={classes.button}
               >
                 Buy MAGIK
               </Button>
-              <Button color="primary" variant="contained" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
+              <Button id="Button" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy MSHARE
               </Button>
-              <Button color="primary" variant="contained" href={MagikChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
+              <Button id="Button" href={MagikChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
                 Magik Chart
               </Button>
-              <Button color="primary" variant="contained" href={MshareChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
+              <Button id="Button" href={MshareChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
                 Mshare Chart
               </Button>
             </CardContent>
           </Card>
         </Grid>
-
         {/* MAGIK */}
         <Grid item xs={12} sm={4}>
           <Card>
@@ -231,7 +212,7 @@ const Home = () => {
               </Button>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="MAGIK" />
+                  <TokenSymbol symbol="MAGIK"/>
                 </CardIcon>
               </Box>
               Current Price
@@ -251,7 +232,6 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-
         {/* MSHARE */}
         <Grid item xs={12} sm={4}>
           <Card>
@@ -287,7 +267,6 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-
         {/* MBOND */}
         <Grid item xs={12} sm={4}>
           <Card>
@@ -319,63 +298,6 @@ const Home = () => {
                 Market Cap: ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
                 Circulating Supply: {tBondCirculatingSupply} <br />
                 Total Supply: {tBondTotalSupply}
-              </span>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent align="center">
-              <h2>MAGIK-FTM Spirit LP</h2>
-              <Box mt={2}>
-                <CardIcon>
-                  <TokenSymbol symbol="MAGIK-FTM-LP" />
-                </CardIcon>
-              </Box>
-              <Box mt={2}>
-                <Button color="primary" disabled={true} onClick={onPresentTombZap} variant="contained">
-                  Zap In
-                </Button>
-              </Box>
-              <Box mt={2}>
-                <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} MAGIK /{' '}
-                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} FTM
-                </span>
-              </Box>
-              <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
-              <span style={{ fontSize: '12px' }}>
-                Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tombLPStats?.totalSupply ? tombLPStats.totalSupply : '-.--'}
-              </span>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent align="center">
-              <h2>MSHARE-FTM Spirit LP</h2>
-              <Box mt={2}>
-                <CardIcon>
-                  <TokenSymbol symbol="MSHARE-FTM-LP" />
-                </CardIcon>
-              </Box>
-              <Box mt={2}>
-                <Button color="primary" disabled={true} onClick={onPresentTshareZap} variant="contained">
-                  Zap In
-                </Button>
-              </Box>
-              <Box mt={2}>
-                <span style={{ fontSize: '26px' }}>
-                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} MSHARE /{' '}
-                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} FTM
-                </span>
-              </Box>
-              <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
-              <span style={{ fontSize: '12px' }}>
-                Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
-                <br />
-                Total supply: {tshareLPStats?.totalSupply ? tshareLPStats.totalSupply : '-.--'}
               </span>
             </CardContent>
           </Card>

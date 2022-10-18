@@ -292,7 +292,6 @@ export class MagikFinance {
       Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
     const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
     const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
-    console.log(yearlyAPR, "yearlyapr")
     return {
       dailyAPR: dailyAPR.toFixed(2).toString(),
       yearlyAPR: yearlyAPR.toFixed(2).toString(),
@@ -464,41 +463,39 @@ export class MagikFinance {
   }
   async getLPV2TokenPrice(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
-    console.log(totalSupply)     //Get amount of tokenA
+
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    console.log(tokenSupply) 
+
     const stat = isTomb === true
       ? await this.getMagikStat()
       : await this.getShareStat();
     const priceOfToken = stat.priceInDollars;
-    console.log(priceOfToken)
-    console.log(lpToken.address) 
+
     const tokenInLP = Number(tokenSupply) / Number(totalSupply);
-    console.log(tokenInLP) 
+
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
-    console.log(tokenPrice)
+
     return tokenPrice;
   }
   async getUSDCTokenPriceLP(lpToken: ERC20, token: ERC20, isTomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
-    console.log(totalSupply) 
+
     
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    console.log(tokenSupply) // total supply of first token in the contract  110/3971 - mshare - correct
+
     const stat = isTomb === true
       ? await this.getMagikStat()
       : await this.getShareStat();
     const priceOfToken = stat.priceInDollars;
-    console.log(priceOfToken) // 6.78 - correct
-    console.log(lpToken.address) // 0xb1 - correct 
+ 
     const divider =  10 ** 6;
-    console.log(divider)
+
     const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider;
-    console.log(tokenInLP) // 0.55 - correct, was like a trillion  
+
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
-    console.log(tokenPrice)
+
     return tokenPrice;
   }
   // this fix will work for the pairs including magik and mshare. 

@@ -28,6 +28,8 @@ import WithdrawModal from './WithdrawModal';
 import ZapModal from './ZapModal';
 import TokenSymbol from '../../../components/TokenSymbol';
 import { Bank } from '../../../magik-finance';
+import '../../Home/home.css'
+import '../../../components/Nav/accountbutton.css'
 
 interface StakeProps {
   bank: Bank;
@@ -48,7 +50,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
   const tokenBalance = useTokenBalance(bank.depositToken);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
-  console.log(stakedTokenPriceInDollars)
+
   const tokenPriceInDollars = useMemo(
     () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
     [stakedTokenPriceInDollars],
@@ -101,14 +103,14 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
 
   const stakedBalanceNumber = Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9));
   return (
-    <HomeCardBlue>
+    <HomeCardBlue style={{color:"white"}} id="ConnectButton">
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
             <TokenSymbol symbol={bank.depositToken.symbol} size={100} />
             <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} /> 
-            <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
-            <Label color="rgba(74, 68, 82)" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? 
+            <Label color="#fff" text={`≈ $${earnedInDollars}`} />
+            <Label color="#fff" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? 
             bank.depositTokenName + '.e' : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
@@ -120,11 +122,10 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   approveStatus === ApprovalState.UNKNOWN
                 }
                 onClick={approve}
-                color="primary"
-                variant="contained"
+                id="Button"
                 style={{ marginTop: '65px', borderRadius: '15px', width: '250px' }}
               >
-                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC.e')}`}
+                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC')}`}
               </Button>
             ) : (
               <>

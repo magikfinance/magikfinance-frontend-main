@@ -8,6 +8,7 @@ import { Button, Card, CardContent } from '@material-ui/core';
 import CardIcon from '../../../components/CardIcon';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
+import '../../Home/home.css'
 
 import useEarnings from '../../../hooks/useEarnings';
 import useHarvest from '../../../hooks/useHarvest';
@@ -48,7 +49,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
             <Label text={`${tokenName} Earned`} color="primary"/>
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} disabled={earnings.eq(0)} color="primary" variant="contained">
+            <Button  onClick={onReward} disabled={earnings.eq(0)} id="Button">
               Claim
             </Button>
           </StyledCardActions>

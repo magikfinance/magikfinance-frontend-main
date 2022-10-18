@@ -5,7 +5,7 @@ import { getDisplayBalance } from '../../utils/formatBalance';
 
 import Label from '../Label';
 import Modal, { ModalProps } from '../Modal';
-import ModalTitle from '../ModalTitle';
+import './accountbutton.css'
 import useMagikFinance from '../../hooks/useMagikFinance';
 import TokenSymbol from '../TokenSymbol';
 
@@ -23,14 +23,13 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   return (
     <Modal>
-      <ModalTitle text="My Wallet" />
-
+      <h2 style={{margin:"auto", color:"rgb(255,232,132)"}}>My Wallet</h2>
       <Balances>
         <StyledBalanceWrapper>
           <TokenSymbol symbol="MAGIK" />
           <StyledBalance>
             <StyledValue>{displayTombBalance}</StyledValue>
-            <Label text="MAGIK Available" />
+            <Label color='rgb(255,232,132)' text="MAGIK Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -38,7 +37,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="MSHARE" />
           <StyledBalance>
             <StyledValue>{displayTshareBalance}</StyledValue>
-            <Label text="MSHARE Available" />
+            <Label color='rgb(255,232,132)' text="MSHARE Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -46,7 +45,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="MBOND" />
           <StyledBalance>
             <StyledValue>{displayTbondBalance}</StyledValue>
-            <Label text="MBOND Available" />
+            <Label color='rgb(255,232,132)' text="MBOND Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
       </Balances>
@@ -55,7 +54,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 };
 
 const StyledValue = styled.div`
-  //color: ${(props) => props.theme.color.grey[300]};
+  color: white;
   font-size: 30px;
   font-weight: 700;
 `;

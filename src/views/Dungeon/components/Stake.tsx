@@ -18,7 +18,7 @@ import useTokenBalance from '../../../hooks/useTokenBalance';
 import useWithdrawCheck from '../../../hooks/dungeon/useWithdrawCheck';
 
 import { getDisplayBalance } from '../../../utils/formatBalance';
-
+import '../../Home/home.css'
 import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
 import useMagikFinance from '../../../hooks/useMagikFinance';
@@ -91,8 +91,7 @@ const Stake: React.FC = () => {
               {approveStatus !== ApprovalState.APPROVED ? (
                 <Button
                   disabled={approveStatus !== ApprovalState.NOT_APPROVED}
-                  variant="contained"
-                  color="primary"
+                  id="Button"
                   style={{ marginTop: '20px' }}
                   onClick={approve}
                 >

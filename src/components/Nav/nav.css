@@ -1,0 +1,36 @@
+#AppBar{
+    display: grid;
+    background: var(--gradientDarkPurple);
+    border-bottom: 1px solid var(--magikGold);
+    padding: 20px;
+}
+
+#Toolbar{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: min-content 1fr min-content;
+    justify-self: center;
+    width: 100%;
+}
+
+#Menu{
+    display: grid;
+    grid-auto-flow: column;
+    width: fit-content;
+    justify-self: center;
+    gap: 20px;
+}
+
+:root{
+    --magikGold: rgb(255,232,132);
+    --gradientDarkPurple: linear-gradient(45deg, rgb(10,0,10), rgb(40,0,40));
+    --glassGradient: linear-gradient(45deg,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0));
+}
+
+@media only screen and (max-width: 1200px) {
+    #Menu{
+        grid-auto-flow: column;
+        grid-template-rows: 1fr 1fr;
+        width: min-content;
+    }
+}

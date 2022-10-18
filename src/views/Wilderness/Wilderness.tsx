@@ -21,7 +21,7 @@ import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../magik-finance/con
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${WildernessImage}) no-repeat !important;
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
   }
 `;

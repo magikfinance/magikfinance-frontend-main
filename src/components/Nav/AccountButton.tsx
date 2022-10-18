@@ -4,6 +4,7 @@ import { useWallet } from 'use-wallet';
 import useModal from '../../hooks/useModal';
 import WalletProviderModal from '../WalletProviderModal';
 import AccountModal from './AccountModal';
+import './accountbutton.css'
 
 interface AccountButtonProps {
   text?: string;
@@ -28,11 +29,11 @@ const AccountButton: React.FC<AccountButtonProps> = ({ text }) => {
   return (
     <div>
       {!account ? (
-        <Button onClick={handleWalletProviderOpen} color="primary" variant="contained">
+        <Button onClick={handleWalletProviderOpen} id="ConnectButton">
           {buttonText}
         </Button>
       ) : (
-        <Button variant="contained" onClick={onPresentAccountModal}>
+        <Button id="ConnectButton" onClick={onPresentAccountModal}>
           My Wallet
         </Button>
       )}

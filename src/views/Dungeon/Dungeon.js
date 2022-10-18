@@ -29,10 +29,11 @@ import useWithdrawCheck from '../../hooks/dungeon/useWithdrawCheck';
 import ProgressCountdown from './components/ProgressCountdown';
 import MasonryImage from '../../assets/img/dungeon.png';
 import { createGlobalStyle } from 'styled-components';
+import '../../views/Home/home.css'
 
 const BackgroundImage = createGlobalStyle`
   body, html {
-    background: url(${MasonryImage}) no-repeat !important;
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
   }
 `;
@@ -91,7 +92,7 @@ const Dungeon = () => {
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent>
-                    <Typography style={{ textAlign: 'center' }}>Next Epoch</Typography>
+                    <Typography id="Font" style={{ textAlign: 'center' }}>Next Epoch</Typography>
                     <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
                   </CardContent>
                 </Card>
@@ -99,18 +100,18 @@ const Dungeon = () => {
               <Grid item xs={12} md={2} lg={3} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
-                    <Typography>APR | Daily | Epoch</Typography>
-                    <Typography>{dungeonAPR.toFixed(2)}% | {(dungeonAPR / 365).toFixed(2)}% | {(dungeonAPR / 365 / 4).toFixed(2)}%</Typography>
+                    <Typography id="Font">APR | Daily | Epoch</Typography>
+                    <Typography id="Font">{dungeonAPR.toFixed(2)}% | {(dungeonAPR / 365).toFixed(2)}% | {(dungeonAPR / 365 / 4).toFixed(2)}%</Typography>
                   </CardContent>
                 </Card>
               </Grid>
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center" style={{ position: 'relative' }}>
-                    <Typography>
+                    <Typography id="Font">
                       <small>(TWAP)</small>
                     </Typography>
-                    <TWAPTooltip
+                    <TWAPTooltip 
                       arrow={true}
                       enterTouchDelay={0}
                       title={
@@ -123,7 +124,7 @@ const Dungeon = () => {
                         style={{ position: 'absolute', top: '10px', right: '10px' }}
                       />
                     </TWAPTooltip>
-                    <Typography
+                    <Typography id="Font"
                       className={scalingFactor > 1.01 ? 'twap-above' : 'twap-below'}
                     >
                       {scalingFactor}
@@ -134,8 +135,8 @@ const Dungeon = () => {
               <Grid item xs={12} md={2} lg={2}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
-                    <Typography>MSHARES Staked</Typography>
-                    <Typography>{getDisplayBalance(totalStaked)}</Typography>
+                    <Typography id="Font">MSHARES Staked</Typography>
+                    <Typography id="Font">{getDisplayBalance(totalStaked)}</Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -200,8 +201,7 @@ const Dungeon = () => {
               <Button
                 disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
                 onClick={onRedeem}
-                color="primary"
-                variant="contained"
+                id="Button"
               >
                 Claim and Withdraw
               </Button>

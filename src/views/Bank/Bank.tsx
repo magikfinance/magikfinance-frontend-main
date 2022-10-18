@@ -6,7 +6,7 @@ import { useWallet } from 'use-wallet';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Box, Button, Card, CardContent, Typography, Grid } from '@material-ui/core';
-
+import './bank.css'
 import PageHeader from '../../components/PageHeader';
 import Spacer from '../../components/Spacer';
 import UnlockWallet from '../../components/UnlockWallet';
@@ -45,28 +45,28 @@ const Bank: React.FC = () => {
         title={bank?.name}
       />
       <Box>
-        <Grid container justify="center" spacing={3} style={{ marginBottom: '50px' }}>
+        <Grid container justify="center" spacing={3} style={{ marginBottom: '50px'}}>
           <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
             <Card className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography>APR</Typography>
-                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%</Typography>
+                <Typography  id="Grid">APR</Typography>
+                <Typography  id="Grid">{bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
             <Card className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography>Daily APR</Typography>
-                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Typography>
+                <Typography  id="Grid">Daily APR</Typography>
+                <Typography  id="Grid">{bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
             <Card className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography>TVL</Typography>
-                <Typography>${statsOnPool?.TVL}</Typography>
+                <Typography  id="Grid">TVL</Typography>
+                <Typography  id="Grid">${statsOnPool?.TVL}</Typography>
               </CardContent>
             </Card>
           </Grid>
@@ -85,7 +85,7 @@ const Bank: React.FC = () => {
           {bank.depositTokenName.includes('LP') && <LPTokenHelpText bank={bank} />}
           <Spacer size="lg" />
           <div>
-            <Button onClick={onRedeem} color="primary" variant="contained">
+            <Button onClick={onRedeem} id="Button">
               Claim & Withdraw
             </Button>
           </div>

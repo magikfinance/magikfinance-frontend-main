@@ -4,7 +4,8 @@ import {Box, Button, Card, CardActions, CardContent, Typography, Grid} from '@ma
 import TokenSymbol from '../../components/TokenSymbol';
 import useStatsForPool from '../../hooks/useStatsForPool';
 import AprModal from './AprModal';
-import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
+import '../../components/Nav/accountbutton.css'
+import '../Home/home.css'
 
 const CauldronCard = ({bank}) => {
 
@@ -21,7 +22,7 @@ const CauldronCard = ({bank}) => {
 
   return (
     <Grid item xs={12} md={4} lg={4}>
-      <Card variant="outlined">
+      <Card id="ConnectButton" variant="outlined">
         <CardContent>
           <AprModal
             open={modalOpen}
@@ -80,7 +81,7 @@ const CauldronCard = ({bank}) => {
           </Box>
         </CardContent>
         <CardActions style={{justifyContent: 'flex-end'}}>
-          <Button className="shinyButton" component={Link} to={`/farms/${bank.contract}`}>
+          <Button id="Button" component={Link} to={`/farms/${bank.contract}`}>
             Stake
           </Button>
         </CardActions>

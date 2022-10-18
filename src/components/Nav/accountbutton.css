@@ -1,0 +1,10 @@
+#ConnectButton{
+    background: var(--glassGradient);
+    border: 1px solid var(--magikGold);
+    font-family: 'Metamorphous', cursive;
+}
+
+:root{
+    --magikGold: rgb(255,232,132);
+    --glassGradient: linear-gradient(45deg,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0));
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import AuditImage from '../../assets/img/Audit.png';
+import './nav.css'
 import {
   AppBar,
   Box,
@@ -34,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     color: '#e0e3bd',
-    'background-color': '#121212',
-    // borderBottom: `1px solid ${theme.palette.divider}`,
     padding: '10px',
     marginBottom: '3rem',
   },
@@ -49,9 +48,6 @@ const useStyles = makeStyles((theme) => ({
   hide: {
     display: 'none',
   },
-  toolbar: {
-    flexWrap: 'wrap',
-  },
   toolbarTitle: {
     fontFamily: '"Amarante", cursive',
     fontSize: '30px',
@@ -59,9 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textTransform: 'uppercase',
-    color: '#e0e3bd',
+    color: 'rgb(255,232,132)',
     fontSize: '14px',
-    margin: theme.spacing(1, 2),
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'none',
@@ -69,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   brandLink: {
     textDecoration: 'none',
-    color: '#e0e3bd',
+    color: 'rgb(255,232,132)',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -91,52 +86,30 @@ const Nav = () => {
   };
 
   return (
-    <AppBar position="sticky" elevation={0} className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
+    <AppBar id="AppBar" position="sticky" elevation={0} className={classes.appBar}>
+      <Toolbar id="Toolbar">
         {matches ? (
           <>
             <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-              {/* <a className={ classes.brandLink } href="/">Magik Finance</a> */}
               <Link to="/" color="inherit" className={classes.brandLink}>
                 Magik Finance
               </Link>
-              <text color="textPrimary" to="/" className={classes.link}>
-                Total Magik Burned: 251K
-              </text>
             </Typography>
-            <Box mr={5}>
-              <Link color="textPrimary" to="/" className={classes.link}>
-                Home
-              </Link>
+            <Box id='Menu'>
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
               </Link>
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
               </Link>
-              <Link color="textPrimary" to="/nftmint" className={classes.link}>
-                NFT
-              </Link>
-              {/* <Link color="textPrimary" to="/raffle" className={classes.link}>
-                Raffle
-              </Link> */}
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
-              </Link>
-              <Link to="/stake" className={'/stake ' + classes.link}>
-                xMagik
               </Link>
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
-              {/* <Link color="textPrimary" to="/sbs" className={classes.link}>
-                SBS
-              </Link> */}
               <a href="https://magik.farm" className={classes.link}>
-              Magik Autocompounder
-              </a>
-              <a href="https://magikworld.net" className={classes.link}>
-              Magik World (BETA)
+              Magik Vaults
               </a>
               <a href="https://moshpit.magik.finance" className={classes.link}>
                 Magik Moshpit
@@ -183,18 +156,11 @@ const Nav = () => {
               <List>
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Farms" to="/farms" />
-                <ListItemLink primary="NFT" to="/nftmint" />
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
-                {/* <ListItemLink primary="Raffle" to="/raffle" /> */}
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
-                {/* <ListItemLink primary="SBS" to="/sbs" /> */}
-                <ListItemLink primary="xMagik" to="/stake" />
                 <ListItem button component="a" href="https://magik.farm">
-                  <ListItemText>Magik Autocompounder</ListItemText>
-                </ListItem>
-                <ListItem button component="a" href="https://magikworld.net">
-                  <ListItemText>Magik World (BETA) </ListItemText>
+                  <ListItemText>Magik Vaults</ListItemText>
                 </ListItem>
                 <ListItem button component="a" href="https://moshpit.magik.finance">
                   <ListItemText>Magik Moshpit</ListItemText>

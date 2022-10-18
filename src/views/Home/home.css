@@ -1,0 +1,17 @@
+#Button{
+    background: var(--darkGradient);
+    border: 1px solid var(--magikGold);
+    font-family: 'Metamorphous', cursive;
+    filter: drop-shadow(0 0 10px #000);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+#Font{
+    font-family: 'Metamorphous', cursive;
+}
+
+:root{
+    --magikGold: rgb(255,232,132);
+    --darkGradient: linear-gradient(45deg,rgb(10,0,10),rgb(30,0,30));
+}
