@@ -96,6 +96,9 @@ const Nav = () => {
               </Link>
             </Typography>
             <Box id='Menu'>
+            <a href="https://magikswap.dog" className={classes.link}>
+              MagikSwap
+              </a>
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
               </Link>
@@ -158,6 +161,9 @@ const Nav = () => {
               <Divider />
               <List>
                 <ListItemLink primary="Home" to="/" />
+                <ListItem button component="a" href="https://magikswap.dog">
+                  <ListItemText>MagikSwap</ListItemText>
+                </ListItem>
                 <ListItemLink primary="Farms" to="/farms" />
                 <ListItem button component="a" href="https://farmland.magik.finance">
                   <ListItemText>Farmland</ListItemText>
