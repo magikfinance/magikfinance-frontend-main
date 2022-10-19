@@ -99,9 +99,6 @@ const Nav = () => {
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
               </Link>
-              <Link color="textPrimary" to="/nftstaking" className={classes.link}>
-                NFT Staking
-              </Link>
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
@@ -114,6 +111,9 @@ const Nav = () => {
               <a href="https://moshpit.magik.finance" className={classes.link}>
                 Magik Moshpit
               </a>
+              <Link color="textPrimary" to="/nftstaking" className={classes.link}>
+                NFT Staking
+              </Link>
               <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
                 Docs
               </a>
@@ -156,7 +156,6 @@ const Nav = () => {
               <List>
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Farms" to="/farms" />
-                <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItem button component="a" href="https://magik.farm">
@@ -165,6 +164,7 @@ const Nav = () => {
                 <ListItem button component="a" href="https://moshpit.magik.finance">
                   <ListItemText>Magik Moshpit</ListItemText>
                 </ListItem>
+                <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
                   <ListItemText>Docs</ListItemText>
                 </ListItem>
