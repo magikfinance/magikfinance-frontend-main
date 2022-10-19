@@ -99,6 +99,9 @@ const Nav = () => {
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
               </Link>
+              <a href="https://farmland.magik.finance" className={classes.link}>
+              Farmland
+              </a>
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
               </Link>
@@ -106,10 +109,10 @@ const Nav = () => {
                 Wilderness
               </Link>
               <a href="https://magik.farm" className={classes.link}>
-              Magik Vaults
+              Vaults
               </a>
               <a href="https://moshpit.magik.finance" className={classes.link}>
-                Magik Moshpit
+               Moshpit
               </a>
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
@@ -148,7 +151,7 @@ const Nav = () => {
                 style={{ background: '#121212' }}
             >
               <div>
-                <IconButton onClick={handleDrawerClose}>
+                <IconButton onClick={handleDrawerClose}>ß
                   {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
               </div>
@@ -156,13 +159,16 @@ const Nav = () => {
               <List>
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Farms" to="/farms" />
+                <ListItem button component="a" href="https://magik.farm">
+                  <ListItemText>Farmland</ListItemText>
+                </ListItem>
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
                 <ListItem button component="a" href="https://magik.farm">
-                  <ListItemText>Magik Vaults</ListItemText>
+                  <ListItemText>Vaults</ListItemText>
                 </ListItem>
                 <ListItem button component="a" href="https://moshpit.magik.finance">
-                  <ListItemText>Magik Moshpit</ListItemText>
+                  <ListItemText>Moshpit</ListItemText>
                 </ListItem>
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
