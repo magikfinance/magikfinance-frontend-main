@@ -159,7 +159,7 @@ const Nav = () => {
               <List>
                 <ListItemLink primary="Home" to="/" />
                 <ListItemLink primary="Farms" to="/farms" />
-                <ListItem button component="a" href="https://magik.farm">
+                <ListItem button component="a" href="https://farmland.magik.finance">
                   <ListItemText>Farmland</ListItemText>
                 </ListItem>
                 <ListItemLink primary="Dungeon" to="/dungeon" />
