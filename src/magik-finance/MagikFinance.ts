@@ -442,19 +442,19 @@ export class MagikFinance {
     } if (depositTokenName.startsWith('MAGIK')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName ===('MS-MAGIK-FTM')) {
-      return rewardPerSecond.mul(595).div(59500);
+      return rewardPerSecond.mul(119).div(59500);
     } if (depositTokenName.startsWith('MS-MAGIK-MSHARE-LP')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MS-MSHARE-FTM')) {
-      return rewardPerSecond.mul(595).div(59500);
+      return rewardPerSecond.mul(119).div(59500);
     } if (depositTokenName.startsWith('MAGIK-MIM-MS')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MS-MAGIK-USDC')) {
-      return rewardPerSecond.mul(38675).div(59500);
+      return rewardPerSecond.mul(42007).div(59500);
     } if (depositTokenName.startsWith('MS-MSHARE-USDC')) {
-      return rewardPerSecond.mul(19635).div(59500);
+      return rewardPerSecond.mul(17255).div(59500);
     }
     
     
