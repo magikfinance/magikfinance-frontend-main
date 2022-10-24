@@ -101,7 +101,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 6,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MshareFtmLPMShareRewardPool: {
     name: 'Earn MSHARE by MSHARE-FTM LP',
@@ -112,7 +112,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 7,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MagikMshareLPMShareRewardPool: {
     name: 'Earn MSHARE by MAGIK-MSHARE LP',
@@ -123,7 +123,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 8,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MagikMShareRewardPool: {
     name: 'Earn MSHARE by staking MAGIK',
@@ -134,7 +134,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 9,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MSMagikFtmLPReward: {
     name: 'Earn MSHARE by MS-MAGIK-FTM',
@@ -167,7 +167,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 3,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MagikUSDCLPMS: {
     name: 'Earn MSHARE by MS-MAGIK-USDC',
@@ -200,7 +200,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 6,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MshareMIMLPMS: {
     name: 'Earn MSHARE by MSHARE-MIM-MS',
@@ -211,7 +211,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 7,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   // MIMUSDCLPMS: {
   //   name: 'Earn MSHARE by MIM-USDC-MS',
