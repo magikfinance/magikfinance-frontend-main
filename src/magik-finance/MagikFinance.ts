@@ -452,9 +452,9 @@ export class MagikFinance {
     } if (depositTokenName.startsWith('MSHARE-MIM-MS')) {
       return rewardPerSecond.mul(0).div(59500);
     } if (depositTokenName.startsWith('MS-MAGIK-USDC')) {
-      return rewardPerSecond.mul(42007).div(59500);
+      return rewardPerSecond.mul(9758).div(59500);
     } if (depositTokenName.startsWith('MS-MSHARE-USDC')) {
-      return rewardPerSecond.mul(17255).div(59500);
+      return rewardPerSecond.mul(8449).div(59500);
     }
     
     
