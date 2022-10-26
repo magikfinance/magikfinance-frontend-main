@@ -32,7 +32,7 @@ npx prettier --write .
 
 ## Useful Resources
 
-- [Our project documentation](https://magikdotfinance.gitbook.io/docs/) will help you understand before start contributing
+- [Our project documentation](https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/) will help you understand before start contributing
 - Join our [Discord](https://discord.gg/tombfinance) community
 - Or if you are more of a [Telegram Zombie](https://discord.gg/magikdotfinance) we have that too
 - Bugs? Use the [Issues]() section of our github to report them

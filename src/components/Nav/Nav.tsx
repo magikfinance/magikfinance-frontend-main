@@ -120,7 +120,7 @@ const Nav = () => {
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
               </Link>
-              <a href="https://magikdotfinance.gitbook.io/docs/" className={classes.link}>
+              <a href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/" className={classes.link}>
                 Docs
               </a>
             </Box>
@@ -177,7 +177,7 @@ const Nav = () => {
                   <ListItemText>Moshpit</ListItemText>
                 </ListItem>
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
-                <ListItem button component="a" href="https://magikdotfinance.gitbook.io/docs">
+                <ListItem button component="a" href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/">
                   <ListItemText>Docs</ListItemText>
                 </ListItem>
                 <ListItem style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
