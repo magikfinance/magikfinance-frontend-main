@@ -62,8 +62,8 @@ const Home = () => {
 
   const buyTombAddress = 'https://magikswap.dog/swap'
   const buyTShareAddress = 'https://magikswap.dog/swap';
-  const MagikChart = 'https://dexscreener.com/fantom/0xdc71a6160322ad78dab0abb47c7a581cfe9709ee';
-  const MshareChart = 'https://dexscreener.com/fantom/0x392c85ceccf9855986b0044a365a5532aec6fa31';
+  const MagikChart = 'https://www.dextools.io/app/en/fantom/pair-explorer/0x2e28aed21143cdac666633bf2c31db3f50e21edd';
+  const MshareChart = 'https://www.dextools.io/app/en/fantom/pair-explorer/0xb1a53d68d55efb93a30d135a450c0a3cee864c25';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
