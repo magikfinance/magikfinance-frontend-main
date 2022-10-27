@@ -217,12 +217,7 @@ const Home = () => {
               </Box>
               Current Price
               <Box>
-                <span style={{ fontSize: '30px' }}>{tombPriceInFTM ? tombPriceInFTM : '-.----'} FTM</span>
-              </Box>
-              <Box>
-                <span style={{ fontSize: '16px', alignContent: 'flex-start' }}>
-                  ${tombPriceInDollars ? tombPriceInDollars : '-.--'}
-                </span>
+                <span style={{ fontSize: '30px' }}>{tombPriceInDollars ? tombPriceInDollars : '-.----'} USD</span>
               </Box>
               <span style={{ fontSize: '12px' }}>
                 Market Cap: ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
@@ -254,10 +249,7 @@ const Home = () => {
               </Box>
               Current Price
               <Box>
-                <span style={{ fontSize: '30px' }}>{tSharePriceInFTM ? tSharePriceInFTM : '-.----'} FTM</span>
-              </Box>
-              <Box>
-                <span style={{ fontSize: '16px' }}>${tSharePriceInDollars ? tSharePriceInDollars : '-.--'}</span>
+                <span style={{ fontSize: '30px' }}>{tSharePriceInDollars ? tSharePriceInDollars : '-.----'} USD</span>
               </Box>
               <span style={{ fontSize: '12px' }}>
                 Market Cap: ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
@@ -289,10 +281,7 @@ const Home = () => {
               </Box>
               Current Price
               <Box>
-                <span style={{ fontSize: '30px' }}>{tBondPriceInFTM ? tBondPriceInFTM : '-.----'} FTM</span>
-              </Box>
-              <Box>
-                <span style={{ fontSize: '16px' }}>${tBondPriceInDollars ? tBondPriceInDollars : '-.--'}</span>
+                <span style={{ fontSize: '30px' }}>{tBondPriceInDollars ? tBondPriceInDollars : '-.----'} USD</span>
               </Box>
               <span style={{ fontSize: '12px' }}>
                 Market Cap: ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
