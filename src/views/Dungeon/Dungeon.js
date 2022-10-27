@@ -85,7 +85,9 @@ const Dungeon = () => {
       {!!account ? (
         <>
           <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-            Dungeon
+            Boardroom Staking Has Ended!
+            <h3>MAGIK Is Now Supply Capped!</h3>
+            <h3>Please Withdraw Your MSHARE</h3>
           </Typography>
           <Box mt={5}>
             <Grid container justify="center" spacing={3}>
