@@ -90,7 +90,7 @@ const Stake: React.FC = () => {
             <StyledCardActions>
               {approveStatus !== ApprovalState.APPROVED ? (
                 <Button
-                  disabled={approveStatus !== ApprovalState.NOT_APPROVED}
+                  disabled={true}
                   id="Button"
                   style={{ marginTop: '20px' }}
                   onClick={approve}
@@ -103,7 +103,7 @@ const Stake: React.FC = () => {
                     <RemoveIcon />
                   </IconButton>
                   <StyledActionSpacer />
-                  <IconButton onClick={onPresentDeposit}>
+                  <IconButton disabled={true}>
                     <AddIcon />
                   </IconButton>
                 </>
