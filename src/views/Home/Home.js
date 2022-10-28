@@ -147,9 +147,9 @@ const Home = () => {
           <Paper>
             <Box p={4}>
               <h2>Welcome to Magik Finance</h2>
-              <p>MAGIK is real. A token with steady growth pegged to FTM brought back from the dead by the community!</p>
+              <p>MAGIK is real. A hyper-deflationary gaming and utility token - soon to be pegged to an internal growth driven TWAP reward/burn mechanic.</p>
               <p>MAGIK is Community Based: Please visit <a style={{color:"rgb(255,232,132)",textDecoration:"none"}} href="https://magikdotfinance.gitbook.io/docs/renounced-ownership"> here</a> to view our Renounced Ownership transactions.</p>
-              <p>Renouncing ownership means we cannot mint any new tokens, making our protocol practically Rug-proof! We are here to stay fellow wizards!</p>
+              <p>Check the <a style={{color:"rgb(255,232,132)",textDecoration:"none"}} href="https://discord.com/invite/sm3szPSkzE">MAGIK Discord </a> to keep up with v2 announcements.</p>
             </Box>
           </Paper>
         </Grid>
