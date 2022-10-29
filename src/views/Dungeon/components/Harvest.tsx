@@ -47,7 +47,7 @@ const Harvest: React.FC = () => {
               <Button
                 onClick={onReward}
                 id="Button"
-                disabled={earnings.eq(0) || !canClaimReward}
+                disabled={true}
               >
                 Claim Reward
               </Button>
