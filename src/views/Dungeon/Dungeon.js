@@ -103,7 +103,7 @@ const Dungeon = () => {
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
                     <Typography id="Font">APR | Daily | Epoch</Typography>
-                    <Typography id="Font">{dungeonAPR.toFixed(2)}% | {(dungeonAPR / 365).toFixed(2)}% | {(dungeonAPR / 365 / 4).toFixed(2)}%</Typography>
+                    <Typography id="Font">0% | 0% | 0%</Typography>
                   </CardContent>
                 </Card>
               </Grid>
