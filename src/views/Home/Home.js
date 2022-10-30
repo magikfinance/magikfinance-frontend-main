@@ -161,6 +161,11 @@ const Home = () => {
               <CountUp style={{ fontSize: '25px' }} end={TVL} separator="," prefix="$" />
             </CardContent>
           </Card>
+          <Card>
+            <CardContent align="center">
+            Total $MAGIK Burned 🔥:  {1000000 - tombCirculatingSupply} <br />
+            </CardContent>
+          </Card>
         </Grid>
         {/* Wallet */}
         <Grid item xs={12} sm={8}>
