@@ -163,7 +163,10 @@ const Home = () => {
           </Card>
           <Card>
             <CardContent align="center">
-            Total $MAGIK Burned 🔥:  {1000000 - tombCirculatingSupply} <br />
+            <h2>Total $MAGIK Burned 🔥</h2> 
+          <span style={{ fontSize: '25px' }}>
+            {1000000 - tombCirculatingSupply} <br />
+            </span>
             </CardContent>
           </Card>
         </Grid>
