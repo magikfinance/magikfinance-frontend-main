@@ -156,16 +156,16 @@ const Home = () => {
         {/* TVL */}
         <Grid item xs={12} sm={4}>
           <Card>
-            <CardContent align="center">
+            <CardContent align="center" >
               <h2>Total Value Locked</h2>
               <CountUp style={{ fontSize: '25px' }} end={TVL} separator="," prefix="$" />
             </CardContent>
           </Card>
-          <Card>
-            <CardContent align="center">
+          <Card> 
+            <CardContent align="center" >
             <h2>Total $MAGIK Burned 🔥</h2> 
           <span style={{ fontSize: '25px' }}>
-            {1000000 - tombCirculatingSupply} <br />
+            {(1000000 - tombCirculatingSupply).toFixed(2)}  <br />
             </span>
             </CardContent>
           </Card>
@@ -203,7 +203,7 @@ const Home = () => {
           </Card>
         </Grid>
         {/* MAGIK */}
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
               <h2>MAGIK</h2>
@@ -236,7 +236,7 @@ const Home = () => {
           </Card>
         </Grid>
         {/* MSHARE */}
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
               <h2>MSHARE</h2>
@@ -268,37 +268,6 @@ const Home = () => {
           </Card>
         </Grid>
         {/* MBOND */}
-        <Grid item xs={12} sm={4}>
-          <Card>
-            <CardContent align="center" style={{ position: 'relative' }}>
-              <h2>MBOND</h2>
-              <Button
-                onClick={() => {
-                  tombFinance.watchAssetInMetamask('MBOND');
-                }}
-                variant="outlined"
-                style={{ position: 'absolute', top: '10px', right: '10px' }}
-              >
-                +&nbsp;
-                <img alt="metamask fox" style={{ width: '20px' }} src={MetamaskFox} />
-              </Button>
-              <Box mt={2}>
-                <CardIcon>
-                  <TokenSymbol symbol="MBOND" />
-                </CardIcon>
-              </Box>
-              Current Price
-              <Box>
-                <span style={{ fontSize: '30px' }}>{tBondPriceInDollars ? tBondPriceInDollars : '-.----'} USD</span>
-              </Box>
-              <span style={{ fontSize: '12px' }}>
-                Market Cap: ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
-                Circulating Supply: {tBondCirculatingSupply} <br />
-                Total Supply: {tBondTotalSupply}
-              </span>
-            </CardContent>
-          </Card>
-        </Grid>
       </Grid>
     </Page>
   );
