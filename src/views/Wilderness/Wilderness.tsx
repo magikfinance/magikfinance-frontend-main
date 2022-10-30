@@ -64,7 +64,7 @@ const Wilderness: React.FC = () => {
         {!!account ? (
           <>
             <Route exact path={path}>
-              <PageHeader icon={'🏦'} title="Buy & Redeem Bonds" subtitle="Earn premiums upon redemption" />
+              <PageHeader icon={'🏦'} title="Bonds Have Been Discontinued" subtitle="They will be exchanged at a 1:1 rate with $MAGIK" />
             </Route>
             <StyledBond>
               <StyledCardWrapper>
