@@ -48,6 +48,14 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
             <Label color='rgb(255,232,132)' text="MBOND Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
+
+        <StyledBalanceWrapper>
+          <TokenSymbol symbol="xMSHARE" />
+          <StyledBalance>
+            <StyledValue>{displayTbondBalance}</StyledValue>
+            <Label color='rgb(255,232,132)' text="xMSHARE Available" />
+          </StyledBalance>
+        </StyledBalanceWrapper>
       </Balances>
     </Modal>
   );

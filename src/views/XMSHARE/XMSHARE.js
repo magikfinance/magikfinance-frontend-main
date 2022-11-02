@@ -14,20 +14,18 @@ import UnlockWallet from '../../components/UnlockWallet';
 import Page from '../../components/Page';
 
 import useXmagikBalance from '../../hooks/useXmagikBalance';
-import useXmagikAPR from '../../hooks/useXmagikAPR';
 import useStakedTotalMagikBalance from '../../hooks/useTotalStakedMagikBalance';
 import { createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet'
+import '../../views/Home/home.css'
 
 import HomeImage from '../../assets/img/xMagikbg.png';
 const BackgroundImage = createGlobalStyle`
-  body {
-    background: url(${HomeImage}) repeat !important;
+  body, html {
+    background: linear-gradient(45deg,rgb(30,0,30),rgb(10,0,10));
     background-size: cover !important;
-    background-color: #171923;
   }
 `;
-const TITLE = 'magik.money | xMAGIK - MAGIK Staking'
 
 const StyledLink = styled.a`
   font-weight: 700;
@@ -44,21 +42,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Staking = () => {
+const XMSHARE = () => {
   const classes = useStyles();
   const { account } = useWallet();
   // const { onRedeem } = useRedeemOnBoardroom();
   //  const stakedMagikBalance = useStakedMagikBalance();
   const xmagikBalance = useXmagikBalance();
   const xmagikRate = Number(xmagikBalance / 1000000000000000000).toFixed(4);
-  const xmagikAPR = useXmagikAPR();
 
   //const xmagikTVL = xmagikAPR.TVL;
   const stakedTotalMagikBalance = useStakedTotalMagikBalance();
-  const magikTotalStaked = Number(stakedTotalMagikBalance / 1000000000000000000).toFixed(0);
-  const xmagikTVL = useMemo(() => (xmagikAPR ? Number(xmagikAPR.TVL).toFixed(0) : null), [xmagikAPR]);
-  const xmagikDailyAPR = useMemo(() => (xmagikAPR ? Number(xmagikAPR.dailyAPR).toFixed(2) : null), [xmagikAPR]);
-  const xmagikYearlyAPR = useMemo(() => (xmagikAPR ? Number(xmagikAPR.yearlyAPR).toFixed(2) : null), [xmagikAPR]);
 
   // console.log('xmagikAPR', xmagikYearlyAPR);
 
@@ -67,19 +60,16 @@ const Staking = () => {
   return (
     <Page>
       <BackgroundImage />
-      <Helmet>
-        <title>{TITLE}</title>
-      </Helmet>
       {!!account ? (
         <>
           <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-            MAGIK Staking for xMAGIK
+            Redeem MSHARE for xMSHARE and Stake at Magik.Farm!
           </Typography>
           <Grid container justify="center">
             <Box mt={3} style={{ width: '600px' }}>
-              <Alert variant="filled" severity="warning">
-              <StyledLink target="_blank" href="https://magikdotfinance.gitbook.io/docs/xmagik-staking"> <b> PLEASE READ OUR DOCUMENTATION BEFORE STAKING (CLICK ME) </b> </StyledLink><br />
-                XMAGIK Rewards have now ended. Please withdraw your MAGIK tokens.<br />
+              <Alert id = "Font" variant="filled" severity="warning">
+              <StyledLink target="_blank" href="https://magik.farm"> <b>Stake At Magik.Farm! </b> </StyledLink><br />
+              <h3> 1% Fee Is Taken With Every xMSHARE Mint and Redeem Operation.</h3>
               </Alert>
 
             </Box>
@@ -93,8 +83,8 @@ const Staking = () => {
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>1 xMAGIK =</Typography>
-                    <Typography>{Number(xmagikRate)} MAGIK</Typography>
+                    <Typography id = "Font" style={{ textTransform: 'uppercase', color: '#f9d749' }}>1 xMSHARE =</Typography>
+                    <Typography id = "Font"> 1 MSHARE</Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -111,38 +101,6 @@ const Staking = () => {
                   </CardContent>
                 </Card>
               </Grid> */}
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>APR</Typography>
-                    <Typography>{xmagikYearlyAPR}%</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Daily APR</Typography>
-                    <Typography>{xmagikDailyAPR}%</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>MAGIK Staked</Typography>
-                    <Typography>{roundAndFormatNumber(magikTotalStaked)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>MAGIK Staked USD</Typography>
-                    <Typography>${roundAndFormatNumber(xmagikTVL, 2)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
             </Grid>
 
 
@@ -244,4 +202,4 @@ const StyledCardWrapper = styled.div`
   }
 `;
 
-export default Staking;
+export default XMSHARE;

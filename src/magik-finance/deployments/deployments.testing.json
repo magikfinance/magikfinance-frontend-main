@@ -1,12 +1,17 @@
 {
-  "xMAGIK": {
-    "address": "0x7bD53e07f56A34444FdA9C90D2D255a06cBa00bB",
+  "xMSHARE": {
+    "address": "0xb659f6C8C4f1E071875F48c41d75bE264700594d",
     "abi": [
       {
         "inputs": [
           {
-            "internalType": "contract IERC20",
-            "name": "_reward",
+            "internalType": "address",
+            "name": "_mshareAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_treasuryAddress",
             "type": "address"
           }
         ],
@@ -39,6 +44,141 @@
         "type": "event"
       },
       {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_newTreasuryAddress",
+            "type": "address"
+          }
+        ],
+        "name": "changeTreasury",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "claimMSHARE",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "claimXMSHARE",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "subtractedValue",
+            "type": "uint256"
+          }
+        ],
+        "name": "decreaseAllowance",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "addedValue",
+            "type": "uint256"
+          }
+        ],
+        "name": "increaseAllowance",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
         "anonymous": false,
         "inputs": [
           {
@@ -67,6 +207,35 @@
         "inputs": [
           {
             "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferFrom",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
             "name": "owner",
             "type": "address"
           },
@@ -85,30 +254,6 @@
           }
         ],
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -144,90 +289,16 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "subtractedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "decreaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "enter",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
         "inputs": [],
-        "name": "getExchangeRate",
+        "name": "mshare",
         "outputs": [
           {
-            "internalType": "uint256",
+            "internalType": "contract IERC20",
             "name": "",
-            "type": "uint256"
+            "type": "address"
           }
         ],
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "addedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "increaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_share",
-            "type": "uint256"
-          }
-        ],
-        "name": "leave",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -245,10 +316,10 @@
       },
       {
         "inputs": [],
-        "name": "reward",
+        "name": "owner",
         "outputs": [
           {
-            "internalType": "contract IERC20",
+            "internalType": "address",
             "name": "",
             "type": "address"
           }
@@ -270,44 +341,6 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "stakedAmount",
-            "type": "uint256"
-          }
-        ],
-        "name": "toREWARD",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "rewardAmount",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "rewardAmount",
-            "type": "uint256"
-          }
-        ],
-        "name": "toSTAKED",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "stakedAmount",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [],
         "name": "totalSupply",
         "outputs": [
@@ -321,56 +354,29 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transfer",
+        "inputs": [],
+        "name": "treasury",
         "outputs": [
           {
-            "internalType": "bool",
+            "internalType": "address",
             "name": "",
-            "type": "bool"
+            "type": "address"
           }
         ],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "sender",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transferFrom",
+        "inputs": [],
+        "name": "xmshare",
         "outputs": [
           {
-            "internalType": "bool",
+            "internalType": "contract IERC20",
             "name": "",
-            "type": "bool"
+            "type": "address"
           }
         ],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
       }
     ]

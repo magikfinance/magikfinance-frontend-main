@@ -8,7 +8,7 @@ const useStakeToMagik = () => {
 
   const handleStake = useCallback(
     (amount: string) => {
-      handleTransactionReceipt(magikFinance.stakeToMagik(amount), `Stake ${amount} MAGIK for xMAGIK`);
+      handleTransactionReceipt(magikFinance.stakeToMagik(amount), `Stake ${amount} MSHARE for xMSHARE`);
     },
     [magikFinance, handleTransactionReceipt],
   );

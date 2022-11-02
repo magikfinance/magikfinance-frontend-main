@@ -29,15 +29,15 @@ import useXmagikBalance from '../../../hooks/useXmagikBalance';
 
 const Stake: React.FC = () => {
   const magikFinance = useMagikFinance();
-  const [approveStatus, approve] = useApprove(magikFinance.MAGIK, magikFinance.contracts.xMAGIK.address);
+  const [approveStatus, approve] = useApprove(magikFinance.MSHARE, magikFinance.contracts.xMSHARE.address);
 
-  const tokenBalance = useTokenBalance(magikFinance.MAGIK);
+  const tokenBalance = useTokenBalance(magikFinance.MSHARE);
   //const stakedBalance = useStakedMagik();
-  const stakedBalance = useTokenBalance(magikFinance.XMAGIK);
+  const stakedBalance = useTokenBalance(magikFinance.xMSHARE);
 
   const xmagikBalance = useXmagikBalance();
-  const xmagikRate = Number(xmagikBalance) / 1000000000000000000;
-  const stakedTokenPriceInDollars = Number(useStakedTokenPriceInDollars('MAGIK', magikFinance.MAGIK)) * xmagikRate;
+
+  const stakedTokenPriceInDollars = Number(useStakedTokenPriceInDollars('MSHARE', magikFinance.MSHARE));
 
   const tokenPriceInDollars = useMemo(
     () =>
@@ -58,7 +58,7 @@ const Stake: React.FC = () => {
         onStake(value);
         onDismissDeposit();
       }}
-      tokenName={'MAGIK'}
+      tokenName={'MSHARE'}
     />,
   );
 
@@ -69,7 +69,7 @@ const Stake: React.FC = () => {
         onWithdraw(value);
         onDismissWithdraw();
       }}
-      tokenName={'xMAGIK'}
+      tokenName={'xMSHARE'}
     />,
   );
 
@@ -80,11 +80,11 @@ const Stake: React.FC = () => {
           <StyledCardContentInner>
             <StyledCardHeader>
               <CardIcon>
-                <TokenSymbol symbol="XMAGIK" />
+                <TokenSymbol symbol="xMSHARE" />
               </CardIcon>
               <Button
                 onClick={() => {
-                  magikFinance.watchAssetInMetamask('XMAGIK');
+                  magikFinance.watchAssetInMetamask('xMSHARE');
                 }}
                 color="primary"
                 variant="outlined"
@@ -94,7 +94,7 @@ const Stake: React.FC = () => {
               </Button>
               <Value value={getDisplayBalance(stakedBalance)} />
               <Label text={`≈ $${tokenPriceInDollars}`} color="primary" />
-              <Label text={'xMAGIK Balance'} color="primary" />
+              <Label text={'xMSHARE Balance'} color="primary" />
             </StyledCardHeader>
             <StyledCardActions>
               {approveStatus !== ApprovalState.APPROVED ? (
@@ -105,7 +105,7 @@ const Stake: React.FC = () => {
                 style={{ marginTop: '20px' }}
                 onClick={approve}
                 >
-                  Approve MAGIK
+                  Approve MSHARE
                 </Button>
               ) : (
                 <>

@@ -36,7 +36,7 @@ export class MagikFinance {
   MIM: ERC20;
   USDC: ERC20;
   MBOND: ERC20;
-  XMAGIK: ERC20;
+  xMSHARE: ERC20;
   FTM: ERC20;
 
   constructor(cfg: Configuration) {
@@ -58,7 +58,7 @@ export class MagikFinance {
     this.MIM = this.externalTokens['MIM'];
     this.USDC = this.externalTokens['USDC'];
     this.WFTM = this.externalTokens['WFTM'];
-    this.XMAGIK = new ERC20(deployments.xMAGIK.address, provider, 'XMAGIK');
+    this.xMSHARE = new ERC20(deployments.xMSHARE.address, provider, 'xMSHARE');
     
 
     // Uniswap V2 Pair
@@ -343,7 +343,7 @@ export class MagikFinance {
   async getXmagikAPR(): Promise<PoolStats> {
     if (this.myAccount === undefined) return;
     const magikToken = this.MAGIK;
-    const xmagikToken = this.XMAGIK;
+    const xmagikToken = this.xMSHARE;
 
     const xmagikPercent = await this.getXmagikExchange();
 
@@ -389,8 +389,8 @@ export class MagikFinance {
 
     //Mgod formula
     const amountOfRewardsPerDay = epochRewardsPerShare * Number(MAGIKPrice) * 4;
-    const xMagikMagikBalanceOf = await this.MAGIK.balanceOf(this.XMAGIK.address);
-    const magikTVL = Number(getDisplayBalance(xMagikMagikBalanceOf, this.XMAGIK.decimal)) * Number(MAGIKPrice);
+    const xMagikMagikBalanceOf = await this.MAGIK.balanceOf(this.xMSHARE.address);
+    const magikTVL = Number(getDisplayBalance(xMagikMagikBalanceOf, this.xMSHARE.decimal)) * Number(MAGIKPrice);
     const realAPR = ((amountOfRewardsPerDay * 20) / magikTVL) * 365;
     return realAPR;
   }
@@ -1036,22 +1036,22 @@ export class MagikFinance {
   }
 
   async stakeToMagik(amount: string): Promise<TransactionResponse> {
-    const Xmagik = this.contracts.xMAGIK;
-    return await Xmagik.enter(decimalToBalance(amount));
+    const xMSHARE = this.contracts.xMSHARE;
+    return await xMSHARE.claimXMSHARE(decimalToBalance(amount));
   }
   async withdrawFromMagik(amount: string): Promise<TransactionResponse> {
-    const Xmagik = this.contracts.xMAGIK;
-    return await Xmagik.leave(decimalToBalance(amount));
+    const xMSHARE = this.contracts.xMSHARE;
+    return await xMSHARE.claimMSHARE(decimalToBalance(amount));
   }
   async getStakedMagik(): Promise<BigNumber> {
-    const Xmagik = this.contracts.xMAGIK;
-    return await Xmagik.balanceOf(this.myAccount);
+    const xMSHARE = this.contracts.xMSHARE;
+    return await xMSHARE.balanceOf(this.myAccount);
   }
 
   async getTotalStakedMagik(): Promise<BigNumber> {
-    const Xmagik = this.contracts.xMAGIK;
-    const magik = this.MAGIK;
-    return await magik.balanceOf(Xmagik.address);
+    const xMSHARE = this.contracts.xMSHARE;
+    const MSHARE = this.MSHARE;
+    return await MSHARE.balanceOf(xMSHARE.address);
   }
 
   async watchAssetInMetamask(assetName: string): Promise<boolean> {
@@ -1068,8 +1068,8 @@ export class MagikFinance {
       } else if (assetName === 'MBOND') {
         asset = this.MBOND;
         assetUrl = 'https://magik.finance/presskit/tbond_icon_noBG.png';
-      } else if (assetName === 'XMAGIK') {
-        asset = this.XMAGIK;
+      } else if (assetName === 'xMSHARE') {
+        asset = this.xMSHARE;
         assetUrl = 'https://magik.finance/presskit/tshare_icon_noBG.png';
       }
       await ethereum.request({
@@ -1088,8 +1088,8 @@ export class MagikFinance {
     return true;
   }
   async getXmagikExchange(): Promise<BigNumber> {
-    const Xmagik = this.contracts.xMAGIK;
-    const XmagikExchange = await Xmagik.getExchangeRate();
+    const xMSHARE = this.contracts.xMSHARE;
+    const XmagikExchange = await xMSHARE.getExchangeRate();
 
     const xMagikPerMagik = parseFloat(XmagikExchange) / 1000000000000000000;
     const xMagikRate = xMagikPerMagik.toString();

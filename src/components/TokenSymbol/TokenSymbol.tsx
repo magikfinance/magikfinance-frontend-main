@@ -6,7 +6,7 @@ import tShareLogo from '../../assets/img/mShare.png';
 import tombLogoPNG from '../../assets/img/crypto_tomb_cash.png';
 import tShareLogoPNG from '../../assets/img/mShare.png';
 import tBondLogo from '../../assets/img/mBond.png';
-import XMAGIKLogo from '../../assets/img/xMagik.png';
+import xMSHARElogo from '../../assets/img/xMSHARE.png';
 
 import tombFtmLpLogo from '../../assets/img/magik_ftm_lp.png';
 import tshareFtmLpLogo from '../../assets/img/mshare_ftm_lp.png';
@@ -29,7 +29,7 @@ const logosBySymbol: { [title: string]: string } = {
   //=====================
   MAGIK: tombLogo,
   TOMBPNG: tombLogoPNG,
-  XMAGIK: XMAGIKLogo,
+  xMSHARE: xMSHARElogo,
   TSHAREPNG: tShareLogoPNG,
   MSHARE: tShareLogo,
   MBOND: tBondLogo,

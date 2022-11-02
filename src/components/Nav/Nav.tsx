@@ -111,6 +111,9 @@ const Nav = () => {
               <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link>
+              <Link color="textPrimary" to="/xmshare" className={classes.link}>
+                xMSHARE
+              </Link>
               <a href="https://magik.farm" className={classes.link}>
               Vaults
               </a>
