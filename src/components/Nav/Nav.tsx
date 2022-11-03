@@ -173,6 +173,7 @@ const Nav = () => {
                 </ListItem>
                 <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" />
+                <ListItemLink primary="xMSHARE" to="/xmshare" />
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Vaults</ListItemText>
                 </ListItem>
