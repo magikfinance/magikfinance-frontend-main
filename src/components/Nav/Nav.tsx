@@ -103,7 +103,10 @@ const Nav = () => {
                 Farms
               </Link>
               <a href="https://farmland.magik.finance" className={classes.link}>
-              Farmland
+              Farmland (OLD)
+              </a>
+              <a href="https://farmlandv2.magik.finance" className={classes.link}>
+              Farmland 
               </a>
               <Link color="textPrimary" to="/dungeon" className={classes.link}>
                 Dungeon
@@ -169,6 +172,9 @@ const Nav = () => {
                 </ListItem>
                 <ListItemLink primary="Farms" to="/farms" />
                 <ListItem button component="a" href="https://farmland.magik.finance">
+                  <ListItemText>Farmland (OLD)</ListItemText>
+                </ListItem>
+                <ListItem button component="a" href="https://farmlandv2.magik.finance">
                   <ListItemText>Farmland</ListItemText>
                 </ListItem>
                 <ListItemLink primary="Dungeon" to="/dungeon" />
