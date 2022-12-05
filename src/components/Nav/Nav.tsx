@@ -99,6 +99,9 @@ const Nav = () => {
             <a href="https://magikswap.dog" className={classes.link}>
               MagikSwap
               </a>
+              <a href="https://magiknft.magik.finance" className={classes.link}>
+              NFT Mint
+              </a>
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
               </Link>
@@ -169,6 +172,9 @@ const Nav = () => {
                 <ListItemLink primary="Home" to="/" />
                 <ListItem button component="a" href="https://magikswap.dog">
                   <ListItemText>MagikSwap</ListItemText>
+                </ListItem>
+                <ListItem button component="a" href="https://magiknft.magik.finance">
+                  <ListItemText>NFT Mint</ListItemText>
                 </ListItem>
                 <ListItemLink primary="Farms" to="/farms" />
                 <ListItem button component="a" href="https://farmland.magik.finance">
