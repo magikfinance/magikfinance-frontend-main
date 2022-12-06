@@ -604,7 +604,7 @@ export class MagikFinance {
       const poolValue = Number.isNaN(value) ? 0 : value;
       totalValue += poolValue;
     }
-    const farmlandAddress = "0x3bb0bf268765c1De3370b2d66C59e7be206FeD78"
+    const farmlandAddress = "0x7551Fb39ce830282Abea40E44B791641A4ec0B92"
     const farmlandBalanceBN = await this.MSHARE.balanceOf(farmlandAddress)
     const farmlandBalance = Number(getDisplayBalance(farmlandBalanceBN,18))
     const xmshareaddress = "0xb659f6C8C4f1E071875F48c41d75bE264700594d"
