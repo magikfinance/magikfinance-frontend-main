@@ -607,14 +607,18 @@ export class MagikFinance {
     const farmlandAddress = "0x3bb0bf268765c1De3370b2d66C59e7be206FeD78"
     const farmlandBalanceBN = await this.MSHARE.balanceOf(farmlandAddress)
     const farmlandBalance = Number(getDisplayBalance(farmlandBalanceBN,18))
+    const xmshareaddress = "0xb659f6C8C4f1E071875F48c41d75bE264700594d"
+    const xmshareBalanceBN = await this.MSHARE.balanceOf(xmshareaddress)
+    const xmshareBalance = Number(getDisplayBalance(xmshareBalanceBN,18))
     const tokenPrice = await this.getDepositTokenPriceInDollars("MSHARE", this.MSHARE)
     const farmlandBalanceUSD = farmlandBalance * Number(tokenPrice)
+    const xmsharebalanceUSD = xmshareBalance * Number(tokenPrice)
     const TSHAREPrice = (await this.getShareStat()).priceInDollars;
     const masonrytShareBalanceOf = await this.MSHARE.balanceOf(this.currentMasonry().address);
     const masonryTVL = Number(getDisplayBalance(masonrytShareBalanceOf, this.MSHARE.decimal)) * Number(TSHAREPrice);
     const MAGIKPrice = (await this.getMagikStat()).priceInDollars;
 
-    return totalValue + masonryTVL + farmlandBalanceUSD;
+    return totalValue + masonryTVL + farmlandBalanceUSD + xmsharebalanceUSD;
   }
 
   /**
