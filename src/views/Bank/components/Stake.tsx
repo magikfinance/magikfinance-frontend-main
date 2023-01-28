@@ -56,7 +56,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     [stakedTokenPriceInDollars],
   );
 
-  const multiplier = (bank.depositTokenName.includes('MS-MAGIK-USDC') || bank.depositTokenName.includes('MSHARE-USDC'))  && !bank.depositTokenName.includes('WLRS-USDIBS-LP') && !bank.depositTokenName.includes('XWLRS') ? 10**6 : 1;
+  const multiplier = (bank.depositTokenName.includes('USDC') || bank.depositTokenName.includes('USDC'))  && !bank.depositTokenName.includes('WLRS-USDIBS-LP') && !bank.depositTokenName.includes('XWLRS') ? 10**6 : 1;
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2); 
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
@@ -110,8 +110,8 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
             <TokenSymbol symbol={bank.depositToken.symbol} size={100} />
             <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} /> 
             <Label color="#fff" text={`≈ $${earnedInDollars}`} />
-            <Label color="#fff" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? 
-            bank.depositTokenName + '.e' : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
+            <Label color="#fff" text={`${bank.depositTokenName === 'MS-MAGIK-USDC' || bank.depositTokenName === 'USDT' ? 
+            bank.depositTokenName + '' : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -136,10 +136,10 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   <StyledActionSpacer />
                   {
                     // bank.depositTokenName !== 'WLRS-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP' && bank.depositTokenName !== 'WLRS-USDIBS-LP'
-                    bank.depositTokenName !== 'MS-MAGIK-USDC' && bank.depositTokenName !== 'WSHARE-USDC-LP'
+                    bank.depositTokenName !== 'MS-MAGIK-USDC' && bank.depositTokenName !== 'MS-MSHARE-USDC'
                       ? null
                       : <IconButton
-                          disabled={bank.closedForStaking}
+                          disabled={true}
                           onClick={() => (bank.closedForStaking ? null : onPresentZap())}
                         >
                           <FlashOnIcon style={{color: '#ccc'}} />

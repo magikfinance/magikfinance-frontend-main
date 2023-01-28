@@ -7,6 +7,7 @@ import tombLogoPNG from '../../assets/img/crypto_tomb_cash.png';
 import tShareLogoPNG from '../../assets/img/mShare.png';
 import tBondLogo from '../../assets/img/mBond.png';
 import xMSHARElogo from '../../assets/img/xMSHARE.png';
+import MIGHTlogo from '../../assets/img/MIGHT.png';
 
 import tombFtmLpLogo from '../../assets/img/magik_ftm_lp.png';
 import tshareFtmLpLogo from '../../assets/img/mshare_ftm_lp.png';
@@ -30,6 +31,7 @@ const logosBySymbol: { [title: string]: string } = {
   MAGIK: tombLogo,
   TOMBPNG: tombLogoPNG,
   xMSHARE: xMSHARElogo,
+  MIGHT: MIGHTlogo,
   TSHAREPNG: tShareLogoPNG,
   MSHARE: tShareLogo,
   MBOND: tBondLogo,
@@ -39,6 +41,7 @@ const logosBySymbol: { [title: string]: string } = {
   ZOO: zooLogo,
   'MAGIK-FTM-LP': tombFtmLpLogo,
   'MS-MAGIK-FTM': tombFtmLpLogo,
+  'MAGIK-FTM Earn MAGIK': tombFtmLpLogo,
   'MS-MSHARE-FTM': tshareFtmLpLogo,
   'MSHARE-FTM-LP': tshareFtmLpLogo,
   'MAGIK-MSHARE-LP': magikmshareLogo,
