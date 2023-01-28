@@ -126,9 +126,9 @@ const Nav = () => {
               <a href="https://magik.farm" className={classes.link}>
               Vaults
               </a>
-              <a href="https://moshpit.magik.finance" className={classes.link}>
+              {/* <a href="https://moshpit.magik.finance" className={classes.link}>
                Moshpit
-              </a>
+              </a> */}
               <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
               </Link>
@@ -192,9 +192,9 @@ const Nav = () => {
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Vaults</ListItemText>
                 </ListItem>
-                <ListItem button component="a" href="https://moshpit.magik.finance">
+                {/* <ListItem button component="a" href="https://moshpit.magik.finance">
                   <ListItemText>Moshpit</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/">
                   <ListItemText>Docs</ListItemText>
