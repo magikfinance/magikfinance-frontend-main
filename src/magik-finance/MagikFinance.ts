@@ -37,7 +37,6 @@ export class MagikFinance {
   USDC: ERC20;
   MBOND: ERC20;
   xMSHARE: ERC20;
-  MIGHT: ERC20;
   FTM: ERC20;
 
   constructor(cfg: Configuration) {
@@ -60,7 +59,6 @@ export class MagikFinance {
     this.USDC = this.externalTokens['USDC'];
     this.WFTM = this.externalTokens['WFTM'];
     this.xMSHARE = new ERC20(deployments.xMSHARE.address, provider, 'xMSHARE');
-    this.MIGHT = new ERC20(deployments.MIGHT.address, provider, 'MIGHT');
     
 
     // Uniswap V2 Pair
@@ -275,7 +273,6 @@ export class MagikFinance {
     const depositToken = bank.depositToken;
     const poolContract = this.contracts[bank.contract];
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
-    console.log(depositTokenPrice, "Deposit token");
     const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC') ? 10**6 : 1);
     const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
     const stat = bank.earnTokenName === 'MAGIK' ? await this.getMagikStat() : await this.getShareStat();
@@ -414,7 +411,7 @@ export class MagikFinance {
   ) {
     if (earnTokenName === 'MAGIK') {
       if (!contractName.endsWith('TombRewardPool')) {
-        const rewardPerSecond = await poolContract.sharesPerSecond();
+        const rewardPerSecond = await poolContract.tombPerSecond();
         if (depositTokenName === 'WFTM') {
           return rewardPerSecond.mul(6000).div(11000).div(24);
         } else if (depositTokenName === 'BOO') {
@@ -426,6 +423,13 @@ export class MagikFinance {
         }
         return rewardPerSecond.div(24);
       }
+      const poolStartTime = await poolContract.poolStartTime();
+      const startDateTime = new Date(poolStartTime.toNumber() * 1000);
+      const FOUR_DAYS = 4 * 24 * 60 * 60 * 1000;
+      if (Date.now() - startDateTime.getTime() > FOUR_DAYS) {
+        return await poolContract.epochTombPerSecond(1);
+      }
+      return await poolContract.epochTombPerSecond(0);
     }
     
     const rewardPerSecond = await poolContract.mSharePerSecond();
@@ -1038,11 +1042,6 @@ export class MagikFinance {
   async stakeToMagik(amount: string): Promise<TransactionResponse> {
     const xMSHARE = this.contracts.xMSHARE;
     return await xMSHARE.claimXMSHARE(decimalToBalance(amount));
-  }
-
-  async stakeToMight(amount: string): Promise<TransactionResponse> {
-    const MIGHT = this.contracts.MIGHT;
-    return await MIGHT.ConvertMSHARE(decimalToBalance(amount));
   }
   async withdrawFromMagik(amount: string): Promise<TransactionResponse> {
     const xMSHARE = this.contracts.xMSHARE;

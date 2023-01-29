@@ -120,9 +120,6 @@ const Nav = () => {
               <Link color="textPrimary" to="/xmshare" className={classes.link}>
                 xMSHARE
               </Link>
-              <Link color="textPrimary" to="/might" className={classes.link}>
-                MIGHT
-              </Link>
               <a href="https://magik.farm" className={classes.link}>
               Vaults
               </a>

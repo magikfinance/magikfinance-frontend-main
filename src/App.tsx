@@ -26,7 +26,6 @@ const Wilderness = lazy(() => import('./views/Wilderness'));
 // const SBS = lazy(() => import('./views/Sbs'));
 const Liquidity = lazy(() => import('./views/Liquidity'));
 const XMSHARE = lazy(() => import('./views/XMSHARE'));
-const MIGHT = lazy(() => import('./views/MIGHT'));
 // const Raffle = lazy(() => import('./views/Raffle'));
 const Minichilla = lazy(() => import('./views/Minichilla'));
 
@@ -68,9 +67,6 @@ const App: React.FC = () => {
             </Route>
             <Route path="/xmshare">
               <XMSHARE />
-            </Route>
-            <Route path="/might">
-              <MIGHT />
             </Route>
             {/* <Route path="/raffle">
               <Raffle />
