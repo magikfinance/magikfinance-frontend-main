@@ -114,9 +114,9 @@ const Stake: React.FC = () => {
                     <RemoveIcon color={'yellow'} />
                   </IconButton> */}
                   <StyledActionSpacer />
-                  <IconButton onClick={onPresentDeposit}>
+                  {/* <IconButton onClick={onPresentDeposit}>
                     <AddIcon color={'yellow'} />
-                  </IconButton>
+                  </IconButton> */}
                 </>
               )}
             </StyledCardActions>
