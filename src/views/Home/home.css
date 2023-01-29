@@ -11,7 +11,12 @@
     font-family: 'Metamorphous', cursive;
 }
 
+#logo{
+    size-adjust: 10px;
+}
+
 :root{
     --magikGold: rgb(255,232,132);
     --darkGradient: linear-gradient(45deg,rgb(10,0,10),rgb(30,0,30));
 }
+
