@@ -63,7 +63,7 @@ const Home = () => {
   }
 
   const buyTombAddress = 'https://magikswap.dog/swap'
-  const buyTShareAddress = 'https://magikswap.dog/swap';
+  const buyTShareAddress = 'https://equalizer.exchange/swap';
   const MagikChart = 'https://www.dextools.io/app/en/fantom/pair-explorer/0x2e28aed21143cdac666633bf2c31db3f50e21edd';
   const MshareChart = 'https://www.dextools.io/app/en/fantom/pair-explorer/0xb1a53d68d55efb93a30d135a450c0a3cee864c25';
 
@@ -203,7 +203,7 @@ const Home = () => {
                 Buy MAGIK
               </Button>
               <Button id="Button" style={{ marginRight: '5px' }} target="_blank" href={buyTShareAddress} className={classes.button}>
-                Buy MSHARE
+                Buy MIGHT
               </Button>
               <Button id="Button" href={MagikChart} target="_blank" rel="noreferrer noopener" style={{ marginRight: '5px' }}>
                 Magik Chart
@@ -300,7 +300,7 @@ const Home = () => {
               </Box>
               Current Price
               <Box>
-                <span style={{ fontSize: '30px' }}>{mightPriceInDollars ? mightPriceInDollars : '-.----'} USD</span>
+                <span style={{ fontSize: '30px' }}>{ tSharePriceInDollars? tSharePriceInDollars : '-.----'} USD</span>
               </Box>
               <span style={{ fontSize: '12px' }}>
                 Market Cap: ${(MightCirculatingSupply * mightPriceInDollars).toFixed(2)} <br />
