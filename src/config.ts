@@ -1,5 +1,5 @@
 // import { ChainId } from '@pancakeswap-libs/sdk';
-import { ChainId } from '@spiritswap/sdk';
+import { ChainId } from '@magikswap/sdk';
 import { Configuration } from './magik-finance/config';
 import { BankInfo } from './magik-finance';
 

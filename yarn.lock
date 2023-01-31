@@ -2505,6 +2505,18 @@
   version "5.50.0"
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-5.50.0.tgz#29c6419e8379d496ab6d0426eadf3c4d100cd186"
 
+"@magikswap/sdk@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@magikswap/sdk/-/sdk-1.0.1.tgz#84d4446dc36426405b41660fd911d2e7b7dcac15"
+  integrity sha512-8eLsoVHlU4Ot5UiQjpjCUlk4W8JRBVLKvb+JprUnQM5HgXdTs8on4iN/79rHMJPiHmuK3dIPYIv1W/t6yMU3tw==
+  dependencies:
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
 "@material-ui/core@^4.11.4":
   version "4.11.4"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.4.tgz#4fb9fe5dec5dcf780b687e3a40cff78b2b9640a4"

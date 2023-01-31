@@ -1,7 +1,7 @@
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
 import axios from 'axios';
-import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@spiritswap/sdk';
-import { Fetcher, Route, Token } from '@spiritswap/sdk';
+import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@magikswap/sdk';
+import { Fetcher, Route, Token } from '@magikswap/sdk';
 import { Configuration } from './config';
 import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, TShareSwapperStat } from './types';
 import { BigNumber, Contract, ethers, EventFilter } from 'ethers';
@@ -29,6 +29,7 @@ export class MagikFinance {
   masonryVersionOfUser?: string;
 
   TOMBWFTM_LP: Contract;
+  MSHAREUSDCLP: Contract;
   MAGIKREDLP: Contract;
   MAGIK: ERC20;
   MSHARE: ERC20;
@@ -65,6 +66,7 @@ export class MagikFinance {
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['MAGIK-FTM-LP'][0], IUniswapV2PairABI, provider);
+    this.MSHAREUSDCLP = new Contract(externalTokens['MS-MSHARE-USDC'][0], IUniswapV2PairABI, provider);
 
 
     this.config = cfg;
@@ -222,6 +224,27 @@ export class MagikFinance {
 
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.MSHARE);
     const tombRewardPoolSupply = await this.MSHARE.balanceOf(MagikFtmLPTShareRewardPool.address);
+    const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
+    const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
+    const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
+
+
+    return {
+      tokenInFtm: priceInFTM,
+      priceInDollars: priceOfSharesInDollars,
+      totalSupply: getDisplayBalance(supply, this.MSHARE.decimal, 0),
+      circulatingSupply: getDisplayBalance(tShareCirculatingSupply, this.MSHARE.decimal, 0),
+    };
+  }
+
+  async getMightStat(): Promise<TokenStat> {
+    const { MagikFtmLPTShareRewardPool } = this.contracts;
+
+    const supply = await this.MIGHT.totalSupply();
+
+    const priceInFTM = await this.getTokenPriceFromPancakeswap(this.MIGHT);
+    console.log(priceInFTM, "price in ftm");
+    const tombRewardPoolSupply = await this.MIGHT.balanceOf(MagikFtmLPTShareRewardPool.address);
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
@@ -740,6 +763,27 @@ export class MagikFinance {
     try {
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
       const priceInBUSD = new Route([wftmToToken], token);
+      console.log(wftmToToken, "priceinbusd");
+
+      return priceInBUSD.midPrice.toFixed(4);
+    } catch (err) {
+      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
+    }
+  }
+
+  async getUSDCPriceFromPancakeswap(tokenContract: ERC20): Promise<string> {
+    const ready = await this.provider.ready;
+    if (!ready) return;
+    const { chainId } = this.config;
+    const { USDC } = this.config.externalTokens;
+
+    const usdc = new Token(chainId, USDC[0], USDC[1]);
+    const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+
+    try {
+      const wftmToToken = await Fetcher.fetchPairData(usdc, token, this.provider);
+      const priceInBUSD = new Route([wftmToToken], token);
+      console.log(wftmToToken, "priceinbusd");
 
       return priceInBUSD.midPrice.toFixed(4);
     } catch (err) {

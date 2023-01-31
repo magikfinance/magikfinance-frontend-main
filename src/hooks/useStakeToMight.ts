@@ -8,7 +8,7 @@ const useStakeToMight = () => {
 
   const handleStake = useCallback(
     (amount: string) => {
-      handleTransactionReceipt(magikFinance.stakeToMight(amount), `Stake ${amount} MSHARE for MIGHT`);
+      handleTransactionReceipt(magikFinance.stakeToMight(amount), `Convert ${amount} MSHARE for MIGHT`);
     },
     [magikFinance, handleTransactionReceipt],
   );

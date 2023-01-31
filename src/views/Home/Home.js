@@ -14,6 +14,7 @@ import useModal from '../../hooks/useModal';
 import useZap from '../../hooks/useZap';
 import useBondStats from '../../hooks/useBondStats';
 import usemShareStats from '../../hooks/usemShareStats';
+import useMightStats from '../../hooks/useMightStats';
 import useTotalValueLocked from '../../hooks/useTotalValueLocked';
 import { magik as magikTesting, mShare as mShareTesting } from '../../magik-finance/deployments/deployments.testing.json';
 import { magik as magikProd, mShare as mShareProd } from '../../magik-finance/deployments/deployments.mainnet.json';
@@ -47,6 +48,7 @@ const Home = () => {
   const tShareFtmLpStats = useLpStats('MSHARE-FTM-LP');
   const tombStats = useMagikStats();
   const tShareStats = usemShareStats();
+  const mightStats = useMightStats();
   const tBondStats = useBondStats();
   const tombFinance = useMagikFinance();
 
@@ -79,6 +81,10 @@ const Home = () => {
     () => (tShareStats ? Number(tShareStats.priceInDollars).toFixed(2) : null),
     [tShareStats],
   );
+  const mightPriceInDollars = useMemo(
+    () => (mightStats ? Number(mightStats.priceInDollars).toFixed(2) : null),
+    [mightStats],
+  );
   const tSharePriceInFTM = useMemo(
     () => (tShareStats ? Number(tShareStats.tokenInFtm).toFixed(4) : null),
     [tShareStats],
@@ -87,6 +93,12 @@ const Home = () => {
     () => (tShareStats ? String(tShareStats.circulatingSupply) : null),
     [tShareStats],
   );
+
+  const MightCirculatingSupply = useMemo(
+    () => (mightStats ? String(mightStats.circulatingSupply) : null),
+    [mightStats],
+  );
+  
   const tShareTotalSupply = useMemo(() => (tShareStats ? String(tShareStats.totalSupply) : null), [tShareStats]);
 
   const tBondPriceInDollars = useMemo(
@@ -203,7 +215,7 @@ const Home = () => {
           </Card>
         </Grid>
         {/* MAGIK */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
               <h2>MAGIK</h2>
@@ -236,7 +248,7 @@ const Home = () => {
           </Card>
         </Grid>
         {/* MSHARE */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
               <h2>MSHARE</h2>
@@ -263,6 +275,38 @@ const Home = () => {
                 Market Cap: ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                 Circulating Supply: {tShareCirculatingSupply} <br />
                 Total Supply: {tShareTotalSupply}
+              </span>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Card>
+            <CardContent align="center" style={{ position: 'relative' }}>
+              <h2>MIGHT</h2>
+              <Button
+                onClick={() => {
+                  tombFinance.watchAssetInMetamask('MIGHT');
+                }}
+                variant="outlined"
+                style={{ position: 'absolute', top: '10px', right: '10px' }}
+              >
+                +&nbsp;
+                <img alt="metamask fox" style={{ width: '20px' }} src={MetamaskFox} />
+              </Button>
+              <Box mt={2}>
+                <CardIcon>
+                  <TokenSymbol symbol="MIGHT" />
+                </CardIcon>
+              </Box>
+              Current Price
+              <Box>
+                <span style={{ fontSize: '30px' }}>{mightPriceInDollars ? mightPriceInDollars : '-.----'} USD</span>
+              </Box>
+              <span style={{ fontSize: '12px' }}>
+                Market Cap: ${(MightCirculatingSupply * mightPriceInDollars).toFixed(2)} <br />
+                Circulating Supply: {MightCirculatingSupply} <br />
+                Total Supply: {MightCirculatingSupply} <br />
+                Max Supply: 70,000
               </span>
             </CardContent>
           </Card>

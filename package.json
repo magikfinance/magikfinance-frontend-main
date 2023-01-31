@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "@spiritswap/sdk": "https://github.com/Layer3Org/spiritswap-sdk",
     "@spookyswap/sdk": "https://github.com/SpookySwap/spookyswap-sdk",
+    "@magikswap/sdk": "^1.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
