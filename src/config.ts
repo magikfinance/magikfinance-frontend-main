@@ -145,7 +145,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 1,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MshareFtmMSLP: {
     name: 'Earn MSHARE by MS-MSHARE-FTM',
@@ -156,7 +156,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 2,
-    closedForStaking: false,
+    closedForStaking: true,
   },
     MagikMshareMSLP: {
     name: 'Earn MSHARE by MS-MAGIK-MSHARE-LP',
@@ -178,7 +178,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 4,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MshareUSDCLPMS: {
     name: 'Earn MSHARE by MS-MSHARE-USDC',
@@ -189,7 +189,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'MSHARE',
     finished: false,
     sort: 5,
-    closedForStaking: false,
+    closedForStaking: true,
   },
   MagikMIMLPMS: {
     name: 'Earn MSHARE by MAGIK-MIM-MS',
