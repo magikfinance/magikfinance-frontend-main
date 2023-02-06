@@ -99,30 +99,31 @@ const Nav = () => {
             <a href="https://magikswap.dog" className={classes.link}>
               MagikSwap
               </a>
-              <a href="https://magiknft.magik.finance" className={classes.link}>
-              NFT Mint
-              </a>
               <Link color="textPrimary" to="/farms" className={classes.link}>
                 Farms
-              </Link>
-              <a href="https://farmland.magik.finance" className={classes.link}>
-              Farmland (OLD)
-              </a>
-              <a href="https://farmlandv2.magik.finance" className={classes.link}>
-              Farmland 
-              </a>
-              <Link color="textPrimary" to="/dungeon" className={classes.link}>
-                Dungeon
-              </Link>
-              <Link color="textPrimary" to="/wilderness" className={classes.link}>
-                Wilderness
-              </Link>
-              <Link color="textPrimary" to="/xmshare" className={classes.link}>
-                xMSHARE
               </Link>
               <Link color="textPrimary" to="/might" className={classes.link}>
                 MIGHT
               </Link>
+              {/* <a href="https://farmland.magik.finance" className={classes.link}>
+              Farmland (OLD)
+              </a> */}
+              <a href="https://farmlandv2.magik.finance" className={classes.link}>
+              Farmland 
+              </a>
+              <a href="https://magiknft.magik.finance" className={classes.link}>
+              NFT Mint
+              </a>
+              {/* <Link color="textPrimary" to="/dungeon" className={classes.link}>
+                Dungeon
+              </Link> */}
+              {/* <Link color="textPrimary" to="/wilderness" className={classes.link}>
+                Wilderness
+              </Link> */}
+              <Link color="textPrimary" to="/xmshare" className={classes.link}>
+                xMSHARE
+              </Link>
+
               <a href="https://magik.farm" className={classes.link}>
               Vaults
               </a>
@@ -176,25 +177,26 @@ const Nav = () => {
                 <ListItem button component="a" href="https://magikswap.dog">
                   <ListItemText>MagikSwap</ListItemText>
                 </ListItem>
-                <ListItem button component="a" href="https://magiknft.magik.finance">
-                  <ListItemText>NFT Mint</ListItemText>
-                </ListItem>
                 <ListItemLink primary="Farms" to="/farms" />
-                <ListItem button component="a" href="https://farmland.magik.finance">
+                <ListItemLink primary="MIGHT" to="/might" />
+                {/* <ListItem button component="a" href="https://farmland.magik.finance">
                   <ListItemText>Farmland (OLD)</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem button component="a" href="https://farmlandv2.magik.finance">
                   <ListItemText>Farmland</ListItemText>
                 </ListItem>
-                <ListItemLink primary="Dungeon" to="/dungeon" />
-                <ListItemLink primary="Wilderness" to="/wilderness" />
-                <ListItemLink primary="xMSHARE" to="/xmshare" />
+                {/* <ListItemLink primary="Dungeon" to="/dungeon" />
+                <ListItemLink primary="Wilderness" to="/wilderness" /> */}
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Vaults</ListItemText>
+                </ListItem>
+                <ListItem button component="a" href="https://magiknft.magik.finance">
+                  <ListItemText>NFT Mint</ListItemText>
                 </ListItem>
                 {/* <ListItem button component="a" href="https://moshpit.magik.finance">
                   <ListItemText>Moshpit</ListItemText>
                 </ListItem> */}
+                <ListItemLink primary="xMSHARE" to="/xmshare" />
                 <ListItemLink primary="NFT Staking" to="/nftstaking" />
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/">
                   <ListItemText>Docs</ListItemText>
