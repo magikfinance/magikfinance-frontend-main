@@ -96,7 +96,10 @@ const Nav = () => {
               </Link>
             </Typography>
             <Box id='Menu'>
-            <a href="https://magikswap.dog" className={classes.link}>
+            <a href="https://worldofmagik.com" className={classes.link}>
+              World of Magik
+              </a>
+              <a href="https://magikswap.dog" className={classes.link}>
               MagikSwap
               </a>
               <Link color="textPrimary" to="/farms" className={classes.link}>
@@ -176,6 +179,9 @@ const Nav = () => {
                 <ListItemLink primary="Home" to="/" />
                 <ListItem button component="a" href="https://magikswap.dog">
                   <ListItemText>MagikSwap</ListItemText>
+                </ListItem>
+                <ListItem button component="a" href="https://worldofmagik.com">
+                  <ListItemText>World of Magik</ListItemText>
                 </ListItem>
                 <ListItemLink primary="Farms" to="/farms" />
                 <ListItemLink primary="MIGHT" to="/might" />
