@@ -123,9 +123,9 @@ const Nav = () => {
               {/* <Link color="textPrimary" to="/wilderness" className={classes.link}>
                 Wilderness
               </Link> */}
-              <Link color="textPrimary" to="/xmshare" className={classes.link}>
+              {/* <Link color="textPrimary" to="/xmshare" className={classes.link}>
                 xMSHARE
-              </Link>
+              </Link> */}
 
               <a href="https://magik.farm" className={classes.link}>
               Vaults
@@ -133,9 +133,9 @@ const Nav = () => {
               {/* <a href="https://moshpit.magik.finance" className={classes.link}>
                Moshpit
               </a> */}
-              <Link color="textPrimary" to="/nftstaking" className={classes.link}>
+              {/* <Link color="textPrimary" to="/nftstaking" className={classes.link}>
                 NFT Staking
-              </Link>
+              </Link> */}
               <a href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/" className={classes.link}>
                 Docs
               </a>
@@ -196,14 +196,14 @@ const Nav = () => {
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Vaults</ListItemText>
                 </ListItem>
-                <ListItem button component="a" href="https://magiknft.magik.finance">
+                {/* <ListItem button component="a" href="https://magiknft.magik.finance">
                   <ListItemText>NFT Mint</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 {/* <ListItem button component="a" href="https://moshpit.magik.finance">
                   <ListItemText>Moshpit</ListItemText>
                 </ListItem> */}
-                <ListItemLink primary="xMSHARE" to="/xmshare" />
-                <ListItemLink primary="NFT Staking" to="/nftstaking" />
+                {/* <ListItemLink primary="xMSHARE" to="/xmshare" />
+                <ListItemLink primary="NFT Staking" to="/nftstaking" /> */}
                 <ListItem button component="a" href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/">
                   <ListItemText>Docs</ListItemText>
                 </ListItem>
