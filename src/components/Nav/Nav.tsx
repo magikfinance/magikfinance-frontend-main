@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import AuditImage from '../../assets/img/Audit.png';
@@ -15,6 +15,9 @@ import {
   ListItem,
   ListItemText,
   Divider,
+  MenuItem,
+  Menu,
+  Button,
 } from '@material-ui/core';
 
 import ListItemLink from '../ListItemLink';
@@ -24,6 +27,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AccountButton from './AccountButton';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -38,6 +42,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px',
     marginBottom: '3rem',
   },
+  menu: {
+    background: '#fff',
+  },
+  
   drawer: {
     width: 240,
     flexShrink: 0,
@@ -69,6 +77,48 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
     },
   },
+  dropdown: {
+    position: 'relative',
+    display: 'flex'
+  },
+  dropdownContent: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    backgroundColor: '#f9f9f9',
+    minWidth: '160px',
+    boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+    zIndex: 1
+  },
+  dropdownContentLink: {
+    color: 'black',
+    padding: '12px 16px',
+    textDecoration: 'none',
+    display: 'flex',
+    justifyContent: 'space-between',
+    '&:hover': {
+      backgroundColor: '#f1f1f1'
+    }
+  },
+  
+  menuItem: {
+    height: 0, // or whatever height works best for your design
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '20px',
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+
+  
+  dropdownHover: {
+    '&:hover $dropdownContent': {
+      display: 'block'
+
+    }
+  }
 }));
 
 const Nav = () => {
@@ -76,6 +126,13 @@ const Nav = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [showDeprecatedLinks, setShowDeprecatedLinks] = React.useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event: { currentTarget: any; }) => {
+    setAnchorEl(event.currentTarget);
+  };
+  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -84,7 +141,14 @@ const Nav = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const toggleDeprecatedLinks = () => {
+    setShowDeprecatedLinks(!showDeprecatedLinks);
+  };
 
+  function handleClose() {
+    setAnchorEl(null);
+  }
+  
   return (
     <AppBar id="AppBar" position="sticky" elevation={0} className={classes.appBar}>
       <Toolbar id="Toolbar">
@@ -96,50 +160,116 @@ const Nav = () => {
               </Link>
             </Typography>
             <Box id='Menu'>
-            <a href="https://worldofmagik.com" className={classes.link}>
-              World of Magik
-              </a>
-              <a href="https://magikswap.dog" className={classes.link}>
-              MagikSwap
-              </a>
-              <Link color="textPrimary" to="/farms" className={classes.link}>
-                Farms
-              </Link>
-              <Link color="textPrimary" to="/might" className={classes.link}>
-                MIGHT
-              </Link>
-              {/* <a href="https://farmland.magik.finance" className={classes.link}>
-              Farmland (OLD)
-              </a> */}
-              <a href="https://farmlandv2.magik.finance" className={classes.link}>
-              Farmland 
-              </a>
-              <a href="https://magiknft.magik.finance" className={classes.link}>
-              NFT Mint
-              </a>
-              {/* <Link color="textPrimary" to="/dungeon" className={classes.link}>
-                Dungeon
-              </Link> */}
-              {/* <Link color="textPrimary" to="/wilderness" className={classes.link}>
-                Wilderness
-              </Link> */}
-              {/* <Link color="textPrimary" to="/xmshare" className={classes.link}>
-                xMSHARE
-              </Link> */}
-
-              <a href="https://magik.farm" className={classes.link}>
-              Vaults
-              </a>
-              {/* <a href="https://moshpit.magik.finance" className={classes.link}>
-               Moshpit
-              </a> */}
-              {/* <Link color="textPrimary" to="/nftstaking" className={classes.link}>
-                NFT Staking
-              </Link> */}
-              <a href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/" className={classes.link}>
-                Docs
-              </a>
-            </Box>
+  <a href="https://worldofmagik.com" className={classes.link}>
+    World of Magik
+  </a>
+  {/* <a href="https://magikswap.dog" className={classes.link}>
+    MagikSwap
+  </a> */}
+  {/* <Link color="textPrimary" to="/farms" className={classes.link}>
+    Farms
+  </Link> */}
+  <Link color="textPrimary" to="/might" className={classes.link}>
+    MIGHT
+  </Link>
+  {/* <a href="https://magiknft.magik.finance" className={classes.link}>
+    NFT Mint
+  </a>
+  <a href="https://farmlandv2.magik.finance" className={classes.link}>
+    Farmland 
+  </a> */}
+  <a href="https://magik.farm" className={classes.link}>
+    Vaults
+  </a>
+  <a href="https://magikdotfinance.gitbook.io/magik-v2-ecosystem-whitepaper-draft/" className={classes.link}>
+    Docs
+  </a>
+  <div className={classes.menuItem}>
+    <Button id = "Button" aria-controls="deprecated-menu" aria-haspopup="true" onClick={handleClick}>
+      Deprecated
+    </Button>
+    <Menu
+      id="deprecated-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+    >
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://farmland.magik.finance';
+        }}
+      >
+        Farmland (OLD)
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://farmlandv2.magik.finance';
+        }}
+      >
+        FarmlandV2
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magik.finance/dungeon';
+        }}
+      >
+        Dungeon (OLD)
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magik.finance/wilderness';
+        }}
+      >
+        Wilderness (OLD)
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magikswap.dog';
+        }}
+      >
+        MagikSwap (OLD)
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magik.finance/farms';
+        }}
+      >
+        Farms
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magik.finance/xmshare';
+        }}
+      >
+        xMSHARE
+      </MenuItem>
+      <MenuItem id="Button"
+        onClick={(event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+          event.preventDefault();
+          handleClose();
+          window.location.href = 'https://magik.finance/nftstaking';
+        }}
+      >
+        NFT Staking
+      </MenuItem>
+    </Menu>
+  </div>
+</Box>
             <AccountButton text="Connect" />
           </>
         ) : (
@@ -177,25 +307,53 @@ const Nav = () => {
               <Divider />
               <List>
                 <ListItemLink primary="Home" to="/" />
-                <ListItem button component="a" href="https://magikswap.dog">
+                {/* <ListItem button component="a" href="https://magikswap.dog">
                   <ListItemText>MagikSwap</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem button component="a" href="https://worldofmagik.com">
                   <ListItemText>World of Magik</ListItemText>
                 </ListItem>
-                <ListItemLink primary="Farms" to="/farms" />
+                {/* <ListItemLink primary="Farms" to="/farms" /> */}
                 <ListItemLink primary="MIGHT" to="/might" />
                 {/* <ListItem button component="a" href="https://farmland.magik.finance">
                   <ListItemText>Farmland (OLD)</ListItemText>
                 </ListItem> */}
-                <ListItem button component="a" href="https://farmlandv2.magik.finance">
+                {/* <ListItem button component="a" href="https://farmlandv2.magik.finance">
                   <ListItemText>Farmland</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 {/* <ListItemLink primary="Dungeon" to="/dungeon" />
                 <ListItemLink primary="Wilderness" to="/wilderness" /> */}
                 <ListItem button component="a" href="https://magik.farm">
                   <ListItemText>Vaults</ListItemText>
                 </ListItem>
+  <ListItem button onClick={toggleDeprecatedLinks}>
+    <ListItemText>Deprecated</ListItemText>
+    {showDeprecatedLinks ? <ExpandLess /> : <ExpandMore />}
+  </ListItem>
+  {showDeprecatedLinks && (
+    <List component="div" disablePadding>
+      <ListItem button className={classes.nested} component="a" href="https://farmland.magik.finance">
+        <ListItemText primary="Farmland (OLD)" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://farmlandv2.magik.finance">
+        <ListItemText primary="FarmlandV2" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://magik.finance/dungeon">
+        <ListItemText primary="Dungeon" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://magik.finance/wilderness">
+        <ListItemText primary="Wilderness" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://magik.finance/farms">
+        <ListItemText primary="Farms" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://magik.finance/xmshare">
+        <ListItemText primary="xMSHARE" />
+      </ListItem>
+      <ListItem button className={classes.nested} component="a" href="https://magikswap.dog">
+        <ListItemText primary="MagikSwap" />
+      </ListItem>
+    </List>  )}
                 {/* <ListItem button component="a" href="https://magiknft.magik.finance">
                   <ListItemText>NFT Mint</ListItemText>
                 </ListItem> */}

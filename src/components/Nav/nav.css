@@ -13,6 +13,13 @@
     width: 100%;
 }
 
+
+#Button{
+    background: var(--darkGradient);
+    border: 1px solid var(--magikGold);
+    font-family: 'Metamorphous', cursive;
+    filter: drop-shadow(0 0 10px #000);
+}
 #Menu{
     display: grid;
     grid-auto-flow: column;
